@@ -7,7 +7,7 @@ function renderTeams() {
 
   for (let tier = 1; tier <= 6; tier++) {
     // Tier header row
-    rows.push(`<tr class="tier-row"><td colspan="8">${TIER_LABELS[tier]}</td></tr>`);
+    rows.push(`<tr class="tier-row"><td colspan="9">${TIER_LABELS[tier]}</td></tr>`);
 
     // Teams within this tier, sorted highest cost first
     const teams = Object.entries(TEAM_DATA)

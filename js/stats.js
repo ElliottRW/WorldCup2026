@@ -82,14 +82,18 @@ function toDateLabel(d) {
 }
 
 /**
- * Returns the most recent calendar date (as a key string) that had at least
- * one finished match. Returns null if no matches are finished yet.
+ * Returns all calendar dates that had at least one finished match,
+ * as an array of { dateKey, label, utcDate } sorted most-recent first.
  */
-function mostRecentMatchDay(matches) {
+function allMatchDays(matches) {
   const finished = matches.filter(m => m.status === 'FINISHED');
-  if (!finished.length) return null;
-  finished.sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
-  return toDateKey(new Date(finished[0].utcDate));
+  const map = new Map();
+  for (const m of finished) {
+    const d   = new Date(m.utcDate);
+    const key = toDateKey(d);
+    if (!map.has(key)) map.set(key, { dateKey: key, label: toDateLabel(d), utcDate: m.utcDate });
+  }
+  return [...map.values()].sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
 }
 
 /** All matches whose calendar date equals dateKey. */

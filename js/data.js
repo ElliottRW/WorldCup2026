@@ -112,6 +112,7 @@ const API_NAME_MAP = {
   'Congo (DR)':                   'DR Congo',
   'Democratic Republic of Congo': 'DR Congo',
   'Cabo Verde':                   'Cape Verde',
+  'Cape Verde Islands':           'Cape Verde',
   'Czech Republic':               'Czechia',
   'Curacao':                      'Curaçao',
 };

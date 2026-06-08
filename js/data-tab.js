@@ -11,7 +11,7 @@ function renderDataTab() {
   renderPtsPerCreditParticipants();
   renderBestValueTeams();
   renderMostPickedTeams();
-  renderLatestMatchDay();
+  renderMatchDayHistory();
   renderRoundByRound();
 }
 
@@ -178,47 +178,62 @@ function renderMostPickedTeams() {
   el.innerHTML = cards;
 }
 
-// ── LATEST MATCH DAY ──────────────────────────────────────────────────────────
+// ── MATCH DAY HISTORY ─────────────────────────────────────────────────────────
 
-function renderLatestMatchDay() {
+function renderMatchDayHistory() {
   const el = document.getElementById('data-matchday');
   if (!el) return;
 
-  const dayKey = mostRecentMatchDay(_matches);
-  if (!dayKey) {
+  const days = allMatchDays(_matches);
+  if (!days.length) {
     el.innerHTML = `<p style="color:var(--muted);font-size:0.85rem">No matches played yet.</p>`;
     return;
   }
 
-  const dayMatches = matchesOnDate(_matches, dayKey);
-  const label      = toDateLabel(new Date(dayMatches[0].utcDate));
-  const scored     = scoreParticipantsInSet(_participants, dayMatches);
-  const hasPoints  = scored.some(p => p.total > 0);
-
   const MEDALS = { 1: '🥇', 2: '🥈', 3: '🥉' };
 
-  const rows = scored.map((p, i) => {
-    const rank   = i + 1;
-    const medal  = MEDALS[rank] ?? rank;
-    const pills  = p.teams
-      .filter(t => p.breakdown[t] > 0)
-      .map(t => `<span class="team-pill">${esc(t)}<span class="pts-chip">+${p.breakdown[t]}</span></span>`)
-      .join('');
-    return `<tr>
-      <td><span class="rank-num${rank <= 3 ? ` r${rank}` : ''}">${medal}</span></td>
-      <td style="font-weight:700;white-space:nowrap">${esc(p.name)}</td>
-      <td>${pills || '<span style="color:var(--muted);font-size:0.8rem">No points</span>'}</td>
-      <td class="total-score">${p.total}</td>
-    </tr>`;
+  const sections = days.map(({ dateKey, label }, idx) => {
+    const dayMatches = matchesOnDate(_matches, dateKey);
+    const scored     = scoreParticipantsInSet(_participants, dayMatches);
+    const isOpen     = idx === 0; // most recent open by default
+
+    const rows = scored.map((p, i) => {
+      const rank  = i + 1;
+      const medal = MEDALS[rank] ?? rank;
+      const pills = p.teams
+        .filter(t => p.breakdown[t] > 0)
+        .map(t => `<span class="team-pill">${esc(t)}<span class="pts-chip">+${p.breakdown[t]}</span></span>`)
+        .join('');
+      return `<tr>
+        <td><span class="rank-num${rank <= 3 ? ` r${rank}` : ''}">${medal}</span></td>
+        <td style="font-weight:700;white-space:nowrap">${esc(p.name)}</td>
+        <td>${pills || '<span style="color:var(--muted);font-size:0.8rem">No points</span>'}</td>
+        <td class="total-score">${p.total}</td>
+      </tr>`;
+    }).join('');
+
+    return `<div class="match-section">
+      <button class="match-section-toggle${isOpen ? ' open' : ''}">
+        <span>${esc(label)}</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="match-section-body${isOpen ? ' open' : ''}">
+        <table style="margin-top:0.25rem">
+          <thead><tr><th>Rank</th><th>Name</th><th>Scoring Teams</th><th style="text-align:right">Pts</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
   }).join('');
 
-  el.innerHTML = `
-    <p class="section-label">${esc(label)}</p>
-    ${!hasPoints ? '<p style="color:var(--muted);font-size:0.85rem;margin-bottom:0.75rem">Games scheduled — no points yet.</p>' : ''}
-    <table>
-      <thead><tr><th>Rank</th><th>Name</th><th>Scoring Teams</th><th style="text-align:right">Pts</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table>`;
+  el.innerHTML = sections;
+
+  el.querySelectorAll('.match-section-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const open = btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open', open);
+    });
+  });
 }
 
 // ── ROUND BY ROUND ────────────────────────────────────────────────────────────
