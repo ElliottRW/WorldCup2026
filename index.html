@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Cup 2026 Portfolio Challenge</title>
+  <style>
+    :root {
+      --primary: #0d1b5e;
+      --primary-mid: #1a2f8a;
+      --accent: #f5c518;
+      --bg: #eef0f5;
+      --card: #fff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e2e5ed;
+      --green: #15803d;
+      --green-bg: #dcfce7;
+      --red: #b91c1c;
+      --red-bg: #fee2e2;
+      --gold: #fbbf24;
+      --silver: #9ca3af;
+      --bronze: #b45309;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    header {
+      background: linear-gradient(160deg, var(--primary) 0%, var(--primary-mid) 100%);
+      color: white; padding: 1.5rem 1.5rem 1.25rem;
+    }
+    .header-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    header h1 { font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 800; }
+    header h1 span { color: var(--accent); }
+    .header-sub { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: 0.25rem; }
+    .header-sub strong { color: var(--accent); }
+    .header-right { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+    .last-updated { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+    .icon-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 6px; padding: 0.4rem 0.7rem; cursor: pointer; font-size: 1rem; line-height: 1; transition: background 0.15s; }
+    .icon-btn:hover { background: rgba(255,255,255,0.2); }
+    .icon-btn:disabled { opacity: 0.4; cursor: default; }
+
+    nav { background: var(--primary); display: flex; justify-content: center; }
+    .nav-btn { color: rgba(255,255,255,0.6); background: none; border: none; border-bottom: 3px solid transparent; padding: 0.8rem 1.4rem; cursor: pointer; font-size: 0.85rem; font-weight: 600; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+    .nav-btn:hover { color: rgba(255,255,255,0.9); }
+    .nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    main { max-width: 1140px; margin: 1.5rem auto; padding: 0 1rem 3rem; }
+    .tab { display: none; } .tab.active { display: block; }
+
+    .card { background: var(--card); border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 8px rgba(0,0,0,0.04); padding: 1.4rem 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--accent); }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .stat-card { background: var(--card); border-radius: 10px; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .stat-card .val { font-size: 1.8rem; font-weight: 800; color: var(--primary); line-height: 1; }
+    .stat-card .val.sm { font-size: 1.05rem; }
+    .stat-card .lbl { font-size: 0.68rem; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .scrollable { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    th { background: var(--primary); color: rgba(255,255,255,0.9); padding: 0.65rem 0.6rem; text-align: left; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; white-space: nowrap; }
+    th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+    td { padding: 0.6rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: #f8f9ff; }
+    .tier-row td { background: #f1f3f9; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--primary-mid); padding: 0.4rem 0.6rem; }
+    .tier-row:hover td { background: #f1f3f9 !important; }
+
+    .team-pill { display: inline-flex; align-items: center; gap: 0.3rem; background: #eef1fb; color: var(--primary); border-radius: 20px; padding: 0.2rem 0.55rem; font-size: 0.76rem; font-weight: 600; margin: 0.1rem; white-space: nowrap; }
+    .team-pill .pts-chip { background: var(--primary); color: white; border-radius: 10px; padding: 0.05rem 0.35rem; font-size: 0.68rem; font-weight: 700; }
+    .cost-chip { display: inline-block; background: var(--accent); color: #4a3000; border-radius: 10px; padding: 0.1rem 0.4rem; font-size: 0.72rem; font-weight: 700; }
+    .pts-pill { display: inline-block; background: var(--primary); color: white; border-radius: 10px; padding: 0.15rem 0.5rem; font-size: 0.78rem; font-weight: 700; }
+    .stage-tag { display: inline-flex; align-items: center; background: var(--green-bg); color: var(--green); border-radius: 8px; padding: 0.12rem 0.4rem; font-size: 0.68rem; font-weight: 700; margin: 0.1rem; white-space: nowrap; }
+
+    .rank-num { font-weight: 800; font-size: 1rem; width: 2rem; text-align: center; display: inline-block; }
+    .r1 { color: var(--gold); } .r2 { color: var(--silver); } .r3 { color: var(--bronze); }
+    .total-score { font-weight: 800; font-size: 1.05rem; color: var(--primary); text-align: right; }
+
+    .match-group-header { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); padding: 0.8rem 0 0.35rem; border-top: 1px solid var(--border); margin-top: 0.4rem; }
+    .match-group-header:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+    .match-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+    .match-card:last-child { border-bottom: none; }
+    .match-team { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
+    .match-team.right { text-align: left; }
+    .match-team.bold { font-weight: 700; }
+    .match-score { font-weight: 800; font-size: 1rem; color: var(--primary); padding: 0.2rem 0.6rem; background: #f1f3f9; border-radius: 6px; white-space: nowrap; flex-shrink: 0; }
+    .match-score.live { background: var(--red-bg); color: var(--red); }
+    .match-meta { font-size: 0.68rem; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+    .live-dot { display: inline-block; width: 7px; height: 7px; background: var(--red); border-radius: 50%; margin-right: 3px; animation: pulse 1.2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+
+    .banner { padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.5; }
+    .banner-warn { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+    .banner-err  { background: var(--red-bg); color: var(--red); border: 1px solid #fca5a5; }
+    .banner a { color: inherit; font-weight: 700; }
+    .banner code { background: rgba(0,0,0,0.07); padding: 0.1rem 0.3rem; border-radius: 3px; font-family: ui-monospace, monospace; font-size: 0.82rem; }
+
+    .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); line-height: 1.8; }
+    .empty-state .icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+
+    /* Inline API key prompt */
+    .key-prompt { display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem; flex-wrap: wrap; }
+    .key-prompt input { flex: 1; min-width: 200px; padding: 0.4rem 0.65rem; border: 1.5px solid #f9c940; border-radius: 6px; font-size: 0.83rem; background: #fffde7; }
+    .key-prompt input:focus { outline: none; border-color: #e6b800; }
+    .key-prompt button { padding: 0.4rem 0.85rem; border: none; border-radius: 6px; background: #854d0e; color: white; font-size: 0.83rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .key-prompt button:hover { opacity: 0.85; }
+
+    @media (max-width: 600px) {
+      header { padding: 1rem; }
+      main { padding: 0 0.75rem 3rem; }
+      .card { padding: 1rem; }
+      .match-team { max-width: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <h1>⚽ World Cup 2026 <span>Portfolio Challenge</span></h1>
+      <p class="header-sub">Entries close <strong>Thursday 11 June</strong> &nbsp;·&nbsp; £5 to enter &nbsp;·&nbsp; Top 3 win</p>
+    </div>
+    <div class="header-right">
+      <span id="last-updated" class="last-updated"></span>
+      <button class="icon-btn" id="btn-refresh" title="Refresh scores">↻</button>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <button class="nav-btn active" data-tab="leaderboard">🏆 Leaderboard</button>
+  <button class="nav-btn" data-tab="teams">📊 Teams</button>
+  <button class="nav-btn" data-tab="matches">⚽ Matches</button>
+</nav>
+
+<main>
+  <div id="banners"></div>
+
+  <div id="tab-leaderboard" class="tab active">
+    <div id="stats-grid" class="stats-grid"></div>
+    <div class="card">
+      <div class="card-title">🏆 Leaderboard</div>
+      <div class="scrollable" id="leaderboard-body"></div>
+    </div>
+  </div>
+
+  <div id="tab-teams" class="tab">
+    <div class="card">
+      <div class="card-title">📊 Team Standings</div>
+      <div class="scrollable">
+        <table>
+          <thead><tr>
+            <th>Team</th><th>Cost</th>
+            <th title="Wins">W</th><th title="Draws">D</th><th title="Losses">L</th>
+            <th>Match Pts</th><th>Progression</th><th>Total</th>
+          </tr></thead>
+          <tbody id="teams-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-matches" class="tab">
+    <div class="card">
+      <div class="card-title">⚽ Matches</div>
+      <div id="matches-body"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+'use strict';
+
+// ── TEAM DATA ──────────────────────────────────────────────────────────────────
+const TEAM_DATA = {
+  "Spain":{"cost":50,"tier":1},"France":{"cost":48,"tier":1},"England":{"cost":46,"tier":1},
+  "Portugal":{"cost":44,"tier":1},"Argentina":{"cost":42,"tier":1},"Brazil":{"cost":40,"tier":1},
+  "Germany":{"cost":38,"tier":1},"Netherlands":{"cost":36,"tier":1},
+  "Belgium":{"cost":30,"tier":2},"Morocco":{"cost":29,"tier":2},"Uruguay":{"cost":28,"tier":2},
+  "Colombia":{"cost":27,"tier":2},"Croatia":{"cost":26,"tier":2},"Norway":{"cost":25,"tier":2},
+  "Japan":{"cost":24,"tier":2},"United States":{"cost":23,"tier":2},
+  "Switzerland":{"cost":20,"tier":3},"Austria":{"cost":19,"tier":3},"Sweden":{"cost":18,"tier":3},
+  "Senegal":{"cost":17,"tier":3},"Mexico":{"cost":16,"tier":3},"Türkiye":{"cost":15,"tier":3},
+  "Ecuador":{"cost":14,"tier":3},"Paraguay":{"cost":13,"tier":3},
+  "South Korea":{"cost":12,"tier":4},"Australia":{"cost":12,"tier":4},"Egypt":{"cost":11,"tier":4},
+  "Iran":{"cost":11,"tier":4},"Algeria":{"cost":10,"tier":4},"Scotland":{"cost":10,"tier":4},
+  "Ghana":{"cost":9,"tier":4},"Tunisia":{"cost":9,"tier":4},
+  "Czechia":{"cost":8,"tier":5},"Ivory Coast":{"cost":8,"tier":5},
+  "Bosnia and Herzegovina":{"cost":7,"tier":5},"Canada":{"cost":7,"tier":5},
+  "Uzbekistan":{"cost":6,"tier":5},"Qatar":{"cost":6,"tier":5},
+  "Panama":{"cost":5,"tier":5},"Saudi Arabia":{"cost":5,"tier":5},
+  "New Zealand":{"cost":4,"tier":6},"Iraq":{"cost":4,"tier":6},"Jordan":{"cost":4,"tier":6},
+  "DR Congo":{"cost":3,"tier":6},"South Africa":{"cost":3,"tier":6},"Cape Verde":{"cost":3,"tier":6},
+  "Haiti":{"cost":2,"tier":6},"Curaçao":{"cost":2,"tier":6},
+};
+
+const TIER_LABELS = {
+  1:'Tier 1 — Genuine Favourites', 2:'Tier 2 — Strong Contenders',
+  3:'Tier 3 — Quarter-final Potential', 4:'Tier 4 — Dangerous Knockout Teams',
+  5:'Tier 5 — Long Shots', 6:'Tier 6 — Biggest Outsiders',
+};
+
+const STAGES = ['knockout','quarterfinal','semifinal','final','winner'];
+const STAGE_LABELS = { knockout:'Knockout Stage', quarterfinal:'Quarter-final', semifinal:'Semi-final', final:'Final', winner:'Winner' };
+
+const MATCH_STAGE_LABELS = {
+  GROUP_STAGE:'Group Stage', ROUND_OF_32:'Round of 32', ROUND_OF_16:'Round of 16',
+  QUARTER_FINALS:'Quarter-finals', SEMI_FINALS:'Semi-finals', THIRD_PLACE:'Third Place', FINAL:'Final',
+};
+
+// football-data.org team names → our names
+const API_NAME_MAP = {
+  'USA':'United States', 'United States of America':'United States',
+  'Turkey':'Türkiye',
+  'Korea Republic':'South Korea', 'Republic of Korea':'South Korea',
+  "Côte d'Ivoire":'Ivory Coast', "Cote d'Ivoire":'Ivory Coast',
+  'Bosnia-Herzegovina':'Bosnia and Herzegovina', 'Bosnia & Herzegovina':'Bosnia and Herzegovina',
+  'Congo DR':'DR Congo', 'Congo (DR)':'DR Congo', 'Democratic Republic of Congo':'DR Congo',
+  'Cabo Verde':'Cape Verde',
+  'Czech Republic':'Czechia',
+  'Curacao':'Curaçao',
+};
+
+// ── HELPERS ────────────────────────────────────────────────────────────────────
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+function getDisplayName(n) {
+  if (!n) return null;
+  if (API_NAME_MAP[n]) return API_NAME_MAP[n];
+  if (TEAM_DATA[n]) return n;
+  const lo = n.toLowerCase();
+  for (const k of Object.keys(TEAM_DATA)) { if (k.toLowerCase() === lo) return k; }
+  return n;
+}
+
+function findTeam(raw) {
+  const s = raw.trim();
+  if (TEAM_DATA[s]) return s;
+  const lo = s.toLowerCase();
+  for (const k of Object.keys(TEAM_DATA)) { if (k.toLowerCase() === lo) return k; }
+  return null;
+}
+
+function timeAgo(ts) {
+  if (!ts) return '';
+  const s = Math.round((Date.now() - ts) / 1000);
+  if (s < 60) return 'just now';
+  if (s < 3600) return `${Math.floor(s/60)}m ago`;
+  return `${Math.floor(s/3600)}h ago`;
+}
+
+// ── DATA LOADING ───────────────────────────────────────────────────────────────
+
+// Load entries.csv from the same directory
+async function loadEntries() {
+  try {
+    const r = await fetch('entries.csv');
+    if (!r.ok) return null;
+    const text = await r.text();
+    const lines = text.trim().split('\n').map(l => l.trim()).filter(Boolean);
+    const participants = [];
+    let headerSkipped = false;
+    for (const line of lines) {
+      const parts = line.split(',').map(p => p.trim());
+      if (!headerSkipped && parts[0].toLowerCase() === 'name') { headerSkipped = true; continue; }
+      if (parts.length < 5) continue;
+      const name = parts[0];
+      const teams = parts.slice(1, 5).map(t => findTeam(t)).filter(Boolean);
+      if (teams.length === 4) participants.push({ name, teams });
+    }
+    return participants;
+  } catch {
+    return null;
+  }
+}
+
+// Load API key: try config.json first, fall back to localStorage
+async function loadApiKey() {
+  try {
+    const r = await fetch('config.json');
+    if (r.ok) {
+      const json = await r.json();
+      if (json.apiKey) return json.apiKey;
+    }
+  } catch { /* ignore */ }
+  return localStorage.getItem('wc26_apikey') || null;
+}
+
+const getCache = () => JSON.parse(localStorage.getItem('wc26_cache') || 'null');
+const saveCache = data => localStorage.setItem('wc26_cache', JSON.stringify({ data, ts: Date.now() }));
+
+let _apiKey = null;
+let _lastError = null;
+
+async function fetchMatches(force = false) {
+  const cache = getCache();
+
+  if (cache && !force) {
+    const live = cache.data.some(m => m.status === 'IN_PLAY' || m.status === 'PAUSED');
+    if (Date.now() - cache.ts < (live ? 60_000 : 3 * 60_000)) return cache.data;
+  }
+
+  if (!_apiKey) return cache?.data || null;
+
+  try {
+    const r = await fetch('https://api.football-data.org/v4/competitions/WC/matches?season=2026', {
+      headers: { 'X-Auth-Token': _apiKey },
+    });
+    if (r.status === 403) { _lastError = 'Invalid API key in config.json.'; return cache?.data || null; }
+    if (r.status === 429) { _lastError = 'Rate limited — will retry shortly.'; return cache?.data || null; }
+    if (r.status === 404) { _lastError = 'WC 2026 not yet in the API — check back closer to kick-off.'; return cache?.data || null; }
+    if (!r.ok)            { _lastError = `API error ${r.status}.`; return cache?.data || null; }
+    const json = await r.json();
+    _lastError = null;
+    const data = json.matches || [];
+    saveCache(data);
+    return data;
+  } catch {
+    _lastError = 'Network error — check your connection.';
+    return cache?.data || null;
+  }
+}
+
+// ── SCORING ───────────────────────────────────────────────────────────────────
+function teamStats(display, matches) {
+  const mine = matches.filter(m =>
+    getDisplayName(m.homeTeam?.name) === display ||
+    getDisplayName(m.awayTeam?.name) === display
+  );
+
+  let wins = 0, draws = 0, losses = 0;
+  for (const m of mine) {
+    if (!['FINISHED','IN_PLAY','PAUSED'].includes(m.status) || !m.score?.winner) continue;
+    const home = getDisplayName(m.homeTeam?.name) === display;
+    if (m.score.winner === 'DRAW') draws++;
+    else if ((m.score.winner === 'HOME_TEAM') === home) wins++;
+    else losses++;
+  }
+
+  const matchPts = wins * 5 + draws * 2;
+
+  const played = new Set(
+    mine.filter(m => ['FINISHED','IN_PLAY','PAUSED'].includes(m.status)).map(m => m.stage)
+  );
+
+  const knockout     = ['ROUND_OF_32','ROUND_OF_16','QUARTER_FINALS','SEMI_FINALS','THIRD_PLACE','FINAL'].some(s => played.has(s));
+  const quarterfinal = ['QUARTER_FINALS','SEMI_FINALS','THIRD_PLACE','FINAL'].some(s => played.has(s));
+  const semifinal    = ['SEMI_FINALS','THIRD_PLACE','FINAL'].some(s => played.has(s));
+  const final        = played.has('FINAL');
+
+  let winner = false;
+  const fm = matches.find(m => m.stage === 'FINAL' && m.status === 'FINISHED');
+  if (fm?.score?.winner) {
+    const home = getDisplayName(fm.homeTeam?.name) === display;
+    winner = (fm.score.winner === 'HOME_TEAM' && home) || (fm.score.winner === 'AWAY_TEAM' && !home);
+  }
+
+  const prog = { knockout, quarterfinal, semifinal, final, winner };
+  const progPts = STAGES.filter(s => prog[s]).length * 10;
+  return { wins, draws, losses, matchPts, prog, progPts, total: matchPts + progPts };
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+let _participants = null;
+let _matches = null;
+
+function renderBanners() {
+  const el = document.getElementById('banners');
+  const parts = [];
+
+  if (!_apiKey) {
+    parts.push(`
+      <div class="banner banner-warn">
+        ⚠️ No API key found. Create a <code>config.json</code> in the same folder as this page:
+        <pre style="margin:0.4rem 0 0.5rem;background:rgba(0,0,0,0.07);padding:0.4rem 0.6rem;border-radius:4px;font-size:0.78rem;font-family:ui-monospace,monospace">{ "apiKey": "your-football-data-api-key" }</pre>
+        Or set one temporarily:
+        <div class="key-prompt">
+          <input type="password" id="tmp-key-input" placeholder="Paste API key" autocomplete="off">
+          <button id="tmp-key-btn">Use this key</button>
+        </div>
+      </div>`);
+  } else if (_lastError) {
+    parts.push(`<div class="banner banner-err">⚠️ ${esc(_lastError)}</div>`);
+  }
+
+  if (_participants === null) {
+    parts.push(`<div class="banner banner-warn">⚠️ No <code>entries.csv</code> found. Add it to the same folder as this page to see participant scores.</div>`);
+  }
+
+  el.innerHTML = parts.join('');
+
+  document.getElementById('tmp-key-btn')?.addEventListener('click', () => {
+    const k = document.getElementById('tmp-key-input').value.trim();
+    if (!k) return;
+    localStorage.setItem('wc26_apikey', k);
+    _apiKey = k;
+    fetchMatches(true).then(data => renderAll(data));
+  });
+}
+
+function renderLastUpdated() {
+  const c = getCache();
+  document.getElementById('last-updated').textContent = c ? `Updated ${timeAgo(c.ts)}` : '';
+}
+
+function renderLeaderboard(matches) {
+  const grid = document.getElementById('stats-grid');
+  const body = document.getElementById('leaderboard-body');
+
+  if (!_participants?.length) {
+    grid.innerHTML = '';
+    body.innerHTML = `<div class="empty-state"><span class="icon">📋</span>Entries will appear here once <code>entries.csv</code> is added.</div>`;
+    return;
+  }
+
+  const scored = _participants.map(p => {
+    let total = 0;
+    const breakdown = {};
+    for (const t of p.teams) {
+      const pts = matches ? teamStats(t, matches).total : 0;
+      breakdown[t] = pts;
+      total += pts;
+    }
+    return { ...p, total, breakdown };
+  }).sort((a, b) => b.total - a.total);
+
+  const played = matches ? matches.filter(m => m.status === 'FINISHED').length : 0;
+  const leader = scored[0];
+
+  grid.innerHTML = `
+    <div class="stat-card"><div class="val">${_participants.length}</div><div class="lbl">Participants</div></div>
+    <div class="stat-card"><div class="val">${played}</div><div class="lbl">Matches Played</div></div>
+    <div class="stat-card"><div class="val">${leader.total}</div><div class="lbl">Top Score</div></div>
+    <div class="stat-card"><div class="val sm">${esc(leader.name)}</div><div class="lbl">Leader</div></div>
+  `;
+
+  let html = `<table><thead><tr>
+    <th>Rank</th><th>Name</th><th>Teams &amp; Points</th><th style="text-align:right">Total</th>
+  </tr></thead><tbody>`;
+
+  for (let i = 0; i < scored.length; i++) {
+    const p = scored[i], rank = i + 1;
+    const cls = rank <= 3 ? ` r${rank}` : '';
+    const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+    const pills = p.teams.map(t =>
+      `<span class="team-pill">${esc(t)}<span class="pts-chip">${p.breakdown[t]}pts</span></span>`
+    ).join('');
+    html += `<tr>
+      <td><span class="rank-num${cls}">${medal}</span></td>
+      <td style="font-weight:700;white-space:nowrap">${esc(p.name)}</td>
+      <td>${pills}</td>
+      <td class="total-score">${p.total}</td>
+    </tr>`;
+  }
+
+  body.innerHTML = html + '</tbody></table>';
+}
+
+function renderTeams(matches) {
+  let html = '';
+  for (let tier = 1; tier <= 6; tier++) {
+    const teams = Object.entries(TEAM_DATA).filter(([,d]) => d.tier === tier).sort((a,b) => b[1].cost - a[1].cost);
+    html += `<tr class="tier-row"><td colspan="8">${TIER_LABELS[tier]}</td></tr>`;
+    for (const [name, data] of teams) {
+      const s = matches ? teamStats(name, matches) : { wins:0, draws:0, losses:0, matchPts:0, prog:{}, total:0 };
+      const tags = STAGES.filter(st => s.prog[st]).map(st => `<span class="stage-tag">✓ ${STAGE_LABELS[st]}</span>`).join('');
+      html += `<tr>
+        <td style="font-weight:600;white-space:nowrap">${esc(name)}</td>
+        <td><span class="cost-chip">${data.cost}</span></td>
+        <td style="text-align:center">${s.wins}</td>
+        <td style="text-align:center">${s.draws}</td>
+        <td style="text-align:center">${s.losses}</td>
+        <td style="text-align:center">${s.matchPts}</td>
+        <td>${tags || '<span style="color:#ccc;font-size:0.7rem">—</span>'}</td>
+        <td><span class="pts-pill">${s.total}</span></td>
+      </tr>`;
+    }
+  }
+  document.getElementById('teams-tbody').innerHTML = html;
+}
+
+function renderMatches(matches) {
+  const el = document.getElementById('matches-body');
+
+  if (!matches) {
+    el.innerHTML = `<div class="empty-state"><span class="icon">🔑</span>Add an API key to see live results.</div>`;
+    return;
+  }
+
+  const active = matches.filter(m => !['SCHEDULED','POSTPONED','CANCELLED'].includes(m.status));
+  if (!active.length) {
+    const next = matches.filter(m => m.status === 'SCHEDULED').sort((a,b) => new Date(a.utcDate)-new Date(b.utcDate))[0];
+    const when = next ? new Date(next.utcDate).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'}) : '';
+    el.innerHTML = `<div class="empty-state"><span class="icon">⏳</span>No results yet.${when ? `<br><small>First match: ${esc(when)}</small>` : ''}</div>`;
+    return;
+  }
+
+  const stageOrder = ['FINAL','THIRD_PLACE','SEMI_FINALS','QUARTER_FINALS','ROUND_OF_16','ROUND_OF_32','GROUP_STAGE'];
+  const byStage = {};
+  for (const m of active) (byStage[m.stage] = byStage[m.stage] || []).push(m);
+
+  let html = '';
+  for (const stage of stageOrder) {
+    if (!byStage[stage]) continue;
+    html += `<div class="match-group-header">${MATCH_STAGE_LABELS[stage] || stage}</div>`;
+    const sorted = byStage[stage].slice().sort((a,b) => new Date(b.utcDate)-new Date(a.utcDate));
+    for (const m of sorted) {
+      const live = m.status === 'IN_PLAY' || m.status === 'PAUSED';
+      const home = getDisplayName(m.homeTeam?.name) || '?';
+      const away = getDisplayName(m.awayTeam?.name) || '?';
+      const hg = m.score?.fullTime?.home ?? '–';
+      const ag = m.score?.fullTime?.away ?? '–';
+      const hw = m.score?.winner === 'HOME_TEAM', aw = m.score?.winner === 'AWAY_TEAM';
+      const date = new Date(m.utcDate).toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+      html += `<div class="match-card">
+        <span class="match-team${hw?' bold':''}">${esc(home)}</span>
+        <span class="match-score${live?' live':''}">${hg} – ${ag}</span>
+        <span class="match-team right${aw?' bold':''}">${esc(away)}</span>
+        <span class="match-meta">${live ? '<span class="live-dot"></span>LIVE' : esc(date)}</span>
+      </div>`;
+    }
+  }
+  el.innerHTML = html;
+}
+
+function renderAll(matches) {
+  if (matches !== undefined) _matches = matches;
+  renderBanners();
+  renderLastUpdated();
+  renderLeaderboard(_matches);
+  renderTeams(_matches);
+  renderMatches(_matches);
+}
+
+// ── WIRING ────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+document.getElementById('btn-refresh').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-refresh');
+  btn.disabled = true; btn.textContent = '…';
+  const data = await fetchMatches(true);
+  renderAll(data);
+  btn.disabled = false; btn.textContent = '↻';
+});
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+async function init() {
+  [_apiKey, _participants] = await Promise.all([loadApiKey(), loadEntries()]);
+
+  const data = await fetchMatches();
+  renderAll(data);
+
+  // Poll every 60s; cache TTL (1 min live, 3 min normal) controls actual API calls
+  setInterval(async () => {
+    // Re-read entries.csv in case it was updated
+    _participants = await loadEntries();
+    const d = await fetchMatches();
+    renderAll(d);
+  }, 60_000);
+
+  setInterval(renderLastUpdated, 30_000);
+}
+
+init();
+</script>
+</body>
+</html>
