@@ -82,6 +82,8 @@
     .match-section-toggle.open .chevron { transform: rotate(180deg); }
     .match-section-body { display: none; padding-bottom: 0.25rem; }
     .match-section-body.open { display: block; }
+    .match-day-header { font-size: 0.7rem; font-weight: 700; color: var(--primary-mid); padding: 0.55rem 0 0.2rem; margin-top: 0.4rem; border-top: 1px solid var(--border); }
+    .match-section-body > .match-day-header:first-child { border-top: none; margin-top: 0; padding-top: 0.1rem; }
     .match-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
     .match-card:last-child { border-bottom: none; }
     .match-team { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
@@ -451,7 +453,8 @@ function renderMatches() {
         <span class="chevron">▾</span>
       </button>
       <div class="match-section-body${isOpen ? ' open' : ''}">`;
-    for (const m of byStage[stage].slice().sort((a,b) => new Date(b.utcDate)-new Date(a.utcDate))) {
+    let currentDay = null;
+    for (const m of byStage[stage].slice().sort((a,b) => new Date(a.utcDate)-new Date(b.utcDate))) {
       const live = m.status === 'IN_PLAY' || m.status === 'PAUSED';
       const home = getDisplayName(m.homeTeam?.name) || '?';
       const away = getDisplayName(m.awayTeam?.name) || '?';
@@ -459,13 +462,17 @@ function renderMatches() {
       const ag = m.score?.fullTime?.away ?? '–';
       const hw = m.score?.winner === 'HOME_TEAM', aw = m.score?.winner === 'AWAY_TEAM';
       const d = new Date(m.utcDate);
-      const date = d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+      const dayKey = d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
       const time = d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+      if (dayKey !== currentDay) {
+        currentDay = dayKey;
+        html += `<div class="match-day-header">${esc(dayKey)}</div>`;
+      }
       html += `<div class="match-card">
         <span class="match-team${hw?' bold':''}">${esc(home)}</span>
         <span class="match-score${live?' live':''}">${hg} – ${ag}</span>
         <span class="match-team right${aw?' bold':''}">${esc(away)}</span>
-        <span class="match-meta">${live ? '<span class="live-dot"></span>LIVE' : `${esc(date)} · ${esc(time)}`}</span>
+        <span class="match-meta">${live ? '<span class="live-dot"></span>LIVE' : esc(time)}</span>
       </div>`;
     }
     html += `</div></div>`;
