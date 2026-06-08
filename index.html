@@ -209,7 +209,7 @@ const MATCH_STAGE_LABELS = {
 
 const API_NAME_MAP = {
   'USA':'United States','United States of America':'United States',
-  'Turkey':'Türkiye',
+  'Turkey':'Türkiye','Turkiye':'Türkiye',
   'Korea Republic':'South Korea','Republic of Korea':'South Korea',
   "Côte d'Ivoire":'Ivory Coast',"Cote d'Ivoire":'Ivory Coast',
   'Bosnia-Herzegovina':'Bosnia and Herzegovina','Bosnia & Herzegovina':'Bosnia and Herzegovina',
@@ -252,14 +252,32 @@ async function loadEntries() {
     if (!r.ok) return null;
     const text = await r.text();
     const lines = text.trim().split('\n').map(l => l.trim()).filter(Boolean);
+    if (lines.length < 2) return null;
+
+    // Detect Microsoft Forms export vs simple format by inspecting the header row
+    const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+    const isForms = headers.includes('your name') || headers.includes('team 1');
+
+    let nameCol, teamStartCol;
+    if (isForms) {
+      nameCol      = headers.indexOf('your name');
+      teamStartCol = headers.indexOf('team 1');
+      if (nameCol === -1 || teamStartCol === -1) return null;
+    } else {
+      nameCol      = 0;   // simple format: Name,Team1,Team2,Team3,Team4
+      teamStartCol = 1;
+    }
+
     const out = [];
-    let headerDone = false;
-    for (const line of lines) {
-      const parts = line.split(',').map(p => p.trim());
-      if (!headerDone && parts[0].toLowerCase() === 'name') { headerDone = true; continue; }
-      if (parts.length < 5) continue;
-      const teams = parts.slice(1, 5).map(findTeam).filter(Boolean);
-      if (teams.length === 4) out.push({ name: parts[0], teams });
+    for (let i = 1; i < lines.length; i++) {
+      const parts = lines[i].split(',').map(p => p.trim());
+      const name = parts[nameCol];
+      if (!name) continue;
+      // Strip cost suffix e.g. "France (48)" → "France"
+      const rawTeams = parts.slice(teamStartCol, teamStartCol + 4)
+        .map(t => t.replace(/\s*\(\d+\)\s*$/, ''));
+      const teams = rawTeams.map(findTeam).filter(Boolean);
+      if (teams.length === 4) out.push({ name, teams });
     }
     return out.length ? out : null;
   } catch { return null; }
