@@ -458,12 +458,14 @@ function renderMatches() {
       const hg = m.score?.fullTime?.home ?? '–';
       const ag = m.score?.fullTime?.away ?? '–';
       const hw = m.score?.winner === 'HOME_TEAM', aw = m.score?.winner === 'AWAY_TEAM';
-      const date = new Date(m.utcDate).toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+      const d = new Date(m.utcDate);
+      const date = d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+      const time = d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
       html += `<div class="match-card">
         <span class="match-team${hw?' bold':''}">${esc(home)}</span>
         <span class="match-score${live?' live':''}">${hg} – ${ag}</span>
         <span class="match-team right${aw?' bold':''}">${esc(away)}</span>
-        <span class="match-meta">${live ? '<span class="live-dot"></span>LIVE' : esc(date)}</span>
+        <span class="match-meta">${live ? '<span class="live-dot"></span>LIVE' : `${esc(date)} · ${esc(time)}`}</span>
       </div>`;
     }
     html += `</div></div>`;
