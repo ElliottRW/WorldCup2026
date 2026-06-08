@@ -86,9 +86,11 @@
     .match-section-body > .match-day-header:first-child { border-top: none; margin-top: 0; padding-top: 0.1rem; }
     .match-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
     .match-card:last-child { border-bottom: none; }
-    .match-team { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
-    .match-team.right { text-align: left; }
-    .match-team.bold { font-weight: 700; }
+    .match-team { flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 0.4rem; overflow: hidden; white-space: nowrap; }
+    .match-team.right { justify-content: flex-start; }
+    .match-team.bold .team-name { font-weight: 700; }
+    .team-name { overflow: hidden; text-overflow: ellipsis; }
+    .crest { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
     .match-score { font-weight: 800; font-size: 1rem; color: var(--primary); padding: 0.2rem 0.6rem; background: #f1f3f9; border-radius: 6px; white-space: nowrap; flex-shrink: 0; }
     .match-score.live { background: var(--red-bg); color: var(--red); }
     .match-meta { font-size: 0.68rem; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
@@ -468,10 +470,12 @@ function renderMatches() {
         currentDay = dayKey;
         html += `<div class="match-day-header">${esc(dayKey)}</div>`;
       }
+      const homeCrest = m.homeTeam?.crest ? `<img class="crest" src="${esc(m.homeTeam.crest)}" alt="">` : '';
+      const awayCrest = m.awayTeam?.crest ? `<img class="crest" src="${esc(m.awayTeam.crest)}" alt="">` : '';
       html += `<div class="match-card">
-        <span class="match-team${hw?' bold':''}">${esc(home)}</span>
+        <span class="match-team${hw?' bold':''}"><span class="team-name">${esc(home)}</span>${homeCrest}</span>
         <span class="match-score${live?' live':''}">${hg} – ${ag}</span>
-        <span class="match-team right${aw?' bold':''}">${esc(away)}</span>
+        <span class="match-team right${aw?' bold':''}">${awayCrest}<span class="team-name">${esc(away)}</span></span>
         <span class="match-meta">${live ? '<span class="live-dot"></span>LIVE' : esc(time)}</span>
       </div>`;
     }
