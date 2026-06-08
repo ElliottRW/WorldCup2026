@@ -20,6 +20,7 @@ function renderTeams() {
         .filter(stage => s.prog[stage])
         .map(stage => `<span class="stage-tag">✓ ${STAGE_LABELS[stage]}</span>`)
         .join('');
+      const ppc  = ptsPerCredit(s.total, data.cost);
 
       rows.push(`<tr>
         <td style="font-weight:600;white-space:nowrap">${esc(name)}</td>
@@ -30,6 +31,7 @@ function renderTeams() {
         <td style="text-align:center">${s.matchPts}</td>
         <td>${tags || '<span style="color:#ccc;font-size:0.7rem">—</span>'}</td>
         <td><span class="pts-pill">${s.total}</span></td>
+        <td style="text-align:center;color:var(--muted);font-size:0.8rem">${ppc > 0 ? ppc.toFixed(2) : '—'}</td>
       </tr>`);
     }
   }

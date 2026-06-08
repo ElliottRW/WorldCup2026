@@ -11,6 +11,7 @@ function renderAll() {
   renderLeaderboard();
   renderTeams();
   renderMatches();
+  renderDataTab();
 }
 
 // ── TAB NAVIGATION ────────────────────────────────────────────────────────────

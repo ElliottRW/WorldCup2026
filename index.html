@@ -25,6 +25,7 @@
   <button class="nav-btn active" data-tab="leaderboard">🏆 Leaderboard</button>
   <button class="nav-btn"        data-tab="teams">📊 Teams</button>
   <button class="nav-btn"        data-tab="matches">⚽ Matches</button>
+  <button class="nav-btn"        data-tab="data">📈 Stats</button>
 </nav>
 
 <main>
@@ -55,6 +56,7 @@
               <th>Match Pts</th>
               <th>Progression</th>
               <th>Total</th>
+              <th title="Points per credit">Pts/£</th>
             </tr>
           </thead>
           <tbody id="teams-tbody"></tbody>
@@ -70,15 +72,52 @@
       <div id="matches-body"></div>
     </div>
   </div>
+
+  <!-- Stats / Data tab -->
+  <div id="tab-data" class="tab">
+    <div id="data-overview" class="stats-grid"></div>
+
+    <div class="card">
+      <div class="card-title">💰 Points Per Credit — Participants</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Total points earned ÷ credits spent. Who got the best value from their budget?</p>
+      <div class="scrollable" id="data-ppc-participants"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏅 Best Value Team Picks</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Points earned ÷ cost for every team that was picked. Higher = better bang for your buck.</p>
+      <div class="scrollable" id="data-best-value"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🤝 Shared Picks</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Teams picked by more than one participant — shared joy or shared pain.</p>
+      <div id="data-popular"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📅 Latest Match Day</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Points scored from the most recent day of fixtures only.</p>
+      <div id="data-matchday"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔄 Round by Round</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Match points (wins &amp; draws) earned by each participant in each individual round.</p>
+      <div id="data-rounds"></div>
+    </div>
+  </div>
 </main>
 
 <!-- Load order matters: data → scoring → loaders → renderers → app -->
 <script src="js/data.js"></script>
 <script src="js/scoring.js"></script>
+<script src="js/stats.js"></script>
 <script src="js/loaders.js"></script>
 <script src="js/leaderboard.js"></script>
 <script src="js/teams.js"></script>
 <script src="js/matches.js"></script>
+<script src="js/data-tab.js"></script>
 <script src="js/app.js"></script>
 
 </body>
