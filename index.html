@@ -193,7 +193,7 @@ const STAGES = ['knockout','quarterfinal','semifinal','final','winner'];
 const STAGE_LABELS = { knockout:'Knockout Stage', quarterfinal:'Quarter-final', semifinal:'Semi-final', final:'Final', winner:'Winner' };
 
 const MATCH_STAGE_LABELS = {
-  GROUP_STAGE:'Group Stage', ROUND_OF_32:'Round of 32', ROUND_OF_16:'Round of 16',
+  GROUP_STAGE:'Group Stage', LAST_32:'Round of 32', LAST_16:'Round of 16',
   QUARTER_FINALS:'Quarter-finals', SEMI_FINALS:'Semi-finals', THIRD_PLACE:'Third Place', FINAL:'Final',
 };
 
@@ -290,7 +290,7 @@ function teamStats(display, matches) {
     mine.filter(m => ['FINISHED','IN_PLAY','PAUSED'].includes(m.status)).map(m => m.stage)
   );
 
-  const knockout     = ['ROUND_OF_32','ROUND_OF_16','QUARTER_FINALS','SEMI_FINALS','THIRD_PLACE','FINAL'].some(s => played.has(s));
+  const knockout     = ['LAST_32','LAST_16','QUARTER_FINALS','SEMI_FINALS','THIRD_PLACE','FINAL'].some(s => played.has(s));
   const quarterfinal = ['QUARTER_FINALS','SEMI_FINALS','THIRD_PLACE','FINAL'].some(s => played.has(s));
   const semifinal    = ['SEMI_FINALS','THIRD_PLACE','FINAL'].some(s => played.has(s));
   const final        = played.has('FINAL');
@@ -413,7 +413,7 @@ function renderMatches() {
     return;
   }
 
-  const stageOrder = ['FINAL','THIRD_PLACE','SEMI_FINALS','QUARTER_FINALS','ROUND_OF_16','ROUND_OF_32','GROUP_STAGE'];
+  const stageOrder = ['FINAL','THIRD_PLACE','SEMI_FINALS','QUARTER_FINALS','LAST_16','LAST_32','GROUP_STAGE'];
   const byStage = {};
   for (const m of active) (byStage[m.stage] = byStage[m.stage] || []).push(m);
 
