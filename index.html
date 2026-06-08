@@ -74,8 +74,14 @@
     .r1 { color: var(--gold); } .r2 { color: var(--silver); } .r3 { color: var(--bronze); }
     .total-score { font-weight: 800; font-size: 1.05rem; color: var(--primary); text-align: right; }
 
-    .match-group-header { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); padding: 0.8rem 0 0.35rem; border-top: 1px solid var(--border); margin-top: 0.4rem; }
-    .match-group-header:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+    .match-section { border-top: 1px solid var(--border); }
+    .match-section:first-child { border-top: none; }
+    .match-section-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.75rem 0; background: none; border: none; cursor: pointer; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); text-align: left; }
+    .match-section-toggle:hover { color: var(--primary); }
+    .match-section-toggle .chevron { font-size: 0.85rem; transition: transform 0.2s ease; flex-shrink: 0; }
+    .match-section-toggle.open .chevron { transform: rotate(180deg); }
+    .match-section-body { display: none; padding-bottom: 0.25rem; }
+    .match-section-body.open { display: block; }
     .match-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
     .match-card:last-child { border-bottom: none; }
     .match-team { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
@@ -418,10 +424,33 @@ function renderMatches() {
   const byStage = {};
   for (const m of active) (byStage[m.stage] = byStage[m.stage] || []).push(m);
 
+  // Determine which stage to open by default:
+  // 1. Any stage with live matches wins immediately
+  // 2. Otherwise pick the stage whose matches are temporally closest to now
+  const now = Date.now();
+  let activeStage = null;
+  for (const stage of stageOrder) {
+    if (byStage[stage]?.some(m => m.status === 'IN_PLAY' || m.status === 'PAUSED')) { activeStage = stage; break; }
+  }
+  if (!activeStage) {
+    let bestDist = Infinity;
+    for (const stage of stageOrder) {
+      if (!byStage[stage]) continue;
+      const dist = Math.min(...byStage[stage].map(m => Math.abs(new Date(m.utcDate) - now)));
+      if (dist < bestDist) { bestDist = dist; activeStage = stage; }
+    }
+  }
+
   let html = '';
   for (const stage of stageOrder) {
     if (!byStage[stage]) continue;
-    html += `<div class="match-group-header">${MATCH_STAGE_LABELS[stage] || stage}</div>`;
+    const isOpen = stage === activeStage;
+    html += `<div class="match-section">
+      <button class="match-section-toggle${isOpen ? ' open' : ''}" data-stage="${esc(stage)}">
+        <span>${MATCH_STAGE_LABELS[stage] || stage}</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="match-section-body${isOpen ? ' open' : ''}">`;
     for (const m of byStage[stage].slice().sort((a,b) => new Date(b.utcDate)-new Date(a.utcDate))) {
       const live = m.status === 'IN_PLAY' || m.status === 'PAUSED';
       const home = getDisplayName(m.homeTeam?.name) || '?';
@@ -437,8 +466,17 @@ function renderMatches() {
         <span class="match-meta">${live ? '<span class="live-dot"></span>LIVE' : esc(date)}</span>
       </div>`;
     }
+    html += `</div></div>`;
   }
   el.innerHTML = html;
+
+  // Wire up accordion toggles
+  el.querySelectorAll('.match-section-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const open = btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open', open);
+    });
+  });
 }
 
 function renderAll() {
