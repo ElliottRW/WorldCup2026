@@ -147,3 +147,39 @@ function daysToFinal(matches) {
   if (!final) return null;
   return Math.ceil((new Date(final.utcDate) - Date.now()) / 86_400_000);
 }
+
+// ── REMAINING POTENTIAL ───────────────────────────────────────────────────────
+
+/**
+ * Maximum additional points a single team can still earn from this point.
+ * Returns 0 if the team is eliminated (no upcoming matches).
+ * Assumes every remaining scheduled match ends in a win.
+ */
+function teamRemainingPts(team, matches) {
+  if (!activeTeams(matches).has(team)) return 0;
+
+  // Count upcoming matches where this team appears by name
+  const upcomingCount = matches.filter(m =>
+    ['TIMED', 'SCHEDULED'].includes(m.status) &&
+    (getDisplayName(m.homeTeam?.name) === team || getDisplayName(m.awayTeam?.name) === team)
+  ).length;
+
+  // Progression stages not yet earned
+  const s = teamStats(team, matches);
+  const earnedStages  = STAGES.filter(stage => s.prog[stage]).length;
+  const remainStages  = STAGES.length - earnedStages;
+
+  return upcomingCount * SCORING.WIN + remainStages * SCORING.STAGE;
+}
+
+/**
+ * For a participant, returns { current, remaining, max } where:
+ *  - current   = points already on the board
+ *  - remaining = theoretical maximum additional points (every remaining match a win)
+ *  - max       = current + remaining
+ */
+function participantMaxPossible(p, matches) {
+  const current   = p.teams.reduce((sum, t) => sum + teamStats(t, matches).total, 0);
+  const remaining = p.teams.reduce((sum, t) => sum + teamRemainingPts(t, matches), 0);
+  return { current, remaining, max: current + remaining };
+}

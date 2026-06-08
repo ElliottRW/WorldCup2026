@@ -78,6 +78,18 @@
     <div id="data-overview" class="stats-grid"></div>
 
     <div class="card">
+      <div class="card-title">📉 Points Gap</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Current standings and distance from the leader. Can each participant still mathematically catch up?</p>
+      <div id="data-gap"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀 Remaining Potential</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Max total points each person can still reach — assumes every remaining match is a win. Dark = earned, light = potential.</p>
+      <div id="data-potential"></div>
+    </div>
+
+    <div class="card">
       <div class="card-title">💰 Best Manager</div>
       <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Each person's total points across all 4 teams ÷ total credits spent. Who made the most of their budget?</p>
       <div class="scrollable" id="data-ppc-participants"></div>

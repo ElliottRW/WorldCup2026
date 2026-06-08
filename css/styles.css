@@ -347,6 +347,80 @@ tbody tr:hover td { background: #f8f9ff; }
 .still-active { display: inline-flex; align-items: center; background: var(--green-bg); color: var(--green); border-radius: 8px; padding: 0.1rem 0.45rem; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
 .eliminated   { display: inline-flex; align-items: center; background: var(--red-bg);   color: var(--red);   border-radius: 8px; padding: 0.1rem 0.45rem; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
 
+/* ── POINTS GAP ──────────────────────────────────────────────────────────────── */
+.gap-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.gap-row:last-child { border-bottom: none; }
+.gap-top-row { background: rgba(245,197,24,0.06); border-radius: 6px; padding: 0.6rem 0.4rem; margin: 0 -0.4rem; }
+.gap-rank { font-size: 1rem; flex-shrink: 0; min-width: 1.6rem; text-align: center; padding-top: 0.05rem; }
+.gap-body { flex: 1; min-width: 0; }
+.gap-top-line {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+.gap-name  { font-weight: 700; font-size: 0.9rem; flex: 1; min-width: 60px; }
+.gap-score { font-weight: 800; font-size: 0.9rem; white-space: nowrap; }
+.gap-diff  { font-size: 0.72rem; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.gap-bar-wrap { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.gap-bar      { height: 100%; background: var(--primary-mid); border-radius: 4px; transition: width 0.5s ease; }
+.gap-bar-leader { background: linear-gradient(90deg, var(--primary), var(--accent)); }
+.gap-leader-badge {
+  background: rgba(245,197,24,0.2);
+  color: #92400e;
+  border-radius: 8px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* ── REMAINING POTENTIAL ─────────────────────────────────────────────────────── */
+.potential-row {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.potential-row:last-child { border-bottom: none; }
+.potential-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+.potential-name { font-weight: 700; font-size: 0.9rem; }
+.potential-nums {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.potential-now     { font-weight: 700; color: var(--primary); }
+.potential-sep     { color: var(--muted); }
+.potential-add     { font-weight: 600; color: #4f46e5; }  /* indigo */
+.potential-max-num { font-weight: 800; color: var(--text); }
+.potential-track {
+  display: flex;
+  height: 9px;
+  background: var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.potential-bar-cur { background: var(--primary-mid); transition: width 0.5s ease; }
+.potential-bar-rem { background: #c7d2fe; transition: width 0.5s ease; }  /* indigo-200 */
+.potential-teams   { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   header { padding: 1rem; }

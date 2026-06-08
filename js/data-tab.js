@@ -8,11 +8,113 @@ function renderDataTab() {
   renderOverviewStats(noData);
   if (noData) return;
 
+  renderPointsGap();
+  renderRemainingPotential();
   renderPtsPerCreditParticipants();
   renderBestValueTeams();
   renderMostPickedTeams();
   renderMatchDayHistory();
   renderRoundByRound();
+}
+
+// ── POINTS GAP ────────────────────────────────────────────────────────────────
+
+function renderPointsGap() {
+  const el = document.getElementById('data-gap');
+  if (!el) return;
+
+  const rows = _participants.map(p => {
+    const { current, remaining, max } = participantMaxPossible(p, _matches);
+    return { ...p, current, remaining, max };
+  }).sort((a, b) => b.current - a.current);
+
+  if (!rows.length) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet.</p>';
+    return;
+  }
+
+  const leader   = rows[0];
+  const MEDALS   = { 1: '🥇', 2: '🥈', 3: '🥉' };
+
+  el.innerHTML = rows.map((p, i) => {
+    const rank     = i + 1;
+    const medal    = MEDALS[rank] ?? `${rank}`;
+    const barPct   = leader.current > 0 ? Math.round((p.current / leader.current) * 100) : 100;
+    const gap      = leader.current - p.current;
+
+    let badgeHtml;
+    if (rank === 1) {
+      badgeHtml = `<span class="gap-leader-badge">🏆 Leader</span>`;
+    } else if (p.max > leader.current) {
+      badgeHtml = `<span class="still-active">↑ Can catch up</span>`;
+    } else {
+      badgeHtml = `<span class="eliminated">Max ${p.max} pts</span>`;
+    }
+
+    return `<div class="gap-row${rank === 1 ? ' gap-top-row' : ''}">
+      <span class="gap-rank">${medal}</span>
+      <div class="gap-body">
+        <div class="gap-top-line">
+          <span class="gap-name">${esc(p.name)}</span>
+          <span class="gap-score">${p.current} pts</span>
+          ${rank > 1 ? `<span class="gap-diff">−${gap}</span>` : ''}
+          ${badgeHtml}
+        </div>
+        <div class="gap-bar-wrap">
+          <div class="gap-bar${rank === 1 ? ' gap-bar-leader' : ''}" style="width:${barPct}%"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── REMAINING POTENTIAL ───────────────────────────────────────────────────────
+
+function renderRemainingPotential() {
+  const el = document.getElementById('data-potential');
+  if (!el) return;
+
+  const rows = _participants.map(p => {
+    const { current, remaining, max } = participantMaxPossible(p, _matches);
+    return { ...p, current, remaining, max };
+  }).sort((a, b) => b.max - a.max);
+
+  if (!rows.length) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet.</p>';
+    return;
+  }
+
+  const globalMax = rows[0].max || 1;
+  const active    = activeTeams(_matches);
+
+  el.innerHTML = rows.map(p => {
+    const curPct  = Math.round((p.current   / globalMax) * 100);
+    const remPct  = Math.round((p.remaining / globalMax) * 100);
+
+    const teamChips = p.teams.map(t =>
+      active.has(t)
+        ? `<span class="still-active">${esc(t)}</span>`
+        : `<span class="eliminated">${esc(t)}</span>`
+    ).join('');
+
+    return `<div class="potential-row">
+      <div class="potential-header">
+        <span class="potential-name">${esc(p.name)}</span>
+        <span class="potential-nums">
+          <span class="potential-now">${p.current}</span>
+          <span class="potential-sep">＋</span>
+          <span class="potential-add">${p.remaining} more</span>
+          <span class="potential-sep">=</span>
+          <span class="potential-max-num">${p.max} max</span>
+        </span>
+      </div>
+      <div class="potential-track">
+        <div class="potential-bar-cur"  style="width:${curPct}%"></div>
+        <div class="potential-bar-rem"  style="width:${remPct}%"></div>
+      </div>
+      <div class="potential-teams">${teamChips}</div>
+    </div>`;
+  }).join('');
 }
 
 // ── OVERVIEW STAT CARDS ───────────────────────────────────────────────────────
