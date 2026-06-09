@@ -57,10 +57,12 @@ function findTeam(raw) {
  * from a list of match objects (as returned by the football-data.org API).
  *
  * Scoring rules (defined in SCORING in data.js):
- *   Win  → SCORING.WIN  pts
- *   Draw → SCORING.DRAW pts
+ *   Win  → SCORING.WIN  pts  (group stage + knockout rounds, NOT the Final)
+ *   Draw → SCORING.DRAW pts (group stage only in practice)
  *   Each knockout stage reached → SCORING.STAGE pts
  *     Stages: Last 32, Last 16, Quarter-final, Semi-final, Final, Winner
+ *   The Final match result is NOT counted as a win — instead the team earns
+ *   +SCORING.STAGE for reaching the Final and +SCORING.STAGE for winning it.
  *
  * Progression is appearance-based — reaching a stage earns the bonus
  * regardless of the result in that round.
@@ -72,10 +74,13 @@ function teamStats(displayName, matches) {
     getDisplayName(m.awayTeam?.name) === displayName
   );
 
-  // Win / draw / loss tally from completed matches
+  // Win / draw / loss tally from completed matches.
+  // The Final is excluded — it is rewarded purely via the 'final' and 'winner'
+  // progression bonuses (+10 each), not as a regular match win (+5).
   let wins = 0, draws = 0, losses = 0;
   for (const m of mine) {
     if (!['FINISHED', 'IN_PLAY', 'PAUSED'].includes(m.status) || !m.score?.winner) continue;
+    if (m.stage === 'FINAL') continue;
     const isHome = getDisplayName(m.homeTeam?.name) === displayName;
     if (m.score.winner === 'DRAW')                          draws++;
     else if ((m.score.winner === 'HOME_TEAM') === isHome)   wins++;
