@@ -87,10 +87,13 @@ function teamStats(displayName, matches) {
   // Win / draw / loss tally from completed matches.
   // The Final is excluded — it is rewarded purely via the 'final' and 'winner'
   // progression bonuses (+10 each), not as a regular match win (+5).
+  // Knockout stages (non-group) never have draws — they go to ET/pens.
+  // If score.winner is still DRAW for a knockout match the data isn't resolved yet; skip it.
   let wins = 0, draws = 0, losses = 0;
   for (const m of mine) {
     if (!['FINISHED', 'IN_PLAY', 'PAUSED'].includes(m.status) || !m.score?.winner) continue;
     if (m.stage === 'FINAL') continue;
+    if (m.stage !== 'GROUP_STAGE' && m.score.winner === 'DRAW') continue;
     const isHome = getDisplayName(m.homeTeam?.name) === displayName;
     if (m.score.winner === 'DRAW')                          draws++;
     else if ((m.score.winner === 'HOME_TEAM') === isHome)   wins++;

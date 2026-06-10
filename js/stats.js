@@ -14,6 +14,7 @@ function matchPtsInSet(displayName, matches) {
   let wins = 0, draws = 0;
   for (const m of matches) {
     if (!['FINISHED', 'IN_PLAY', 'PAUSED'].includes(m.status) || !m.score?.winner) continue;
+    if (m.stage !== 'GROUP_STAGE' && m.score.winner === 'DRAW') continue; // ET/pens not resolved yet
     const isHome = getDisplayName(m.homeTeam?.name) === displayName;
     if (m.score.winner === 'DRAW')                        draws++;
     else if ((m.score.winner === 'HOME_TEAM') === isHome) wins++;

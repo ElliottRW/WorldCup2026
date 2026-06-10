@@ -107,6 +107,18 @@ function buildMatchRows(matches) {
     const hw     = m.score?.winner === 'HOME_TEAM';
     const aw     = m.score?.winner === 'AWAY_TEAM';
 
+    // Extra time / penalty shootout indicator
+    let scoreNote = '';
+    if (m.status === 'FINISHED') {
+      if (m.score?.duration === 'PENALTY_SHOOTOUT') {
+        const ph = m.score?.penalties?.home ?? '?';
+        const pa = m.score?.penalties?.away ?? '?';
+        scoreNote = `<small class="score-note">${ph}–${pa} pens</small>`;
+      } else if (m.score?.duration === 'EXTRA_TIME') {
+        scoreNote = `<small class="score-note">aet</small>`;
+      }
+    }
+
     if (dayKey !== currentDay) {
       currentDay = dayKey;
       parts.push(`<div class="match-day-header">${esc(dayKey)}</div>`);
@@ -118,7 +130,7 @@ function buildMatchRows(matches) {
 
     parts.push(`<div class="match-card">
       <span class="match-team${hw ? ' bold' : ''}"><span class="team-name">${esc(home)}</span>${homeCrest}</span>
-      <span class="match-score${live ? ' live' : ''}">${hg} – ${ag}</span>
+      <span class="match-score${live ? ' live' : ''}">${hg} – ${ag}${scoreNote}</span>
       <span class="match-team right${aw ? ' bold' : ''}">${awayCrest}<span class="team-name">${esc(away)}</span></span>
       <span class="match-meta">${meta}</span>
     </div>`);
