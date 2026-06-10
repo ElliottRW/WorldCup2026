@@ -26,7 +26,7 @@ function renderPointsGap() {
   const rows = _participants.map(p => {
     const { current, remaining, max } = participantMaxPossible(p, _matches);
     return { ...p, current, remaining, max };
-  }).sort((a, b) => b.current - a.current);
+  }).sort((a, b) => b.current - a.current || a.name.localeCompare(b.name));
 
   if (!rows.length) {
     el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet.</p>';
