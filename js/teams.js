@@ -22,8 +22,14 @@ function renderTeams() {
         .join('');
       const ppc  = ptsPerCredit(s.total, data.cost);
 
+      // Tooltip showing who picked this team
+      const pickers = _participants ? _participants.filter(p => p.teams.includes(name)).map(p => p.name) : [];
+      const teamLabel = pickers.length
+        ? `<span class="has-tip" data-tip="${esc(pickers.join(', '))}">${esc(name)}</span>`
+        : esc(name);
+
       rows.push(`<tr>
-        <td style="font-weight:600;white-space:nowrap">${esc(name)}</td>
+        <td style="font-weight:600;white-space:nowrap">${teamLabel}</td>
         <td><span class="cost-chip">${data.cost}</span></td>
         <td style="text-align:center">${s.wins}</td>
         <td style="text-align:center">${s.draws}</td>
