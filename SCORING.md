@@ -51,10 +51,10 @@ Each knockout round has two ways to score — **reaching it** and **winning it.*
 | 🥇 World Cup Winner             | **95**  |
 | 🥈 Runner-up (loses Final)      | **85**  |
 | 🥉 3rd place (wins play-off)    | **75**  |
-| Knocked out in Semi-Finals      | **65**  |
-| Knocked out in Quarter-Finals   | **50**  |
-| Knocked out in Round of 16      | **35**  |
-| Knocked out in Round of 32      | **20**  |
+| 4th place (loses play-off)      | **70**  |
+| Knocked out in Quarter-Finals   | **55**  |
+| Knocked out in Round of 16      | **40**  |
+| Knocked out in Round of 32      | **25**  |
 | Eliminated at Group Stage       | **15**  |
 
 ---
