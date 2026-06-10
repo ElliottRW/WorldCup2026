@@ -368,8 +368,8 @@ tbody tr:hover td { background: #f8f9ff; }
   content: attr(data-tip);
   position: absolute;
   bottom: calc(100% + 5px);
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  transform: none;
   background: var(--primary);
   color: #fff;
   font-size: 0.68rem;
@@ -379,7 +379,7 @@ tbody tr:hover td { background: #f8f9ff; }
   white-space: normal;
   max-width: 220px;
   width: max-content;
-  text-align: center;
+  text-align: left;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s ease;
