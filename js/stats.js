@@ -159,18 +159,27 @@ function daysToFinal(matches) {
 function teamRemainingPts(team, matches) {
   if (!activeTeams(matches).has(team)) return 0;
 
-  // Count upcoming matches where this team appears by name
-  const upcomingCount = matches.filter(m =>
+  const s = teamStats(team, matches);
+
+  // Remaining group stage match wins (only named TIMED fixtures)
+  const groupRemain = matches.filter(m =>
+    m.stage === 'GROUP_STAGE' &&
     ['TIMED', 'SCHEDULED'].includes(m.status) &&
     (getDisplayName(m.homeTeam?.name) === team || getDisplayName(m.awayTeam?.name) === team)
-  ).length;
+  ).length * SCORING.WIN;
 
-  // Progression stages not yet earned
-  const s = teamStats(team, matches);
-  const earnedStages  = STAGES.filter(stage => s.prog[stage]).length;
-  const remainStages  = STAGES.length - earnedStages;
+  // Potential knockout match wins for each unearned stage that has a match result.
+  // R32/R16/QF/SF each have a +5 win bonus; the Final does not (rewarded via progression).
+  // Knockout fixtures don't get team names until the previous round is done, so we
+  // derive potential wins from stages not yet reached rather than counting fixtures.
+  const knockoutStagesWithWin = ['last32', 'last16', 'quarterfinal', 'semifinal'];
+  const knockoutRemain = knockoutStagesWithWin.filter(st => !s.prog[st]).length * SCORING.WIN;
 
-  return upcomingCount * SCORING.WIN + remainStages * SCORING.STAGE;
+  // Remaining progression bonuses
+  const earnedCount  = STAGES.filter(st => s.prog[st]).length;
+  const progRemain   = (STAGES.length - earnedCount) * SCORING.STAGE;
+
+  return groupRemain + knockoutRemain + progRemain;
 }
 
 /**
