@@ -38,7 +38,15 @@ async function loadEntries() {
   try {
     const res = await fetch('entries.csv?t=' + Date.now());
     if (!res.ok) return null;
-    const text = await res.text();
+    // Microsoft Forms exports are often Windows-1252 (ü=0xFC, ç=0xE7).
+    // Try strict UTF-8 first; if the bytes are invalid, fall back to Windows-1252.
+    const buffer = await res.arrayBuffer();
+    let text;
+    try {
+      text = new TextDecoder('utf-8', { fatal: true }).decode(buffer);
+    } catch {
+      text = new TextDecoder('windows-1252').decode(buffer);
+    }
     return parseEntriesCSV(text);
   } catch {
     return null;
