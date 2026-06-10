@@ -66,7 +66,7 @@ function renderLeaderboard() {
       .join('');
     return `<tr>
       <td><span class="rank-num${cls}">${medal}</span></td>
-      <td style="font-weight:700;white-space:nowrap">${esc(p.name)}</td>
+      <td style="font-weight:700;white-space:nowrap">${nameWithTip(p)}</td>
       <td>${pills}</td>
       <td class="total-score">${p.total}</td>
     </tr>`;

@@ -9,6 +9,16 @@ const esc = s => String(s)
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;');
 
+/**
+ * Render a participant's display name, wrapped in a tooltip span when an
+ * email username is available — helps disambiguate abbreviated or duplicate names.
+ * e.g. "John S" → hovers to show "John.Stephenson"
+ */
+function nameWithTip(p) {
+  if (!p.emailUser) return esc(p.name);
+  return `<span class="has-tip" data-tip="${esc(p.emailUser)}">${esc(p.name)}</span>`;
+}
+
 /** Human-readable "time ago" string from a timestamp. */
 function timeAgo(ts) {
   if (!ts) return '';

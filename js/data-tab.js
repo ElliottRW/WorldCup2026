@@ -55,7 +55,7 @@ function renderPointsGap() {
       <span class="gap-rank">${medal}</span>
       <div class="gap-body">
         <div class="gap-top-line">
-          <span class="gap-name">${esc(p.name)}</span>
+          <span class="gap-name">${nameWithTip(p)}</span>
           <span class="gap-score">${p.current} pts</span>
           ${rank > 1 ? `<span class="gap-diff">−${gap}</span>` : ''}
           ${badgeHtml}
@@ -99,7 +99,7 @@ function renderRemainingPotential() {
 
     return `<div class="potential-row">
       <div class="potential-header">
-        <span class="potential-name">${esc(p.name)}</span>
+        <span class="potential-name">${nameWithTip(p)}</span>
         <span class="potential-nums">
           <span class="potential-now">${p.current}</span>
           <span class="potential-sep">＋</span>
@@ -167,7 +167,7 @@ function renderPtsPerCreditParticipants() {
     const bar   = Math.round((p.ppc / maxPpc) * 100);
     return `<tr>
       <td><span class="rank-num${rank <= 3 ? ` r${rank}` : ''}">${medal}</span></td>
-      <td style="font-weight:700;white-space:nowrap">${esc(p.name)}</td>
+      <td style="font-weight:700;white-space:nowrap">${nameWithTip(p)}</td>
       <td style="text-align:center;color:var(--muted)">${p.credits}</td>
       <td style="text-align:center">${p.total}</td>
       <td>
@@ -266,7 +266,7 @@ function renderMostPickedTeams() {
   const cards = shared.map(([team, count]) => {
     const pts    = _matches ? teamStats(team, _matches).total : 0;
     const still  = active.has(team);
-    const pickers = _participants.filter(p => p.teams.includes(team)).map(p => esc(p.name)).join(', ');
+    const pickers = _participants.filter(p => p.teams.includes(team)).map(p => nameWithTip(p)).join(', ');
     return `<div class="shared-team-card">
       <div class="shared-team-name">${esc(team)}</div>
       <div class="shared-team-meta">Picked by <strong>${pickers}</strong></div>
@@ -308,7 +308,7 @@ function renderMatchDayHistory() {
         .join('');
       return `<tr>
         <td><span class="rank-num${rank <= 3 ? ` r${rank}` : ''}">${medal}</span></td>
-        <td style="font-weight:700;white-space:nowrap">${esc(p.name)}</td>
+        <td style="font-weight:700;white-space:nowrap">${nameWithTip(p)}</td>
         <td>${pills || '<span style="color:var(--muted);font-size:0.8rem">No points</span>'}</td>
         <td class="total-score">${p.total}</td>
       </tr>`;
@@ -366,7 +366,7 @@ function renderRoundByRound() {
         .join('');
       return `<tr>
         <td><span class="rank-num${rank <= 3 ? ` r${rank}` : ''}">${medal}</span></td>
-        <td style="font-weight:700;white-space:nowrap">${esc(p.name)}</td>
+        <td style="font-weight:700;white-space:nowrap">${nameWithTip(p)}</td>
         <td>${pills || '<span style="color:var(--muted);font-size:0.8rem">No points</span>'}</td>
         <td class="total-score">${p.total}</td>
       </tr>`;

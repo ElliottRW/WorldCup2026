@@ -59,6 +59,7 @@ function parseEntriesCSV(text) {
   const isForms    = headers.includes('your name') || headers.includes('team 1');
   const nameCol    = isForms ? headers.indexOf('your name') : 0;
   const teamStart  = isForms ? headers.indexOf('team 1')    : 1;
+  const emailCol   = isForms ? headers.indexOf('email')     : -1;
   if (nameCol === -1 || teamStart === -1) return null;
 
   const out = [];
@@ -67,13 +68,17 @@ function parseEntriesCSV(text) {
     const name  = parts[nameCol];
     if (!name) continue;
 
+    // Extract email username (everything before the @) for disambiguation tooltip
+    const rawEmail  = emailCol >= 0 ? (parts[emailCol] || '') : '';
+    const emailUser = rawEmail.includes('@') ? rawEmail.split('@')[0] : null;
+
     // Strip cost suffixes e.g. "France (48)" → "France"
     const rawTeams = parts
       .slice(teamStart, teamStart + 4)
       .map(t => t.replace(/\s*\(\d+\)\s*$/, ''));
 
     const teams = rawTeams.map(findTeam).filter(Boolean);
-    if (teams.length === 4) out.push({ name, teams });
+    if (teams.length === 4) out.push({ name, teams, emailUser });
   }
 
   return out.length ? out : null;

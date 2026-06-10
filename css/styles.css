@@ -347,6 +347,34 @@ tbody tr:hover td { background: #f8f9ff; }
 .still-active { display: inline-flex; align-items: center; background: var(--green-bg); color: var(--green); border-radius: 8px; padding: 0.1rem 0.45rem; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
 .eliminated   { display: inline-flex; align-items: center; background: var(--red-bg);   color: var(--red);   border-radius: 8px; padding: 0.1rem 0.45rem; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
 
+/* ── NAME TOOLTIP ────────────────────────────────────────────────────────────── */
+/* Shows the email username on hover — helps distinguish abbreviated/duplicate names */
+.has-tip {
+  position: relative;
+  cursor: default;
+  text-decoration: underline dotted var(--muted);
+  text-underline-offset: 3px;
+}
+.has-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 200;
+}
+.has-tip:hover::after { opacity: 1; }
+
 /* ── POINTS GAP ──────────────────────────────────────────────────────────────── */
 .gap-row {
   display: flex;
