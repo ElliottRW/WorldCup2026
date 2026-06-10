@@ -374,9 +374,12 @@ tbody tr:hover td { background: #f8f9ff; }
   color: #fff;
   font-size: 0.68rem;
   font-weight: 500;
-  padding: 0.2rem 0.55rem;
+  padding: 0.3rem 0.55rem;
   border-radius: 5px;
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 220px;
+  width: max-content;
+  text-align: center;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s ease;
