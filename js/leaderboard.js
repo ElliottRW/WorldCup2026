@@ -42,7 +42,7 @@ function renderLeaderboard() {
       }
       return { ...p, total, breakdown };
     })
-    .sort((a, b) => b.total - a.total);
+    .sort((a, b) => b.total - a.total || a.name.localeCompare(b.name));
 
   const played = _matches ? _matches.filter(m => m.status === 'FINISHED').length : 0;
   const leader = ranked[0];
@@ -61,7 +61,8 @@ function renderLeaderboard() {
     const rank  = i + 1;
     const medal = MEDALS[rank] ?? rank;
     const cls   = rank <= 3 ? ` r${rank}` : '';
-    const pills = p.teams
+    const pills = [...p.teams]
+      .sort((a, b) => a.localeCompare(b))
       .map(t => `<span class="team-pill">${esc(t)}<span class="pts-chip">${p.breakdown[t]}pts</span></span>`)
       .join('');
     return `<tr>
