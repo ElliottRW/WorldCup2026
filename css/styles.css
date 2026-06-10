@@ -265,8 +265,9 @@ tbody tr:hover td { background: #f8f9ff; }
   overflow: hidden;
   white-space: nowrap;
 }
-.match-team.right           { justify-content: flex-start; }
-.match-team.bold .team-name { font-weight: 700; }
+.match-team.right                { justify-content: flex-start; }
+.match-team.bold .team-name      { font-weight: 700; }
+.match-team:has(.has-tip)        { overflow: visible; }
 .team-name                  { overflow: hidden; text-overflow: ellipsis; }
 .crest                      { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
 

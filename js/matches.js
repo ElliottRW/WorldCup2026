@@ -102,6 +102,18 @@ function buildMatchRows(matches) {
     const live   = m.status === 'IN_PLAY' || m.status === 'PAUSED';
     const home   = getDisplayName(m.homeTeam?.name) || '?';
     const away   = getDisplayName(m.awayTeam?.name) || '?';
+
+    // Picker tooltips
+    // Picker tooltips — .has-tip wraps .team-name so overflow:hidden on
+    // .team-name doesn't clip the ::after tooltip balloon
+    const homePickers = _participants?.filter(p => p.teams.includes(home)).map(p => p.name) ?? [];
+    const awayPickers = _participants?.filter(p => p.teams.includes(away)).map(p => p.name) ?? [];
+    const homeLabel = homePickers.length
+      ? `<span class="has-tip" data-tip="${esc(homePickers.join(', '))}"><span class="team-name">${esc(home)}</span></span>`
+      : `<span class="team-name">${esc(home)}</span>`;
+    const awayLabel = awayPickers.length
+      ? `<span class="has-tip" data-tip="${esc(awayPickers.join(', '))}"><span class="team-name">${esc(away)}</span></span>`
+      : `<span class="team-name">${esc(away)}</span>`;
     const hg     = m.score?.fullTime?.home ?? '–';
     const ag     = m.score?.fullTime?.away ?? '–';
     const hw     = m.score?.winner === 'HOME_TEAM';
@@ -129,9 +141,9 @@ function buildMatchRows(matches) {
     const meta      = live ? '<span class="live-dot"></span>LIVE' : esc(time);
 
     parts.push(`<div class="match-card">
-      <span class="match-team${hw ? ' bold' : ''}"><span class="team-name">${esc(home)}</span>${homeCrest}</span>
+      <span class="match-team${hw ? ' bold' : ''}">${homeLabel}${homeCrest}</span>
       <span class="match-score${live ? ' live' : ''}">${hg} – ${ag}${scoreNote}</span>
-      <span class="match-team right${aw ? ' bold' : ''}">${awayCrest}<span class="team-name">${esc(away)}</span></span>
+      <span class="match-team right${aw ? ' bold' : ''}">${awayCrest}${awayLabel}</span>
       <span class="match-meta">${meta}</span>
     </div>`);
   }
