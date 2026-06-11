@@ -56,7 +56,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 11412,
+        "name": "Wilton Sampaio",
+        "type": "REFEREE",
+        "nationality": "Brazil"
+      }
+    ]
   },
   {
     "area": {
@@ -115,7 +122,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 276653,
+        "name": "Amin Omar",
+        "type": "REFEREE",
+        "nationality": "Egypt"
+      }
+    ]
   },
   {
     "area": {
@@ -174,7 +188,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 57301,
+        "name": "Facundo Tello",
+        "type": "REFEREE",
+        "nationality": "Argentina"
+      }
+    ]
   },
   {
     "area": {
@@ -233,7 +254,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 43899,
+        "name": "Danny Makkelie",
+        "type": "REFEREE",
+        "nationality": "Netherlands"
+      }
+    ]
   },
   {
     "area": {
@@ -292,7 +320,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 190002,
+        "name": "Said Martinez",
+        "type": "REFEREE",
+        "nationality": "Honduras"
+      }
+    ]
   },
   {
     "area": {
@@ -351,7 +386,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 9351,
+        "name": "Slavko Vinčič",
+        "type": "REFEREE",
+        "nationality": "Slovenia"
+      }
+    ]
   },
   {
     "area": {
@@ -410,7 +452,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 190017,
+        "name": "Mustapha Ghorbal",
+        "type": "REFEREE",
+        "nationality": null
+      }
+    ]
   },
   {
     "area": {
@@ -469,7 +518,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 28805,
+        "name": "Jesús Valenzuela",
+        "type": "REFEREE",
+        "nationality": "Venezuela"
+      }
+    ]
   },
   {
     "area": {
