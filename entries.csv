@@ -1,0 +1,41 @@
+Id,Start time,Completion time,Email,Name,Your Name,Team 1,Team 2,Team 3,Team 4,Total Team Cost (Add up the cost of each team. Limit is 100 credits)
+1,6/8/2026 12:00,6/8/2026 12:41,Elliott.Wilson4,Elliott Wilson,Elliott Wilson,France (48),Switzerland (20),Mexico (16),Türkiye (15),99
+2,6/8/2026 12:41,6/8/2026 12:57,Thomas.West,Thomas West,Tom West,Germany (38),Croatia (26),Japan (24),Scotland (10),98
+3,6/8/2026 13:29,6/8/2026 13:47,mark.whitby,Mark Whitby,Mark Whitby,Ecuador (14),Argentina (42),Morocco (29),Türkiye (15),100
+4,6/8/2026 14:21,6/8/2026 14:24,andrew.vickers,Andrew Vickers,Andrew Vickers,Germany (38),Morocco (29),Belgium (30),Cape Verde (3),100
+5,6/8/2026 12:07,6/8/2026 14:57,ian.burrell,Ian Burrell,Ian Burrell,Brazil (40),Morocco (29),Mexico (16),Türkiye (15),100
+6,6/9/2026 10:07,6/9/2026 10:29,Nikolas.Howard,Nikolas Howard,Nik Howard,Argentina (42),Germany (38),Mexico (16),New Zealand (4),100
+7,6/9/2026 13:07,6/9/2026 13:13,Conor.Gillis,Conor Gillis,Conor Gillis,Netherlands (36),Morocco (29),Mexico (16),Egypt (11),92
+8,6/9/2026 13:05,6/9/2026 13:16,thomas.matthews1,Thomas Matthews,Thomas Matthews,Portugal (44),Türkiye (15),Mexico (16),Norway (25),100
+9,6/9/2026 14:47,6/9/2026 14:54,James.Buxton,James Buxton,James Buxton,Argentina (42),Japan (24),Canada (7),Colombia (27),100
+10,6/9/2026 14:08,6/9/2026 15:01,sam.parke,Sam Parke,Sam Parke,Spain (50),Argentina (42),Saudi Arabia (5),DR Congo (3),100
+11,6/9/2026 11:21,6/9/2026 16:00,jpetherbridge,Jonathan Petherbridge,Jonathan Petherbridge (JP),Argentina (42),Uruguay (28),Ecuador (14),South Korea (12),96
+12,6/9/2026 16:04,6/9/2026 16:17,Nick.Ratcliffe,Nick Ratcliffe,Nick Ratcliffe,Brazil (40),Mexico (16),Uruguay (28),Türkiye (15),99
+13,6/9/2026 16:17,6/9/2026 16:20,John.Stephenson,John Stephenson,John S,Spain (50),Belgium (30),Ivory Coast (8),South Korea (12),John Stephenson
+14,6/9/2026 18:45,6/9/2026 18:51,MPeary,Matthew Peary,Matthew Peary,Portugal (44),Brazil (40),Czechia (8),Canada (7),99
+15,6/10/2026 8:00,6/10/2026 8:02,Adam.Esposito,Adam Esposito,Adam Esposito,Spain (50),England (46),Haiti (2),Curaçao (2),100
+16,6/10/2026 8:01,6/10/2026 8:10,sean.murphy3,Sean Murphy,Sean Murphy,France (48),Mexico (16),Japan (24),South Korea (12),100
+17,6/10/2026 8:00,6/10/2026 8:10,matt.shepherd1,Matt Shepherd,Matt Shepherd,Portugal (44),Germany (38),Mexico (16),Curaçao (2),100
+18,6/10/2026 8:31,6/10/2026 8:43,Jamie.Johnston2,Jamie Johnston,Jamie Johnston,England (46),Japan (24),Croatia (26),New Zealand (4),46+24+26+4=100
+19,6/10/2026 8:22,6/10/2026 8:48,brad.vaile,Brad Vaile,Brad Vaile,France (48),Colombia (27),Ecuador (14),Egypt (11),100
+20,6/10/2026 9:03,6/10/2026 10:29,David.OConnor,David O'Connor,David O'Connor,Portugal (44),Morocco (29),Türkiye (15),South Korea (12),100
+21,6/10/2026 10:23,6/10/2026 10:32,william.donkin,William Donkin,William Donkin,Brazil (40),Netherlands (36),Ivory Coast (8),Mexico (16),100
+22,6/10/2026 10:18,6/10/2026 10:44,Jalandhar.Donda,Jalandhar Donda,Jalandhar Donda,Argentina (42),Netherlands (36),Senegal (17),New Zealand (4),99
+23,6/10/2026 8:33,6/10/2026 11:21,jamie.bastow,Jamie Bastow,Jamie Bastow,Argentina (42),Mexico (16),Germany (38),New Zealand (4),100
+24,6/10/2026 11:25,6/10/2026 11:55,nnathan,Nick Nathan,Nick Nathan,Brazil (40),Mexico (16),United States (23),Switzerland (20),99
+25,6/10/2026 12:58,6/10/2026 13:03,david.willis,David Willis,Dave Willis,Belgium (30),Switzerland (20),Netherlands (36),Ecuador (14),100
+26,6/10/2026 15:14,6/10/2026 15:41,louis.collins5,Louis Collins,Louis Collins,England (46),Norway (25),Türkiye (15),Ecuador (14),100
+27,6/10/2026 18:18,6/10/2026 18:27,clare.daniel,Clare Daniel,Clare Daniel,Argentina (42),Switzerland (20),Ecuador (14),Japan (24),100
+28,6/11/2026 6:58,6/11/2026 7:01,Curtis.Astbury,Curtis Astbury,Curtis Astbury,France (48),Uruguay (28),Qatar (6),Sweden (18),100
+29,6/11/2026 7:52,6/11/2026 8:03,alex.croft,Alex Croft,Alex Croft,England (46),Japan (24),Sweden (18),South Korea (12),100
+30,6/11/2026 8:28,6/11/2026 8:30,Benjamin.Ward2,Benjamin Ward,Benjie Ward,Germany (38),Colombia (27),Switzerland (20),Ecuador (14),99
+31,6/11/2026 13:14,6/11/2026 13:16,Peter.Hick,Peter Hick,Peter Hick,England (46),Belgium (30),Mexico (16),Canada (7),99
+32,6/11/2026 13:40,6/11/2026 13:43,Oliver.Brimacombe,Oliver Brimacombe,Oliver Brimacombe,France (48),United States (23),Türkiye (15),Ecuador (14),100
+33,6/11/2026 10:22,6/11/2026 14:49,Theo.Morris1,Theo Morris,Theo Morris,Belgium (30),Netherlands (36),Switzerland (20),Ecuador (14),100
+34,6/11/2026 15:23,6/11/2026 16:26,Sunil.Kumar,Sunil Kumar,Sunil Kumar,Spain (50),Switzerland (20),Norway (25),Saudi Arabia (5),100
+35,6/11/2026 16:50,6/11/2026 16:56,kamila.kowalczyk,Kamila Kowalczyk,Kamila Kowalczyk,Brazil (40),Portugal (44),Scotland (10),Curaçao (2),100
+36,6/11/2026 16:45,6/11/2026 17:05,Samuel.Pawson,Samuel Pawson,Sam Pawson,France (48),Portugal (44),Saudi Arabia (5),DR Congo (3),100
+37,6/11/2026 17:43,6/11/2026 17:48,Glen.Warne,Glen Warne,Glen Warne,Austria (19),Spain (50),Senegal (17),Ecuador (14),100
+38,6/11/2026 17:39,6/11/2026 17:49,JFuller,James Fuller,James Fuller,Brazil (40),Japan (24),Mexico (16),Austria (19),99
+39,6/11/2026 18:02,6/11/2026 18:03,PMorgan,Peter Morgan,Peter Morgan,England (46),Netherlands (36),Scotland (10),Ivory Coast (8),100
+40,6/11/2026 18:00,6/11/2026 18:05,MPeel,Matthew Peel,Matt Peel,England (46),Norway (25),Mexico (16),Scotland (10),97
