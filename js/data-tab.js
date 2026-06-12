@@ -354,10 +354,33 @@ function renderRoundByRound() {
 
   const MEDALS = { 1: '🥇', 2: '🥈', 3: '🥉' };
 
-  const sections = stages.map((stage, idx) => {
-    const stageMatches = _matches.filter(m => m.stage === stage);
-    const scored       = scoreParticipantsInSet(_participants, stageMatches);
-    const isOpen       = idx === 0; // open most recent by default
+  // Expand GROUP_STAGE into per-matchday entries; keep knockout stages as-is.
+  // Each entry: { label, matches }
+  const roundEntries = [];
+  for (const stage of stages) {
+    if (stage === 'GROUP_STAGE') {
+      const finishedDays = [...new Set(
+        _matches
+          .filter(m => m.stage === 'GROUP_STAGE' && m.status === 'FINISHED' && m.matchday)
+          .map(m => m.matchday)
+      )].sort((a, b) => b - a); // most recent first
+      for (const day of finishedDays) {
+        roundEntries.push({
+          label: `Group Stage — Matchday ${day}`,
+          matches: _matches.filter(m => m.stage === 'GROUP_STAGE' && m.matchday === day),
+        });
+      }
+    } else {
+      roundEntries.push({
+        label: MATCH_STAGE_LABELS[stage] || stage,
+        matches: _matches.filter(m => m.stage === stage),
+      });
+    }
+  }
+
+  const sections = roundEntries.map(({ label, matches }, idx) => {
+    const scored = scoreParticipantsInSet(_participants, matches);
+    const isOpen = idx === 0;
 
     const rows = scored.map((p, i) => {
       const rank  = i + 1;
@@ -375,8 +398,8 @@ function renderRoundByRound() {
     }).join('');
 
     return `<div class="match-section">
-      <button class="match-section-toggle${isOpen ? ' open' : ''}" data-stage="${esc(stage)}">
-        <span>${MATCH_STAGE_LABELS[stage] || stage}</span>
+      <button class="match-section-toggle${isOpen ? ' open' : ''}">
+        <span>${esc(label)}</span>
         <span class="chevron">▾</span>
       </button>
       <div class="match-section-body${isOpen ? ' open' : ''}">
