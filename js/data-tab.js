@@ -301,7 +301,8 @@ function renderMatchDayHistory() {
     const scored     = scoreParticipantsInSet(_participants, dayMatches);
     const isOpen     = idx === 0; // most recent open by default
 
-    const rows = scored.map((p, i) => {
+    const scorers = scored.filter(p => p.total > 0);
+    const rows = scorers.map((p, i) => {
       const rank  = i + 1;
       const medal = MEDALS[rank] ?? rank;
       const pills = p.teams
@@ -311,7 +312,7 @@ function renderMatchDayHistory() {
       return `<tr>
         <td><span class="rank-num${rank <= 3 ? ` r${rank}` : ''}">${medal}</span></td>
         <td style="font-weight:700;white-space:nowrap">${nameWithTip(p)}</td>
-        <td>${pills || '<span style="color:var(--muted);font-size:0.8rem">No points</span>'}</td>
+        <td>${pills}</td>
         <td class="total-score">${p.total}</td>
       </tr>`;
     }).join('');
