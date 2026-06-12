@@ -154,9 +154,10 @@ function renderPtsPerCreditParticipants() {
                                + teamStats(p.teams[1], _matches).total
                                + teamStats(p.teams[2], _matches).total
                                + teamStats(p.teams[3], _matches).total : 0;
-      return { ...p, credits, total, ppc: ptsPerCredit(total, credits) };
+      const ppcRaw = credits ? total / credits : 0;
+      return { ...p, credits, total, ppc: ptsPerCredit(total, credits), ppcRaw };
     })
-    .sort((a, b) => b.ppc - a.ppc);
+    .sort((a, b) => b.ppcRaw - a.ppcRaw || b.total - a.total || a.name.localeCompare(b.name));
 
   const maxPpc = rows[0]?.ppc || 1;
   const MEDALS = { 1: '🥇', 2: '🥈', 3: '🥉' };
@@ -210,12 +211,13 @@ function renderBestValueTeams() {
     .map(team => {
       const cost  = TEAM_DATA[team]?.cost ?? 0;
       const pts   = _matches ? teamStats(team, _matches).total : 0;
-      const ppc   = ptsPerCredit(pts, cost);
-      const picks = teamPickCounts(_participants).get(team) ?? 0;
-      const still = active.has(team);
-      return { team, cost, pts, ppc, picks, still };
+      const ppc    = ptsPerCredit(pts, cost);
+      const ppcRaw = cost ? pts / cost : 0;
+      const picks  = teamPickCounts(_participants).get(team) ?? 0;
+      const still  = active.has(team);
+      return { team, cost, pts, ppc, ppcRaw, picks, still };
     })
-    .sort((a, b) => b.ppc - a.ppc);
+    .sort((a, b) => b.ppcRaw - a.ppcRaw || b.pts - a.pts || a.team.localeCompare(b.team));
 
   const maxPpc = rows[0]?.ppc || 1;
 
