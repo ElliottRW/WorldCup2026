@@ -76,9 +76,10 @@ function parseEntriesCSV(text) {
     const name  = parts[nameCol];
     if (!name) continue;
 
-    // Extract email username (everything before the @) for disambiguation tooltip
+    // Extract email username for disambiguation tooltip.
+    // Handles both "user@domain.com" and already-stripped "user" formats.
     const rawEmail  = emailCol >= 0 ? (parts[emailCol] || '') : '';
-    const emailUser = rawEmail.includes('@') ? rawEmail.split('@')[0] : null;
+    const emailUser = rawEmail ? (rawEmail.includes('@') ? rawEmail.split('@')[0] : rawEmail) : null;
 
     // Strip cost suffixes e.g. "France (48)" → "France"
     const rawTeams = parts
