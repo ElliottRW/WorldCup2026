@@ -16,6 +16,8 @@ function matchPtsInSet(displayName, matches) {
     if (!['FINISHED', 'IN_PLAY', 'PAUSED'].includes(m.status) || !m.score?.winner) continue;
     if (m.stage !== 'GROUP_STAGE' && m.score.winner === 'DRAW') continue; // ET/pens not resolved yet
     const isHome = getDisplayName(m.homeTeam?.name) === displayName;
+    const isAway = getDisplayName(m.awayTeam?.name) === displayName;
+    if (!isHome && !isAway) continue; // team not in this match
     if (m.score.winner === 'DRAW')                        draws++;
     else if ((m.score.winner === 'HOME_TEAM') === isHome) wins++;
   }
