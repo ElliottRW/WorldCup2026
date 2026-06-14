@@ -23,6 +23,18 @@ async function loadMatches(force = false) {
   }
 }
 
+// ── PL CLUBS DATA ─────────────────────────────────────────────────────────────
+
+async function loadPlClubs() {
+  try {
+    const res = await fetch('pl-clubs.json?t=' + Date.now());
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 // ── ENTRIES CSV ───────────────────────────────────────────────────────────────
 
 /**

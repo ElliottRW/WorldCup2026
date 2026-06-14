@@ -462,6 +462,80 @@ tbody tr:hover td { background: #f8f9ff; }
 .potential-bar-rem { background: #c7d2fe; transition: width 0.5s ease; }  /* indigo-200 */
 .potential-teams   { display: flex; gap: 0.35rem; flex-wrap: wrap; }
 
+/* ── PL CLUBS TAB ────────────────────────────────────────────────────────────── */
+.pl-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.6rem 0 1.25rem;
+}
+.pl-summary strong { color: var(--text); }
+.pl-summary .sep   { color: var(--border); }
+
+.pl-club-card { margin-bottom: 1rem; }
+
+.pl-club-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.pl-club-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.pl-club-name { font-size: 1rem; font-weight: 800; display: block; }
+.pl-club-meta { font-size: 0.75rem; color: var(--muted); display: block; margin-top: 0.1rem; }
+
+.pl-countries { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.pl-country-row {
+  border-left: 3px solid var(--border);
+  padding-left: 0.75rem;
+}
+.pl-country-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.pl-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.pl-badge.active { background: var(--green-bg); color: var(--green); }
+.pl-badge.out    { background: var(--red-bg);   color: var(--red);   }
+
+.pl-players { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.pl-player {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.pl-pos {
+  font-size: 0.65rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   header { padding: 1rem; }

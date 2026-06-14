@@ -3,6 +3,7 @@
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 let _participants = null;
 let _matches      = null;
+let _plClubs      = null;
 
 // ── RENDER ────────────────────────────────────────────────────────────────────
 function renderAll() {
@@ -12,6 +13,7 @@ function renderAll() {
   renderTeams();
   renderMatches();
   renderDataTab();
+  renderPlClubs();
 }
 
 // ── TAB NAVIGATION ────────────────────────────────────────────────────────────
@@ -29,7 +31,7 @@ document.getElementById('btn-refresh').addEventListener('click', async () => {
   const btn = document.getElementById('btn-refresh');
   btn.disabled = true;
   btn.textContent = '…';
-  [_matches, _participants] = await Promise.all([loadMatches(true), loadEntries()]);
+  [_matches, _participants, _plClubs] = await Promise.all([loadMatches(true), loadEntries(), loadPlClubs()]);
   renderAll();
   btn.disabled = false;
   btn.textContent = '↻';
@@ -37,7 +39,7 @@ document.getElementById('btn-refresh').addEventListener('click', async () => {
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
-  [_matches, _participants] = await Promise.all([loadMatches(true), loadEntries()]);
+  [_matches, _participants, _plClubs] = await Promise.all([loadMatches(true), loadEntries(), loadPlClubs()]);
   renderAll();
 
   // Re-fetch every 60s (matches.json is updated by GitHub Actions every 30 min)

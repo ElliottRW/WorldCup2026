@@ -1,0 +1,867 @@
+{
+  "AFC Bournemouth": {
+    "id": "349",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+    "players": [
+      {
+        "name": "Rayan ",
+        "country": "Brazil",
+        "position": "F"
+      },
+      {
+        "name": "Justin Kluivert",
+        "country": "Netherlands",
+        "position": "F"
+      }
+    ]
+  },
+  "Arsenal": {
+    "id": "359",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+    "players": [
+      {
+        "name": "Leandro Trossard",
+        "country": "Belgium",
+        "position": "F"
+      },
+      {
+        "name": "Gabriel Magalh\u00e3es",
+        "country": "Brazil",
+        "position": "D"
+      },
+      {
+        "name": "Gabriel Martinelli",
+        "country": "Brazil",
+        "position": "F"
+      },
+      {
+        "name": "Piero Hincapi\u00e9",
+        "country": "Ecuador",
+        "position": "D"
+      },
+      {
+        "name": "Declan Rice",
+        "country": "England",
+        "position": "M"
+      },
+      {
+        "name": "Eberechi Eze",
+        "country": "England",
+        "position": "M"
+      },
+      {
+        "name": "Bukayo Saka",
+        "country": "England",
+        "position": "F"
+      },
+      {
+        "name": "Noni Madueke",
+        "country": "England",
+        "position": "F"
+      },
+      {
+        "name": "William Saliba",
+        "country": "France",
+        "position": "D"
+      },
+      {
+        "name": "Kai Havertz",
+        "country": "Germany",
+        "position": "F"
+      },
+      {
+        "name": "Martin \u00d8degaard",
+        "country": "Norway",
+        "position": "M"
+      },
+      {
+        "name": "David Raya",
+        "country": "Spain",
+        "position": "G"
+      },
+      {
+        "name": "Mikel Merino",
+        "country": "Spain",
+        "position": "M"
+      },
+      {
+        "name": "Mart\u00edn Zubimendi",
+        "country": "Spain",
+        "position": "M"
+      },
+      {
+        "name": "Viktor Gy\u00f6keres",
+        "country": "Sweden",
+        "position": "F"
+      }
+    ]
+  },
+  "Aston Villa": {
+    "id": "362",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
+    "players": [
+      {
+        "name": "Emiliano Mart\u00ednez",
+        "country": "Argentina",
+        "position": "G"
+      },
+      {
+        "name": "Youri Tielemans",
+        "country": "Belgium",
+        "position": "M"
+      },
+      {
+        "name": "Amadou Onana",
+        "country": "Belgium",
+        "position": "M"
+      },
+      {
+        "name": "Ezri Konsa",
+        "country": "England",
+        "position": "D"
+      },
+      {
+        "name": "Ollie Watkins",
+        "country": "England",
+        "position": "F"
+      },
+      {
+        "name": "Morgan Rogers",
+        "country": "England",
+        "position": "M"
+      },
+      {
+        "name": "Lucas Digne",
+        "country": "France",
+        "position": "D"
+      },
+      {
+        "name": "Victor Lindel\u00f6f",
+        "country": "Sweden",
+        "position": "D"
+      }
+    ]
+  },
+  "Brentford": {
+    "id": "337",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
+    "players": [
+      {
+        "name": "Igor Thiago",
+        "country": "Brazil",
+        "position": "F"
+      },
+      {
+        "name": "Jordan Henderson",
+        "country": "England",
+        "position": "M"
+      },
+      {
+        "name": "Kristoffer Ajer",
+        "country": "Norway",
+        "position": "D"
+      }
+    ]
+  },
+  "Brighton & Hove Albion": {
+    "id": "331",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+    "players": [
+      {
+        "name": "Maxim De Cuyper",
+        "country": "Belgium",
+        "position": "D"
+      },
+      {
+        "name": "Pascal Gross",
+        "country": "Germany",
+        "position": "M"
+      },
+      {
+        "name": "Bart Verbruggen",
+        "country": "Netherlands",
+        "position": "G"
+      },
+      {
+        "name": "Jan Paul van Hecke",
+        "country": "Netherlands",
+        "position": "D"
+      },
+      {
+        "name": "Mats Wieffer",
+        "country": "Netherlands",
+        "position": "M"
+      },
+      {
+        "name": "Diego G\u00f3mez",
+        "country": "Paraguay",
+        "position": "M"
+      },
+      {
+        "name": "Yasin Ayari",
+        "country": "Sweden",
+        "position": "M"
+      },
+      {
+        "name": "Ferdi Kadioglu",
+        "country": "T\u00fcrkiye",
+        "position": "D"
+      }
+    ]
+  },
+  "Burnley": {
+    "id": "379",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/379.png",
+    "players": [
+      {
+        "name": "Axel Tuanzebe",
+        "country": "Congo DR",
+        "position": "D"
+      },
+      {
+        "name": "Lyle Foster",
+        "country": "South Africa",
+        "position": "F"
+      },
+      {
+        "name": "Hjalmar Ekdal",
+        "country": "Sweden",
+        "position": "D"
+      },
+      {
+        "name": "Zeki Amdouni",
+        "country": "Switzerland",
+        "position": "F"
+      },
+      {
+        "name": "Hannibal Mejbri",
+        "country": "Tunisia",
+        "position": "M"
+      }
+    ]
+  },
+  "Chelsea": {
+    "id": "363",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+    "players": [
+      {
+        "name": "Enzo Fern\u00e1ndez",
+        "country": "Argentina",
+        "position": "M"
+      },
+      {
+        "name": "Mois\u00e9s Caicedo",
+        "country": "Ecuador",
+        "position": "M"
+      },
+      {
+        "name": "Reece James",
+        "country": "England",
+        "position": "D"
+      },
+      {
+        "name": "Malo Gusto",
+        "country": "France",
+        "position": "D"
+      },
+      {
+        "name": "Jorrel Hato",
+        "country": "Netherlands",
+        "position": "D"
+      },
+      {
+        "name": "Pedro Neto",
+        "country": "Portugal",
+        "position": "F"
+      },
+      {
+        "name": "Mamadou Sarr",
+        "country": "Senegal",
+        "position": "D"
+      },
+      {
+        "name": "Marc Cucurella",
+        "country": "Spain",
+        "position": "D"
+      }
+    ]
+  },
+  "Crystal Palace": {
+    "id": "384",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+    "players": [
+      {
+        "name": "Daniel Mu\u00f1oz",
+        "country": "Colombia",
+        "position": "D"
+      },
+      {
+        "name": "Jefferson Lerma",
+        "country": "Colombia",
+        "position": "M"
+      },
+      {
+        "name": "Dean Henderson",
+        "country": "England",
+        "position": "G"
+      },
+      {
+        "name": "Maxence Lacroix",
+        "country": "France",
+        "position": "D"
+      },
+      {
+        "name": "Jean-Philippe Mateta",
+        "country": "France",
+        "position": "F"
+      },
+      {
+        "name": "Evann Guessand",
+        "country": "Ivory Coast",
+        "position": "F"
+      },
+      {
+        "name": "Daichi Kamada",
+        "country": "Japan",
+        "position": "M"
+      },
+      {
+        "name": "Chadi Riad",
+        "country": "Morocco",
+        "position": "D"
+      },
+      {
+        "name": "J\u00f8rgen Strand Larsen",
+        "country": "Norway",
+        "position": "F"
+      },
+      {
+        "name": "Isma\u00efla Sarr",
+        "country": "Senegal",
+        "position": "F"
+      },
+      {
+        "name": "Y\u00e9remy Pino",
+        "country": "Spain",
+        "position": "M"
+      }
+    ]
+  },
+  "Everton": {
+    "id": "368",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
+    "players": [
+      {
+        "name": "Jordan Pickford",
+        "country": "England",
+        "position": "G"
+      },
+      {
+        "name": "Idrissa Gueye",
+        "country": "Senegal",
+        "position": "M"
+      },
+      {
+        "name": "Iliman Ndiaye",
+        "country": "Senegal",
+        "position": "F"
+      }
+    ]
+  },
+  "Fulham": {
+    "id": "370",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png",
+    "players": [
+      {
+        "name": "Timothy Castagne",
+        "country": "Belgium",
+        "position": "D"
+      },
+      {
+        "name": "Ra\u00fal Jim\u00e9nez",
+        "country": "Mexico",
+        "position": "F"
+      },
+      {
+        "name": "Issa Diop",
+        "country": "Morocco",
+        "position": "D"
+      },
+      {
+        "name": "Sander Berge",
+        "country": "Norway",
+        "position": "M"
+      },
+      {
+        "name": "Oscar Bobb",
+        "country": "Norway",
+        "position": "M"
+      }
+    ]
+  },
+  "Leeds United": {
+    "id": "357",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
+    "players": [
+      {
+        "name": "Ao Tanaka",
+        "country": "Japan",
+        "position": "M"
+      },
+      {
+        "name": "Gabriel Gudmundsson",
+        "country": "Sweden",
+        "position": "D"
+      },
+      {
+        "name": "Noah Okafor",
+        "country": "Switzerland",
+        "position": "F"
+      }
+    ]
+  },
+  "Liverpool": {
+    "id": "364",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+    "players": [
+      {
+        "name": "Alexis Mac Allister",
+        "country": "Argentina",
+        "position": "M"
+      },
+      {
+        "name": "Alisson Becker",
+        "country": "Brazil",
+        "position": "G"
+      },
+      {
+        "name": "Ibrahima Konat\u00e9",
+        "country": "France",
+        "position": "D"
+      },
+      {
+        "name": "Florian Wirtz",
+        "country": "Germany",
+        "position": "M"
+      },
+      {
+        "name": "Wataru Endo",
+        "country": "Japan",
+        "position": "M"
+      },
+      {
+        "name": "Virgil van Dijk",
+        "country": "Netherlands",
+        "position": "D"
+      },
+      {
+        "name": "Ryan Gravenberch",
+        "country": "Netherlands",
+        "position": "M"
+      },
+      {
+        "name": "Cody Gakpo",
+        "country": "Netherlands",
+        "position": "F"
+      },
+      {
+        "name": "Alexander Isak",
+        "country": "Sweden",
+        "position": "F"
+      }
+    ]
+  },
+  "Manchester City": {
+    "id": "382",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+    "players": [
+      {
+        "name": "Rayan A\u00eft-Nouri",
+        "country": "Algeria",
+        "position": "D"
+      },
+      {
+        "name": "J\u00e9r\u00e9my Doku",
+        "country": "Belgium",
+        "position": "F"
+      },
+      {
+        "name": "Josko Gvardiol",
+        "country": "Croatia",
+        "position": "D"
+      },
+      {
+        "name": "Mateo Kovacic",
+        "country": "Croatia",
+        "position": "M"
+      },
+      {
+        "name": "James Trafford",
+        "country": "England",
+        "position": "G"
+      },
+      {
+        "name": "John Stones",
+        "country": "England",
+        "position": "D"
+      },
+      {
+        "name": "Marc Gu\u00e9hi",
+        "country": "England",
+        "position": "D"
+      },
+      {
+        "name": "Nico O'Reilly",
+        "country": "England",
+        "position": "D"
+      },
+      {
+        "name": "Rayan Cherki",
+        "country": "France",
+        "position": "M"
+      },
+      {
+        "name": "Antoine Semenyo",
+        "country": "Ghana",
+        "position": "F"
+      },
+      {
+        "name": "Nathan Ak\u00e9",
+        "country": "Netherlands",
+        "position": "D"
+      },
+      {
+        "name": "Tijjani Reijnders",
+        "country": "Netherlands",
+        "position": "M"
+      },
+      {
+        "name": "Erling Haaland",
+        "country": "Norway",
+        "position": "F"
+      },
+      {
+        "name": "R\u00faben Dias",
+        "country": "Portugal",
+        "position": "D"
+      },
+      {
+        "name": "Bernardo Silva",
+        "country": "Portugal",
+        "position": "M"
+      },
+      {
+        "name": "Matheus Nunes",
+        "country": "Portugal",
+        "position": "M"
+      },
+      {
+        "name": "Rodri ",
+        "country": "Spain",
+        "position": "M"
+      },
+      {
+        "name": "Abdukodir Khusanov",
+        "country": "Uzbekistan",
+        "position": "D"
+      }
+    ]
+  },
+  "Manchester United": {
+    "id": "360",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+    "players": [
+      {
+        "name": "Lisandro Mart\u00ednez",
+        "country": "Argentina",
+        "position": "D"
+      },
+      {
+        "name": "Senne Lammens",
+        "country": "Belgium",
+        "position": "G"
+      },
+      {
+        "name": "Casemiro ",
+        "country": "Brazil",
+        "position": "M"
+      },
+      {
+        "name": "Matheus Cunha",
+        "country": "Brazil",
+        "position": "F"
+      },
+      {
+        "name": "Kobbie Mainoo",
+        "country": "England",
+        "position": "M"
+      },
+      {
+        "name": "Amad Diallo",
+        "country": "Ivory Coast",
+        "position": "F"
+      },
+      {
+        "name": "Noussair Mazraoui",
+        "country": "Morocco",
+        "position": "D"
+      },
+      {
+        "name": "Diogo Dalot",
+        "country": "Portugal",
+        "position": "D"
+      },
+      {
+        "name": "Bruno Fernandes",
+        "country": "Portugal",
+        "position": "M"
+      },
+      {
+        "name": "Altay Bayindir",
+        "country": "T\u00fcrkiye",
+        "position": "G"
+      },
+      {
+        "name": "Manuel Ugarte",
+        "country": "Uruguay",
+        "position": "M"
+      }
+    ]
+  },
+  "Newcastle United": {
+    "id": "361",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
+    "players": [
+      {
+        "name": "Bruno Guimar\u00e3es",
+        "country": "Brazil",
+        "position": "M"
+      },
+      {
+        "name": "Yoane Wissa",
+        "country": "Congo DR",
+        "position": "F"
+      },
+      {
+        "name": "Dan Burn",
+        "country": "England",
+        "position": "D"
+      },
+      {
+        "name": "Tino Livramento",
+        "country": "England",
+        "position": "D"
+      },
+      {
+        "name": "Anthony Gordon",
+        "country": "England",
+        "position": "F"
+      },
+      {
+        "name": "Malick Thiaw",
+        "country": "Germany",
+        "position": "D"
+      },
+      {
+        "name": "Nick Woltemade",
+        "country": "Germany",
+        "position": "F"
+      },
+      {
+        "name": "Anthony Elanga",
+        "country": "Sweden",
+        "position": "F"
+      }
+    ]
+  },
+  "Nottingham Forest": {
+    "id": "393",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
+    "players": [
+      {
+        "name": "Elliot Anderson",
+        "country": "England",
+        "position": "M"
+      },
+      {
+        "name": "Ibrahim Sangar\u00e9",
+        "country": "Ivory Coast",
+        "position": "M"
+      },
+      {
+        "name": "Chris Wood",
+        "country": "New Zealand",
+        "position": "F"
+      },
+      {
+        "name": "Dan Ndoye",
+        "country": "Switzerland",
+        "position": "F"
+      }
+    ]
+  },
+  "Sunderland": {
+    "id": "366",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
+    "players": [
+      {
+        "name": "Noah Sadiki",
+        "country": "Congo DR",
+        "position": "M"
+      },
+      {
+        "name": "Nilson Angulo",
+        "country": "Ecuador",
+        "position": "F"
+      },
+      {
+        "name": "Wilson Isidor",
+        "country": "Haiti",
+        "position": "F"
+      },
+      {
+        "name": "Chemsdine Talbi",
+        "country": "Morocco",
+        "position": "F"
+      },
+      {
+        "name": "Robin Roefs",
+        "country": "Netherlands",
+        "position": "G"
+      },
+      {
+        "name": "Lutsharel Geertruida",
+        "country": "Netherlands",
+        "position": "D"
+      },
+      {
+        "name": "Brian Brobbey",
+        "country": "Netherlands",
+        "position": "F"
+      },
+      {
+        "name": "Omar Alderete",
+        "country": "Paraguay",
+        "position": "D"
+      },
+      {
+        "name": "Habib Diarra",
+        "country": "Senegal",
+        "position": "M"
+      },
+      {
+        "name": "Granit Xhaka",
+        "country": "Switzerland",
+        "position": "M"
+      }
+    ]
+  },
+  "Tottenham Hotspur": {
+    "id": "367",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
+    "players": [
+      {
+        "name": "Cristian Romero",
+        "country": "Argentina",
+        "position": "D"
+      },
+      {
+        "name": "Kevin Danso",
+        "country": "Austria",
+        "position": "D"
+      },
+      {
+        "name": "Djed Spence",
+        "country": "England",
+        "position": "D"
+      },
+      {
+        "name": "Micky van de Ven",
+        "country": "Netherlands",
+        "position": "D"
+      },
+      {
+        "name": "Pape Matar Sarr",
+        "country": "Senegal",
+        "position": "M"
+      },
+      {
+        "name": "Pedro Porro",
+        "country": "Spain",
+        "position": "D"
+      },
+      {
+        "name": "Lucas Bergvall",
+        "country": "Sweden",
+        "position": "M"
+      },
+      {
+        "name": "Rodrigo Bentancur",
+        "country": "Uruguay",
+        "position": "M"
+      }
+    ]
+  },
+  "West Ham United": {
+    "id": "371",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/371.png",
+    "players": [
+      {
+        "name": "Aaron Wan-Bissaka",
+        "country": "Congo DR",
+        "position": "D"
+      },
+      {
+        "name": "Tom\u00e1s Soucek",
+        "country": "Czechia",
+        "position": "M"
+      },
+      {
+        "name": "Crysencio Summerville",
+        "country": "Netherlands",
+        "position": "F"
+      },
+      {
+        "name": "El Hadji Malick Diouf",
+        "country": "Senegal",
+        "position": "D"
+      }
+    ]
+  },
+  "Wolverhampton Wanderers": {
+    "id": "380",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/380.png",
+    "players": [
+      {
+        "name": "Ladislav Krejc\u00ed",
+        "country": "Czechia",
+        "position": "D"
+      },
+      {
+        "name": "Jean-Ricner Bellegarde",
+        "country": "Haiti",
+        "position": "M"
+      },
+      {
+        "name": "David M\u00f8ller Wolfe",
+        "country": "Norway",
+        "position": "D"
+      },
+      {
+        "name": "Jos\u00e9 S\u00e1",
+        "country": "Portugal",
+        "position": "G"
+      },
+      {
+        "name": "Hwang Hee-Chan",
+        "country": "South Korea",
+        "position": "F"
+      },
+      {
+        "name": "Santiago Bueno",
+        "country": "Uruguay",
+        "position": "D"
+      }
+    ]
+  }
+}
