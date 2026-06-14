@@ -52,9 +52,8 @@ function renderPlClubs() {
       <span><strong>${totalCountries}</strong> nations</span>
     </div>`;
 
-  // Club cards
-  const cards = clubs.map(([clubName, data]) => {
-    // Group players by country
+  // Club accordions
+  const sections = clubs.map(([clubName, data], idx) => {
     const byCountry = {};
     for (const p of data.players) {
       (byCountry[p.country] = byCountry[p.country] || []).push(p);
@@ -63,20 +62,18 @@ function renderPlClubs() {
     const countryRows = Object.entries(byCountry)
       .sort((a, b) => a[0].localeCompare(b[0]))
       .map(([country, players]) => {
-        const flag    = COUNTRY_FLAGS[country] || '🏳';
-        const fdName  = players[0].fd_country || country;
+        const flag     = COUNTRY_FLAGS[country] || '🏳';
+        const fdName   = players[0].fd_country || country;
         const isActive = active.has(fdName) || active.has(country);
-        const badge   = isActive
+        const badge    = isActive
           ? '<span class="pl-badge active">Active</span>'
           : '<span class="pl-badge out">Eliminated</span>';
-
         const sorted = [...players].sort((a, b) =>
           (POS_ORDER[a.position] ?? 9) - (POS_ORDER[b.position] ?? 9)
         );
         const playerList = sorted
           .map(p => `<span class="pl-player">${esc(p.name)}<span class="pl-pos">${esc(p.position)}</span></span>`)
           .join('');
-
         return `<div class="pl-country-row">
           <div class="pl-country-name">${flag} ${esc(country)} ${badge}</div>
           <div class="pl-players">${playerList}</div>
@@ -87,19 +84,31 @@ function renderPlClubs() {
       .filter(([c, ps]) => active.has(ps[0].fd_country || c) || active.has(c))
       .reduce((s, [, ps]) => s + ps.length, 0);
 
-    return `<div class="card pl-club-card">
-      <div class="pl-club-header">
-        ${data.logo ? `<img class="pl-club-logo" src="${esc(data.logo)}" alt="${esc(clubName)}">` : ''}
-        <div class="pl-club-title">
-          <span class="pl-club-name">${esc(clubName)}</span>
-          <span class="pl-club-meta">${data.players.length} players · ${activeCount} still active</span>
-        </div>
+    const isOpen = idx === 0;
+
+    return `<div class="match-section">
+      <button class="match-section-toggle${isOpen ? ' open' : ''}">
+        <span class="pl-toggle-inner">
+          ${data.logo ? `<img class="pl-club-logo-sm" src="${esc(data.logo)}" alt="">` : ''}
+          <span>${esc(clubName)}</span>
+          <span class="pl-toggle-meta">${data.players.length} players · ${activeCount} active</span>
+        </span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="match-section-body${isOpen ? ' open' : ''}">
+        <div class="pl-countries">${countryRows}</div>
       </div>
-      <div class="pl-countries">${countryRows}</div>
     </div>`;
   }).join('');
 
-  el.innerHTML = summary + cards;
+  el.innerHTML = summary + `<div class="card">${sections}</div>`;
+
+  el.querySelectorAll('.match-section-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const open = btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open', open);
+    });
+  });
 }
 
 function buildActiveCountries(matches) {

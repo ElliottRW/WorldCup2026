@@ -477,6 +477,26 @@ tbody tr:hover td { background: #f8f9ff; }
 
 .pl-club-card { margin-bottom: 1rem; }
 
+.pl-club-logo-sm {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.pl-toggle-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1;
+  min-width: 0;
+}
+.pl-toggle-meta {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 .pl-club-header {
   display: flex;
   align-items: center;
