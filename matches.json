@@ -418,11 +418,11 @@
     },
     "id": 537340,
     "utcDate": "2026-06-14T01:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_C",
-    "lastUpdated": "2026-06-12T15:20:17Z",
+    "lastUpdated": "2026-06-14T03:09:14Z",
     "homeTeam": {
       "id": 836,
       "name": "Haiti",
@@ -438,15 +438,15 @@
       "crest": "https://crests.football-data.org/814.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     },
     "odds": {
@@ -484,11 +484,11 @@
     },
     "id": 537346,
     "utcDate": "2026-06-14T04:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_D",
-    "lastUpdated": "2026-06-12T15:20:17Z",
+    "lastUpdated": "2026-06-14T05:15:26Z",
     "homeTeam": {
       "id": 779,
       "name": "Australia",
@@ -504,15 +504,15 @@
       "crest": "https://crests.football-data.org/803.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       }
     },
     "odds": {
