@@ -477,6 +477,13 @@ tbody tr:hover td { background: #f8f9ff; }
 
 .pl-club-card { margin-bottom: 1rem; }
 
+.pl-country-flag {
+  width: 20px;
+  height: 15px;
+  object-fit: contain;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
 .pl-club-logo-sm {
   width: 24px;
   height: 24px;

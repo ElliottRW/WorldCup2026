@@ -2,25 +2,6 @@
 
 // ── PL CLUBS TAB ──────────────────────────────────────────────────────────────
 
-const COUNTRY_FLAGS = {
-  'Algeria':      '🇩🇿', 'Argentina':    '🇦🇷', 'Australia':    '🇦🇺',
-  'Austria':      '🇦🇹', 'Belgium':      '🇧🇪', 'Bosnia-Herzegovina': '🇧🇦',
-  'Brazil':       '🇧🇷', 'Canada':       '🇨🇦', 'Cape Verde Islands': '🇨🇻',
-  'Colombia':     '🇨🇴', 'Congo DR':     '🇨🇩', 'Croatia':      '🇭🇷',
-  'Curaçao':      '🇨🇼', 'Czechia':      '🇨🇿', 'Ecuador':      '🇪🇨',
-  'Egypt':        '🇪🇬', 'England':      '🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'France':       '🇫🇷',
-  'Germany':      '🇩🇪', 'Ghana':        '🇬🇭', 'Haiti':        '🇭🇹',
-  'Iran':         '🇮🇷', 'Iraq':         '🇮🇶', 'Ivory Coast':  '🇨🇮',
-  'Japan':        '🇯🇵', 'Jordan':       '🇯🇴', 'Mexico':       '🇲🇽',
-  'Morocco':      '🇲🇦', 'Netherlands':  '🇳🇱', 'New Zealand':  '🇳🇿',
-  'Norway':       '🇳🇴', 'Panama':       '🇵🇦', 'Paraguay':     '🇵🇾',
-  'Portugal':     '🇵🇹', 'Qatar':        '🇶🇦', 'Saudi Arabia': '🇸🇦',
-  'Scotland':     '🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'Senegal':      '🇸🇳', 'South Africa': '🇿🇦',
-  'South Korea':  '🇰🇷', 'Spain':        '🇪🇸', 'Sweden':       '🇸🇪',
-  'Switzerland':  '🇨🇭', 'Tunisia':      '🇹🇳', 'Türkiye':      '🇹🇷',
-  'Turkey':       '🇹🇷', 'United States':'🇺🇸', 'Uruguay':      '🇺🇾',
-  'Uzbekistan':   '🇺🇿',
-};
 
 const POS_ORDER = { GK: 0, DF: 1, MF: 2, FW: 3 };
 
@@ -62,7 +43,10 @@ function renderPlClubs() {
     const countryRows = Object.entries(byCountry)
       .sort((a, b) => a[0].localeCompare(b[0]))
       .map(([country, players]) => {
-        const flag     = COUNTRY_FLAGS[country] || '🏳';
+        const countryLogo = players[0].country_logo || '';
+        const flagImg  = countryLogo
+          ? `<img class="pl-country-flag" src="${esc(countryLogo)}" alt="${esc(country)}">`
+          : '';
         const fdName   = players[0].fd_country || country;
         const isActive = active.has(fdName) || active.has(country);
         const badge    = isActive
@@ -75,7 +59,7 @@ function renderPlClubs() {
           .map(p => `<span class="pl-player">${esc(p.name)}<span class="pl-pos">${esc(p.position)}</span></span>`)
           .join('');
         return `<div class="pl-country-row">
-          <div class="pl-country-name">${flag} ${esc(country)} ${badge}</div>
+          <div class="pl-country-name">${flagImg} ${esc(country)} ${badge}</div>
           <div class="pl-players">${playerList}</div>
         </div>`;
       }).join('');

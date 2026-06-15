@@ -40,12 +40,14 @@ jobs:
           wc_teams = wc_data['sports'][0]['leagues'][0]['teams']
           print(f"  {len(wc_teams)} teams")
 
-          # 2. Build WC player map: player_id -> {name, country, position}
+          # 2. Build WC player map: player_id -> {name, country, position, country_logo}
           print("Fetching WC rosters...")
           wc_players = {}
           for t in wc_teams:
               team = t['team']
               tid, tname = team['id'], team['displayName']
+              logos = team.get('logos', [])
+              country_logo = next((l['href'] for l in logos if 'dark' not in l.get('rel',[])), logos[0]['href'] if logos else '')
               url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams/{tid}/roster"
               roster = fetch(url)
               if not roster:
@@ -56,6 +58,7 @@ jobs:
                       'name': p['fullName'],
                       'country': tname,
                       'fd_country': ESPN_NAME_MAP.get(tname, tname),
+                      'country_logo': country_logo,
                       'position': p.get('position', {}).get('abbreviation', '?')
                   }
           print(f"  {len(wc_players)} WC players indexed")
@@ -89,6 +92,7 @@ jobs:
                           'name': p['fullName'],
                           'country': wc['country'],
                           'fd_country': wc['fd_country'],
+                          'country_logo': wc['country_logo'],
                           'position': wc['position']
                       })
               if matches:

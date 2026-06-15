@@ -6,12 +6,37 @@
       {
         "name": "Rayan ",
         "country": "Brazil",
+        "fd_country": "Brazil",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "position": "F"
       },
       {
         "name": "Justin Kluivert",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "F"
+      },
+      {
+        "name": "Ryan Christie",
+        "country": "Scotland",
+        "fd_country": "Scotland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
+        "position": "M"
+      },
+      {
+        "name": "Ben Gannon-Doak",
+        "country": "Scotland",
+        "fd_country": "Scotland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
+        "position": "F"
+      },
+      {
+        "name": "Tyler Adams",
+        "country": "United States",
+        "fd_country": "United States",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+        "position": "M"
       }
     ]
   },
@@ -22,76 +47,106 @@
       {
         "name": "Leandro Trossard",
         "country": "Belgium",
+        "fd_country": "Belgium",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
         "position": "F"
       },
       {
         "name": "Gabriel Magalh\u00e3es",
         "country": "Brazil",
+        "fd_country": "Brazil",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "position": "D"
       },
       {
         "name": "Gabriel Martinelli",
         "country": "Brazil",
+        "fd_country": "Brazil",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "position": "F"
       },
       {
         "name": "Piero Hincapi\u00e9",
         "country": "Ecuador",
+        "fd_country": "Ecuador",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
         "position": "D"
       },
       {
         "name": "Declan Rice",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "M"
       },
       {
         "name": "Eberechi Eze",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "M"
       },
       {
         "name": "Bukayo Saka",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "F"
       },
       {
         "name": "Noni Madueke",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "F"
       },
       {
         "name": "William Saliba",
         "country": "France",
+        "fd_country": "France",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "position": "D"
       },
       {
         "name": "Kai Havertz",
         "country": "Germany",
+        "fd_country": "Germany",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
         "position": "F"
       },
       {
         "name": "Martin \u00d8degaard",
         "country": "Norway",
+        "fd_country": "Norway",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
         "position": "M"
       },
       {
         "name": "David Raya",
         "country": "Spain",
+        "fd_country": "Spain",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
         "position": "G"
       },
       {
         "name": "Mikel Merino",
         "country": "Spain",
+        "fd_country": "Spain",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
         "position": "M"
       },
       {
         "name": "Mart\u00edn Zubimendi",
         "country": "Spain",
+        "fd_country": "Spain",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
         "position": "M"
       },
       {
         "name": "Viktor Gy\u00f6keres",
         "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "F"
       }
     ]
@@ -103,41 +158,64 @@
       {
         "name": "Emiliano Mart\u00ednez",
         "country": "Argentina",
+        "fd_country": "Argentina",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
         "position": "G"
       },
       {
         "name": "Youri Tielemans",
         "country": "Belgium",
+        "fd_country": "Belgium",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
         "position": "M"
       },
       {
         "name": "Amadou Onana",
         "country": "Belgium",
+        "fd_country": "Belgium",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
         "position": "M"
       },
       {
         "name": "Ezri Konsa",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "D"
       },
       {
         "name": "Ollie Watkins",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "F"
       },
       {
         "name": "Morgan Rogers",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "M"
       },
       {
         "name": "Lucas Digne",
         "country": "France",
+        "fd_country": "France",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "position": "D"
+      },
+      {
+        "name": "John McGinn",
+        "country": "Scotland",
+        "fd_country": "Scotland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
+        "position": "M"
       },
       {
         "name": "Victor Lindel\u00f6f",
         "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "D"
       }
     ]
@@ -149,16 +227,29 @@
       {
         "name": "Igor Thiago",
         "country": "Brazil",
+        "fd_country": "Brazil",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "position": "F"
       },
       {
         "name": "Jordan Henderson",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "M"
       },
       {
         "name": "Kristoffer Ajer",
         "country": "Norway",
+        "fd_country": "Norway",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+        "position": "D"
+      },
+      {
+        "name": "Aaron Hickey",
+        "country": "Scotland",
+        "fd_country": "Scotland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
         "position": "D"
       }
     ]
@@ -170,41 +261,57 @@
       {
         "name": "Maxim De Cuyper",
         "country": "Belgium",
+        "fd_country": "Belgium",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
         "position": "D"
       },
       {
         "name": "Pascal Gross",
         "country": "Germany",
+        "fd_country": "Germany",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
         "position": "M"
       },
       {
         "name": "Bart Verbruggen",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "G"
       },
       {
         "name": "Jan Paul van Hecke",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "D"
       },
       {
         "name": "Mats Wieffer",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "M"
       },
       {
         "name": "Diego G\u00f3mez",
         "country": "Paraguay",
+        "fd_country": "Paraguay",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
         "position": "M"
       },
       {
         "name": "Yasin Ayari",
         "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "M"
       },
       {
         "name": "Ferdi Kadioglu",
         "country": "T\u00fcrkiye",
+        "fd_country": "Turkey",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
         "position": "D"
       }
     ]
@@ -216,26 +323,36 @@
       {
         "name": "Axel Tuanzebe",
         "country": "Congo DR",
+        "fd_country": "Congo DR",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
         "position": "D"
       },
       {
         "name": "Lyle Foster",
         "country": "South Africa",
+        "fd_country": "South Africa",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
         "position": "F"
       },
       {
         "name": "Hjalmar Ekdal",
         "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "D"
       },
       {
         "name": "Zeki Amdouni",
         "country": "Switzerland",
+        "fd_country": "Switzerland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "position": "F"
       },
       {
         "name": "Hannibal Mejbri",
         "country": "Tunisia",
+        "fd_country": "Tunisia",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
         "position": "M"
       }
     ]
@@ -247,41 +364,57 @@
       {
         "name": "Enzo Fern\u00e1ndez",
         "country": "Argentina",
+        "fd_country": "Argentina",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
         "position": "M"
       },
       {
         "name": "Mois\u00e9s Caicedo",
         "country": "Ecuador",
+        "fd_country": "Ecuador",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
         "position": "M"
       },
       {
         "name": "Reece James",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "D"
       },
       {
         "name": "Malo Gusto",
         "country": "France",
+        "fd_country": "France",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "position": "D"
       },
       {
         "name": "Jorrel Hato",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "D"
       },
       {
         "name": "Pedro Neto",
         "country": "Portugal",
+        "fd_country": "Portugal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
         "position": "F"
       },
       {
         "name": "Mamadou Sarr",
         "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
         "position": "D"
       },
       {
         "name": "Marc Cucurella",
         "country": "Spain",
+        "fd_country": "Spain",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
         "position": "D"
       }
     ]
@@ -293,57 +426,86 @@
       {
         "name": "Daniel Mu\u00f1oz",
         "country": "Colombia",
+        "fd_country": "Colombia",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
         "position": "D"
       },
       {
         "name": "Jefferson Lerma",
         "country": "Colombia",
+        "fd_country": "Colombia",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
         "position": "M"
       },
       {
         "name": "Dean Henderson",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "G"
       },
       {
         "name": "Maxence Lacroix",
         "country": "France",
+        "fd_country": "France",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "position": "D"
       },
       {
         "name": "Jean-Philippe Mateta",
         "country": "France",
+        "fd_country": "France",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "position": "F"
       },
       {
         "name": "Evann Guessand",
         "country": "Ivory Coast",
+        "fd_country": "Ivory Coast",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
         "position": "F"
       },
       {
         "name": "Daichi Kamada",
         "country": "Japan",
+        "fd_country": "Japan",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
         "position": "M"
       },
       {
         "name": "Chadi Riad",
         "country": "Morocco",
+        "fd_country": "Morocco",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "position": "D"
       },
       {
         "name": "J\u00f8rgen Strand Larsen",
         "country": "Norway",
+        "fd_country": "Norway",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
         "position": "F"
       },
       {
         "name": "Isma\u00efla Sarr",
         "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
         "position": "F"
       },
       {
         "name": "Y\u00e9remy Pino",
         "country": "Spain",
+        "fd_country": "Spain",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
         "position": "M"
+      },
+      {
+        "name": "Chris Richards",
+        "country": "United States",
+        "fd_country": "United States",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+        "position": "D"
       }
     ]
   },
@@ -354,16 +516,29 @@
       {
         "name": "Jordan Pickford",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "G"
+      },
+      {
+        "name": "Nathan Patterson",
+        "country": "Scotland",
+        "fd_country": "Scotland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
+        "position": "D"
       },
       {
         "name": "Idrissa Gueye",
         "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
         "position": "M"
       },
       {
         "name": "Iliman Ndiaye",
         "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
         "position": "F"
       }
     ]
@@ -375,27 +550,44 @@
       {
         "name": "Timothy Castagne",
         "country": "Belgium",
+        "fd_country": "Belgium",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
         "position": "D"
       },
       {
         "name": "Ra\u00fal Jim\u00e9nez",
         "country": "Mexico",
+        "fd_country": "Mexico",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
         "position": "F"
       },
       {
         "name": "Issa Diop",
         "country": "Morocco",
+        "fd_country": "Morocco",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "position": "D"
       },
       {
         "name": "Sander Berge",
         "country": "Norway",
+        "fd_country": "Norway",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
         "position": "M"
       },
       {
         "name": "Oscar Bobb",
         "country": "Norway",
+        "fd_country": "Norway",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
         "position": "M"
+      },
+      {
+        "name": "Antonee Robinson",
+        "country": "United States",
+        "fd_country": "United States",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+        "position": "D"
       }
     ]
   },
@@ -406,17 +598,30 @@
       {
         "name": "Ao Tanaka",
         "country": "Japan",
+        "fd_country": "Japan",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
         "position": "M"
       },
       {
         "name": "Gabriel Gudmundsson",
         "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "D"
       },
       {
         "name": "Noah Okafor",
         "country": "Switzerland",
+        "fd_country": "Switzerland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "position": "F"
+      },
+      {
+        "name": "Brenden Aaronson",
+        "country": "United States",
+        "fd_country": "United States",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+        "position": "M"
       }
     ]
   },
@@ -427,46 +632,78 @@
       {
         "name": "Alexis Mac Allister",
         "country": "Argentina",
+        "fd_country": "Argentina",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
         "position": "M"
       },
       {
         "name": "Alisson Becker",
         "country": "Brazil",
+        "fd_country": "Brazil",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "position": "G"
+      },
+      {
+        "name": "Mohamed Salah",
+        "country": "Egypt",
+        "fd_country": "Egypt",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
+        "position": "F"
       },
       {
         "name": "Ibrahima Konat\u00e9",
         "country": "France",
+        "fd_country": "France",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "position": "D"
       },
       {
         "name": "Florian Wirtz",
         "country": "Germany",
+        "fd_country": "Germany",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
         "position": "M"
       },
       {
         "name": "Wataru Endo",
         "country": "Japan",
+        "fd_country": "Japan",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
         "position": "M"
       },
       {
         "name": "Virgil van Dijk",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "D"
       },
       {
         "name": "Ryan Gravenberch",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "M"
       },
       {
         "name": "Cody Gakpo",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "F"
+      },
+      {
+        "name": "Andy Robertson",
+        "country": "Scotland",
+        "fd_country": "Scotland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
+        "position": "D"
       },
       {
         "name": "Alexander Isak",
         "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "F"
       }
     ]
@@ -478,91 +715,134 @@
       {
         "name": "Rayan A\u00eft-Nouri",
         "country": "Algeria",
+        "fd_country": "Algeria",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
         "position": "D"
       },
       {
         "name": "J\u00e9r\u00e9my Doku",
         "country": "Belgium",
+        "fd_country": "Belgium",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
         "position": "F"
       },
       {
         "name": "Josko Gvardiol",
         "country": "Croatia",
+        "fd_country": "Croatia",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
         "position": "D"
       },
       {
         "name": "Mateo Kovacic",
         "country": "Croatia",
+        "fd_country": "Croatia",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
         "position": "M"
+      },
+      {
+        "name": "Omar Marmoush",
+        "country": "Egypt",
+        "fd_country": "Egypt",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
+        "position": "F"
       },
       {
         "name": "James Trafford",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "G"
       },
       {
         "name": "John Stones",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "D"
       },
       {
         "name": "Marc Gu\u00e9hi",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "D"
       },
       {
         "name": "Nico O'Reilly",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "D"
       },
       {
         "name": "Rayan Cherki",
         "country": "France",
+        "fd_country": "France",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "position": "M"
       },
       {
         "name": "Antoine Semenyo",
         "country": "Ghana",
+        "fd_country": "Ghana",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png",
         "position": "F"
       },
       {
         "name": "Nathan Ak\u00e9",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "D"
       },
       {
         "name": "Tijjani Reijnders",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "M"
       },
       {
         "name": "Erling Haaland",
         "country": "Norway",
+        "fd_country": "Norway",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
         "position": "F"
       },
       {
         "name": "R\u00faben Dias",
         "country": "Portugal",
+        "fd_country": "Portugal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
         "position": "D"
       },
       {
         "name": "Bernardo Silva",
         "country": "Portugal",
+        "fd_country": "Portugal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
         "position": "M"
       },
       {
         "name": "Matheus Nunes",
         "country": "Portugal",
+        "fd_country": "Portugal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
         "position": "M"
       },
       {
         "name": "Rodri ",
         "country": "Spain",
+        "fd_country": "Spain",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
         "position": "M"
       },
       {
         "name": "Abdukodir Khusanov",
         "country": "Uzbekistan",
+        "fd_country": "Uzbekistan",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/uzb.png",
         "position": "D"
       }
     ]
@@ -574,56 +854,85 @@
       {
         "name": "Lisandro Mart\u00ednez",
         "country": "Argentina",
+        "fd_country": "Argentina",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
         "position": "D"
       },
       {
         "name": "Senne Lammens",
         "country": "Belgium",
+        "fd_country": "Belgium",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
         "position": "G"
       },
       {
         "name": "Casemiro ",
         "country": "Brazil",
+        "fd_country": "Brazil",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "position": "M"
       },
       {
         "name": "Matheus Cunha",
         "country": "Brazil",
+        "fd_country": "Brazil",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "position": "F"
       },
       {
         "name": "Kobbie Mainoo",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "M"
       },
       {
         "name": "Amad Diallo",
         "country": "Ivory Coast",
+        "fd_country": "Ivory Coast",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
         "position": "F"
       },
       {
         "name": "Noussair Mazraoui",
         "country": "Morocco",
+        "fd_country": "Morocco",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "position": "D"
       },
       {
         "name": "Diogo Dalot",
         "country": "Portugal",
+        "fd_country": "Portugal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
         "position": "D"
       },
       {
         "name": "Bruno Fernandes",
         "country": "Portugal",
+        "fd_country": "Portugal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
+        "position": "M"
+      },
+      {
+        "name": "Tyler Fletcher",
+        "country": "Scotland",
+        "fd_country": "Scotland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
         "position": "M"
       },
       {
         "name": "Altay Bayindir",
         "country": "T\u00fcrkiye",
+        "fd_country": "Turkey",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
         "position": "G"
       },
       {
         "name": "Manuel Ugarte",
         "country": "Uruguay",
+        "fd_country": "Uruguay",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
         "position": "M"
       }
     ]
@@ -635,41 +944,57 @@
       {
         "name": "Bruno Guimar\u00e3es",
         "country": "Brazil",
+        "fd_country": "Brazil",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "position": "M"
       },
       {
         "name": "Yoane Wissa",
         "country": "Congo DR",
+        "fd_country": "Congo DR",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
         "position": "F"
       },
       {
         "name": "Dan Burn",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "D"
       },
       {
         "name": "Tino Livramento",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "D"
       },
       {
         "name": "Anthony Gordon",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "F"
       },
       {
         "name": "Malick Thiaw",
         "country": "Germany",
+        "fd_country": "Germany",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
         "position": "D"
       },
       {
         "name": "Nick Woltemade",
         "country": "Germany",
+        "fd_country": "Germany",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
         "position": "F"
       },
       {
         "name": "Anthony Elanga",
         "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "F"
       }
     ]
@@ -681,21 +1006,36 @@
       {
         "name": "Elliot Anderson",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "M"
       },
       {
         "name": "Ibrahim Sangar\u00e9",
         "country": "Ivory Coast",
+        "fd_country": "Ivory Coast",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
         "position": "M"
       },
       {
         "name": "Chris Wood",
         "country": "New Zealand",
+        "fd_country": "New Zealand",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
         "position": "F"
+      },
+      {
+        "name": "Angus Gunn",
+        "country": "Scotland",
+        "fd_country": "Scotland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
+        "position": "G"
       },
       {
         "name": "Dan Ndoye",
         "country": "Switzerland",
+        "fd_country": "Switzerland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "position": "F"
       }
     ]
@@ -707,51 +1047,71 @@
       {
         "name": "Noah Sadiki",
         "country": "Congo DR",
+        "fd_country": "Congo DR",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
         "position": "M"
       },
       {
         "name": "Nilson Angulo",
         "country": "Ecuador",
+        "fd_country": "Ecuador",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
         "position": "F"
       },
       {
         "name": "Wilson Isidor",
         "country": "Haiti",
+        "fd_country": "Haiti",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
         "position": "F"
       },
       {
         "name": "Chemsdine Talbi",
         "country": "Morocco",
+        "fd_country": "Morocco",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "position": "F"
       },
       {
         "name": "Robin Roefs",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "G"
       },
       {
         "name": "Lutsharel Geertruida",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "D"
       },
       {
         "name": "Brian Brobbey",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "F"
       },
       {
         "name": "Omar Alderete",
         "country": "Paraguay",
+        "fd_country": "Paraguay",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
         "position": "D"
       },
       {
         "name": "Habib Diarra",
         "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
         "position": "M"
       },
       {
         "name": "Granit Xhaka",
         "country": "Switzerland",
+        "fd_country": "Switzerland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "position": "M"
       }
     ]
@@ -763,41 +1123,57 @@
       {
         "name": "Cristian Romero",
         "country": "Argentina",
+        "fd_country": "Argentina",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
         "position": "D"
       },
       {
         "name": "Kevin Danso",
         "country": "Austria",
+        "fd_country": "Austria",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
         "position": "D"
       },
       {
         "name": "Djed Spence",
         "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "D"
       },
       {
         "name": "Micky van de Ven",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "D"
       },
       {
         "name": "Pape Matar Sarr",
         "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
         "position": "M"
       },
       {
         "name": "Pedro Porro",
         "country": "Spain",
+        "fd_country": "Spain",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
         "position": "D"
       },
       {
         "name": "Lucas Bergvall",
         "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "M"
       },
       {
         "name": "Rodrigo Bentancur",
         "country": "Uruguay",
+        "fd_country": "Uruguay",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
         "position": "M"
       }
     ]
@@ -809,21 +1185,29 @@
       {
         "name": "Aaron Wan-Bissaka",
         "country": "Congo DR",
+        "fd_country": "Congo DR",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
         "position": "D"
       },
       {
         "name": "Tom\u00e1s Soucek",
         "country": "Czechia",
+        "fd_country": "Czechia",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
         "position": "M"
       },
       {
         "name": "Crysencio Summerville",
         "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "position": "F"
       },
       {
         "name": "El Hadji Malick Diouf",
         "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
         "position": "D"
       }
     ]
@@ -835,31 +1219,43 @@
       {
         "name": "Ladislav Krejc\u00ed",
         "country": "Czechia",
+        "fd_country": "Czechia",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
         "position": "D"
       },
       {
         "name": "Jean-Ricner Bellegarde",
         "country": "Haiti",
+        "fd_country": "Haiti",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
         "position": "M"
       },
       {
         "name": "David M\u00f8ller Wolfe",
         "country": "Norway",
+        "fd_country": "Norway",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
         "position": "D"
       },
       {
         "name": "Jos\u00e9 S\u00e1",
         "country": "Portugal",
+        "fd_country": "Portugal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
         "position": "G"
       },
       {
         "name": "Hwang Hee-Chan",
         "country": "South Korea",
+        "fd_country": "South Korea",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
         "position": "F"
       },
       {
         "name": "Santiago Bueno",
         "country": "Uruguay",
+        "fd_country": "Uruguay",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
         "position": "D"
       }
     ]
