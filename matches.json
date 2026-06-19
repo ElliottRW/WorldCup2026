@@ -1874,7 +1874,7 @@
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_D",
-    "lastUpdated": "2026-06-19T19:15:04Z",
+    "lastUpdated": "2026-06-19T20:52:04Z",
     "homeTeam": {
       "id": 771,
       "name": "United States",
@@ -1890,15 +1890,15 @@
       "crest": "https://crests.football-data.org/779.svg"
     },
     "score": {
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 0,
+        "home": 2,
         "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       }
     },
     "odds": {
@@ -1970,7 +1970,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 236055,
+        "name": "Il'giz Tantashev",
+        "type": "REFEREE",
+        "nationality": "Uzbekistan"
+      }
+    ]
   },
   {
     "area": {
