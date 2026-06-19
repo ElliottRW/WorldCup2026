@@ -91,7 +91,7 @@ function renderRemainingPotential() {
     const curPct  = Math.round((p.current   / globalMax) * 100);
     const remPct  = Math.round((p.remaining / globalMax) * 100);
 
-    const teamChips = p.teams.map(t =>
+    const teamChips = [...p.teams].sort((a, b) => a.localeCompare(b)).map(t =>
       active.has(t)
         ? `<span class="still-active">${esc(t)}</span>`
         : `<span class="eliminated">${esc(t)}</span>`
@@ -307,6 +307,7 @@ function renderMatchDayHistory() {
       const medal = MEDALS[rank] ?? rank;
       const pills = p.teams
         .filter(t => p.breakdown[t] > 0)
+        .sort((a, b) => a.localeCompare(b))
         .map(t => `<span class="team-pill">${esc(t)}<span class="pts-chip">+${p.breakdown[t]}</span></span>`)
         .join('');
       return `<tr>
@@ -388,6 +389,7 @@ function renderRoundByRound() {
       const medal = MEDALS[rank] ?? rank;
       const pills = p.teams
         .filter(t => p.breakdown[t] > 0)
+        .sort((a, b) => a.localeCompare(b))
         .map(t => `<span class="team-pill">${esc(t)}<span class="pts-chip">+${p.breakdown[t]}</span></span>`)
         .join('');
       return `<tr>
