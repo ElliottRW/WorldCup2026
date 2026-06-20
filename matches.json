@@ -1874,7 +1874,7 @@
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_D",
-    "lastUpdated": "2026-06-20T08:25:00Z",
+    "lastUpdated": "2026-06-20T08:25:01Z",
     "homeTeam": {
       "id": 771,
       "name": "United States",
@@ -2200,11 +2200,11 @@
     },
     "id": 537353,
     "utcDate": "2026-06-20T20:00:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
-    "lastUpdated": "2026-06-20T21:20:34Z",
+    "lastUpdated": "2026-06-20T22:05:03Z",
     "homeTeam": {
       "id": 759,
       "name": "Germany",
@@ -2220,10 +2220,10 @@
       "crest": "https://crests.football-data.org/787.svg"
     },
     "score": {
-      "winner": "AWAY_TEAM",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 0,
+        "home": 2,
         "away": 1
       },
       "halfTime": {
@@ -2300,7 +2300,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 176659,
+        "name": "Ning Ma",
+        "type": "REFEREE",
+        "nationality": "China PR"
+      }
+    ]
   },
   {
     "area": {
