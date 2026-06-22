@@ -88,8 +88,8 @@ function renderRemainingPotential() {
   const active    = activeTeams(_matches);
 
   el.innerHTML = rows.map(p => {
-    const curPct  = Math.round((p.current   / globalMax) * 100);
-    const remPct  = Math.round((p.remaining / globalMax) * 100);
+    const curPct  = ((p.current   / globalMax) * 100).toFixed(2);
+    const remPct  = ((p.remaining / globalMax) * 100).toFixed(2);
 
     const teamChips = [...p.teams].sort((a, b) => a.localeCompare(b)).map(t =>
       active.has(t)
