@@ -2728,11 +2728,11 @@
     },
     "id": 537393,
     "utcDate": "2026-06-22T21:00:00Z",
-    "status": "IN_PLAY",
+    "status": "PAUSED",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_I",
-    "lastUpdated": "2026-06-22T21:32:22Z",
+    "lastUpdated": "2026-06-22T21:55:07Z",
     "homeTeam": {
       "id": 773,
       "name": "France",
@@ -2755,8 +2755,8 @@
         "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       }
     },
     "odds": {
@@ -2828,7 +2828,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 11412,
+        "name": "Wilton Sampaio",
+        "type": "REFEREE",
+        "nationality": "Brazil"
+      }
+    ]
   },
   {
     "area": {
