@@ -2930,7 +2930,7 @@
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_K",
-    "lastUpdated": "2026-06-23T19:04:30Z",
+    "lastUpdated": "2026-06-23T20:40:13Z",
     "homeTeam": {
       "id": 765,
       "name": "Portugal",
@@ -2992,11 +2992,11 @@
     },
     "id": 537411,
     "utcDate": "2026-06-23T20:00:00Z",
-    "status": "LIVE",
+    "status": "PAUSED",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_L",
-    "lastUpdated": "2026-06-23T20:33:17Z",
+    "lastUpdated": "2026-06-23T20:56:45Z",
     "homeTeam": {
       "id": 770,
       "name": "England",
@@ -3019,8 +3019,8 @@
         "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     },
     "odds": {
