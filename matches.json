@@ -3308,11 +3308,11 @@
     },
     "id": 537344,
     "utcDate": "2026-06-24T22:00:00Z",
-    "status": "TIMED",
+    "status": "PAUSED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_C",
-    "lastUpdated": "2026-06-11T15:20:18Z",
+    "lastUpdated": "2026-06-24T22:58:08Z",
     "homeTeam": {
       "id": 815,
       "name": "Morocco",
@@ -3328,15 +3328,15 @@
       "crest": "https://crests.football-data.org/haiti.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 2
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 2
       }
     },
     "odds": {
@@ -3374,11 +3374,11 @@
     },
     "id": 537343,
     "utcDate": "2026-06-24T22:00:00Z",
-    "status": "TIMED",
+    "status": "PAUSED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_C",
-    "lastUpdated": "2026-06-11T15:20:18Z",
+    "lastUpdated": "2026-06-24T22:59:20Z",
     "homeTeam": {
       "id": 8873,
       "name": "Scotland",
@@ -3394,15 +3394,15 @@
       "crest": "https://crests.football-data.org/764.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       }
     },
     "odds": {
@@ -3474,7 +3474,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 57435,
+        "name": "Yael Falcón",
+        "type": "REFEREE",
+        "nationality": "Argentina"
+      }
+    ]
   },
   {
     "area": {
@@ -3533,7 +3540,14 @@
     "odds": {
       "msg": "Activate Odds-Package in User-Panel to retrieve odds."
     },
-    "referees": []
+    "referees": [
+      {
+        "id": 57301,
+        "name": "Facundo Tello",
+        "type": "REFEREE",
+        "nationality": "Argentina"
+      }
+    ]
   },
   {
     "area": {
