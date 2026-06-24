@@ -133,7 +133,7 @@ function totalGoals(matches) {
  * These teams are still in the tournament.
  */
 function activeTeams(matches) {
-  const upcoming = matches.filter(m => ['TIMED', 'SCHEDULED'].includes(m.status));
+  const upcoming = matches.filter(m => ['TIMED', 'SCHEDULED', 'IN_PLAY', 'PAUSED'].includes(m.status));
   const set      = new Set();
   for (const m of upcoming) {
     const home = getDisplayName(m.homeTeam?.name);
@@ -163,10 +163,10 @@ function teamRemainingPts(team, matches) {
 
   const s = teamStats(team, matches);
 
-  // Remaining group stage match wins (only named TIMED fixtures)
+  // Remaining group stage match wins (includes IN_PLAY/PAUSED — result still unknown)
   const groupRemain = matches.filter(m =>
     m.stage === 'GROUP_STAGE' &&
-    ['TIMED', 'SCHEDULED'].includes(m.status) &&
+    ['TIMED', 'SCHEDULED', 'IN_PLAY', 'PAUSED'].includes(m.status) &&
     (getDisplayName(m.homeTeam?.name) === team || getDisplayName(m.awayTeam?.name) === team)
   ).length * SCORING.WIN;
 
