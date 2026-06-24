@@ -2,12 +2,23 @@
 
 // ── DATA TAB ──────────────────────────────────────────────────────────────────
 
+// null = show everyone; Set of names = show only those
+let _statsFilter    = null;
+let _filterDropOpen = false; // persist dropdown open state across re-renders
+
+// Returns the participant list filtered by _statsFilter
+function viewParticipants() {
+  if (!_statsFilter) return _participants;
+  return (_participants || []).filter(p => _statsFilter.has(p.name));
+}
+
 function renderDataTab() {
   const noData = !_participants?.length || !_matches?.length;
 
   renderOverviewStats(noData);
   if (noData) return;
 
+  renderParticipantFilter();
   renderPointsGap();
   renderRemainingPotential();
   renderPtsPerCreditParticipants();
@@ -17,13 +28,85 @@ function renderDataTab() {
   renderRoundByRound();
 }
 
+// ── PARTICIPANT FILTER ────────────────────────────────────────────────────────
+
+function renderParticipantFilter() {
+  const el = document.getElementById('data-filter');
+  if (!el) return;
+
+  const all     = _participants || [];
+  const active  = _statsFilter ?? new Set(all.map(p => p.name));
+  const allSel  = active.size === all.length;
+  const label   = allSel ? `All ${all.length} participants` : `${active.size} of ${all.length} selected`;
+
+  const checkboxes = all
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(p => {
+      const checked = active.has(p.name) ? 'checked' : '';
+      return `<label class="filter-option">
+        <input type="checkbox" data-name="${esc(p.name)}" ${checked}>
+        ${esc(p.name)}
+      </label>`;
+    }).join('');
+
+  const dropDisplay = _filterDropOpen ? 'block' : 'none';
+  const chevron     = _filterDropOpen ? '▴' : '▾';
+
+  el.innerHTML = `
+    <div class="filter-bar">
+      <button class="filter-toggle" id="filter-toggle-btn">
+        <span>👥 ${esc(label)}</span>
+        <span class="chevron">${chevron}</span>
+      </button>
+      <div class="filter-dropdown" id="filter-dropdown" style="display:${dropDisplay}">
+        <div class="filter-actions">
+          <button class="filter-action-btn" id="filter-select-all">Select all</button>
+          <button class="filter-action-btn" id="filter-clear-all">Clear all</button>
+        </div>
+        <div class="filter-options">${checkboxes}</div>
+      </div>
+    </div>`;
+
+  const toggle   = el.querySelector('#filter-toggle-btn');
+  const dropdown = el.querySelector('#filter-dropdown');
+
+  toggle.addEventListener('click', () => {
+    _filterDropOpen = dropdown.style.display === 'none';
+    dropdown.style.display = _filterDropOpen ? 'block' : 'none';
+    toggle.querySelector('.chevron').textContent = _filterDropOpen ? '▴' : '▾';
+  });
+
+  el.querySelector('#filter-select-all').addEventListener('click', () => {
+    _statsFilter    = null;
+    _filterDropOpen = false;
+    renderDataTab();
+  });
+
+  el.querySelector('#filter-clear-all').addEventListener('click', () => {
+    _statsFilter    = new Set();
+    _filterDropOpen = false;
+    renderDataTab();
+  });
+
+  el.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (!_statsFilter) _statsFilter = new Set(all.map(p => p.name));
+      if (cb.checked) _statsFilter.add(cb.dataset.name);
+      else            _statsFilter.delete(cb.dataset.name);
+      if (_statsFilter.size === all.length) _statsFilter = null;
+      renderDataTab(); // dropdown stays open because _filterDropOpen is still true
+    });
+  });
+}
+
 // ── POINTS GAP ────────────────────────────────────────────────────────────────
 
 function renderPointsGap() {
   const el = document.getElementById('data-gap');
   if (!el) return;
 
-  const rows = _participants.map(p => {
+  const rows = viewParticipants().map(p => {
     const { current, remaining, max } = participantMaxPossible(p, _matches);
     return { ...p, current, remaining, max };
   }).sort((a, b) => b.current - a.current || a.name.localeCompare(b.name));
@@ -74,7 +157,7 @@ function renderRemainingPotential() {
   const el = document.getElementById('data-potential');
   if (!el) return;
 
-  const rows = _participants.map(p => {
+  const rows = viewParticipants().map(p => {
     const { current, remaining, max } = participantMaxPossible(p, _matches);
     return { ...p, current, remaining, max };
   }).sort((a, b) => b.max - a.max || b.current - a.current || a.name.localeCompare(b.name));
@@ -147,7 +230,7 @@ function renderPtsPerCreditParticipants() {
   const el = document.getElementById('data-ppc-participants');
   if (!el) return;
 
-  const rows = _participants
+  const rows = viewParticipants()
     .map(p => {
       const credits = creditsUsed(p);
       const total   = _matches ? teamStats(p.teams[0], _matches).total
@@ -197,7 +280,7 @@ function renderBestValueTeams() {
   if (!el) return;
 
   // Only teams that appear in at least one entry
-  const picks    = teamPickCounts(_participants);
+  const picks    = teamPickCounts(viewParticipants());
   const pickedTeams = [...picks.keys()];
 
   if (!pickedTeams.length) {
@@ -213,7 +296,7 @@ function renderBestValueTeams() {
       const pts   = _matches ? teamStats(team, _matches).total : 0;
       const ppc    = ptsPerCredit(pts, cost);
       const ppcRaw = cost ? pts / cost : 0;
-      const picks  = teamPickCounts(_participants).get(team) ?? 0;
+      const picks  = teamPickCounts(viewParticipants()).get(team) ?? 0;
       const still  = active.has(team);
       return { team, cost, pts, ppc, ppcRaw, picks, still };
     })
@@ -255,7 +338,7 @@ function renderMostPickedTeams() {
   const el = document.getElementById('data-popular');
   if (!el) return;
 
-  const counts  = teamPickCounts(_participants);
+  const counts  = teamPickCounts(viewParticipants());
   const active  = activeTeams(_matches);
   // Only show teams picked by 2+ people — otherwise the section is trivial
   const shared  = [...counts.entries()].filter(([, n]) => n > 1);
@@ -268,7 +351,7 @@ function renderMostPickedTeams() {
   const cards = shared.map(([team, count]) => {
     const pts    = _matches ? teamStats(team, _matches).total : 0;
     const still  = active.has(team);
-    const pickers = _participants.filter(p => p.teams.includes(team)).map(p => nameWithTip(p)).join(', ');
+    const pickers = viewParticipants().filter(p => p.teams.includes(team)).map(p => nameWithTip(p)).join(', ');
     return `<div class="shared-team-card">
       <div class="shared-team-name">${esc(team)}</div>
       <div class="shared-team-meta">Picked by <strong>${pickers}</strong></div>
@@ -298,7 +381,7 @@ function renderMatchDayHistory() {
 
   const sections = days.map(({ dateKey, label }, idx) => {
     const dayMatches = matchesOnDate(_matches, dateKey);
-    const scored     = scoreParticipantsInSet(_participants, dayMatches);
+    const scored     = scoreParticipantsInSet(viewParticipants(), dayMatches);
     const isOpen     = idx === 0; // most recent open by default
 
     const scorers = scored.filter(p => p.total > 0);
@@ -381,7 +464,7 @@ function renderRoundByRound() {
   }
 
   const sections = roundEntries.map(({ label, matches }, idx) => {
-    const scored = scoreParticipantsInSet(_participants, matches);
+    const scored = scoreParticipantsInSet(viewParticipants(), matches);
     const isOpen = idx === 0;
 
     const rows = scored.map((p, i) => {
