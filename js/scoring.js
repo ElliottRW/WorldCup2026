@@ -100,10 +100,16 @@ function teamStats(displayName, matches) {
     else                                                    losses++;
   }
 
-  // Stages this team has appeared in (completed or live)
+  // Stages this team has appeared in.
+  // For knockout rounds, being named in a TIMED/SCHEDULED fixture means they
+  // already qualified — award the progression bonus immediately.
+  // Group stage fixtures are excluded from this early-award (every team plays group stage).
   const playedStages = new Set(
     mine
-      .filter(m => ['FINISHED', 'IN_PLAY', 'PAUSED'].includes(m.status))
+      .filter(m =>
+        ['FINISHED', 'IN_PLAY', 'PAUSED'].includes(m.status) ||
+        (m.stage !== 'GROUP_STAGE' && ['TIMED', 'SCHEDULED'].includes(m.status))
+      )
       .map(m => m.stage)
   );
 

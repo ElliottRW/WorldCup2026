@@ -170,12 +170,17 @@ function teamRemainingPts(team, matches) {
     (getDisplayName(m.homeTeam?.name) === team || getDisplayName(m.awayTeam?.name) === team)
   ).length * SCORING.WIN;
 
-  // Potential knockout match wins for each unearned stage that has a match result.
-  // R32/R16/QF/SF each have a +5 win bonus; the Final does not (rewarded via progression).
-  // Knockout fixtures don't get team names until the previous round is done, so we
-  // derive potential wins from stages not yet reached rather than counting fixtures.
+  // Potential knockout match wins.
+  // Unearned stages = not yet reached at all.
+  // TIMED knockout fixtures = progression already awarded (team qualified) but match not yet played.
   const knockoutStagesWithWin = ['last32', 'last16', 'quarterfinal', 'semifinal'];
-  const knockoutRemain = knockoutStagesWithWin.filter(st => !s.prog[st]).length * SCORING.WIN;
+  const unearnedKnockout = knockoutStagesWithWin.filter(st => !s.prog[st]).length * SCORING.WIN;
+  const timedKnockoutWins = matches.filter(m =>
+    m.stage !== 'GROUP_STAGE' &&
+    ['TIMED', 'SCHEDULED'].includes(m.status) &&
+    (getDisplayName(m.homeTeam?.name) === team || getDisplayName(m.awayTeam?.name) === team)
+  ).length * SCORING.WIN;
+  const knockoutRemain = unearnedKnockout + timedKnockoutWins;
 
   // Remaining progression bonuses
   const earnedCount  = STAGES.filter(st => s.prog[st]).length;
