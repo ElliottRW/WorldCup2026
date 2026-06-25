@@ -1514,7 +1514,7 @@
   {
     "id": "760473",
     "utcDate": "2026-06-25T20:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -1527,11 +1527,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       },
       "penalties": {
         "home": null,
@@ -1542,7 +1542,7 @@
   {
     "id": "760468",
     "utcDate": "2026-06-25T20:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -1555,11 +1555,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -1570,7 +1570,7 @@
   {
     "id": "760471",
     "utcDate": "2026-06-25T23:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_F",
@@ -2135,8 +2135,8 @@
     "stage": "LAST_32",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Ivory Coast",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
     },
     "awayTeam": {
       "name": null,
