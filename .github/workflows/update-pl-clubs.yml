@@ -105,6 +105,9 @@ jobs:
                   print(f"  {tname}: {len(matches)} players - {', '.join(countries)}")
 
           print(f"\nTotal clubs: {len(result)}")
+          if len(result) < 5:
+              print("WARNING: suspiciously few clubs — PL rosters may be unavailable (off-season). Keeping existing pl-clubs.json.")
+              sys.exit(0)
           with open('pl-clubs.json', 'w') as f:
               json.dump(result, f, indent=2)
           print("Saved pl-clubs.json")
