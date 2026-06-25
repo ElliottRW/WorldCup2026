@@ -14,12 +14,213 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch match data
+      - name: Fetch match data from ESPN
         run: |
-          curl -s \
-            -H "X-Auth-Token: ${{ secrets.FOOTBALL_DATA_API_KEY }}" \
-            "https://api.football-data.org/v4/competitions/WC/matches?season=2026" \
-            | jq '.matches // []' > matches.json
+          python3 << 'EOF'
+          import json, subprocess, sys
+
+          def fetch(url):
+              r = subprocess.run(['curl', '-s', '--max-time', '15', url], capture_output=True, text=True)
+              if r.returncode != 0 or not r.stdout.strip():
+                  return None
+              try:
+                  return json.loads(r.stdout)
+              except:
+                  return None
+
+          # ── Mappings ──────────────────────────────────────────────────────────
+
+          STAGE_MAP = {
+              'group-stage':     'GROUP_STAGE',
+              'round-of-32':     'LAST_32',
+              'round-of-16':     'LAST_16',
+              'quarterfinals':   'QUARTER_FINALS',
+              'semifinals':      'SEMI_FINALS',
+              '3rd-place-match': 'THIRD_PLACE',
+              'final':           'FINAL',
+          }
+
+          STATUS_MAP = {
+              'STATUS_FULL_TIME':      'FINISHED',
+              'STATUS_FINAL_OVERTIME': 'FINISHED',
+              'STATUS_FINAL_PEN':      'FINISHED',
+              'STATUS_IN_PROGRESS':    'IN_PLAY',
+              'STATUS_HALFTIME':       'PAUSED',
+              'STATUS_EXTRA_TIME':     'IN_PLAY',
+              'STATUS_SHOOTOUT':       'IN_PLAY',
+              'STATUS_SCHEDULED':      'TIMED',
+              'STATUS_POSTPONED':      'SCHEDULED',
+          }
+
+          # Substrings that indicate a placeholder (not a resolved team name)
+          PLACEHOLDER = ('Winner', 'Loser', 'Place', 'Round of', 'Group ', 'Quarterfinal', 'Semifinal', 'Third Place')
+
+          def real_name(name):
+              if not name:
+                  return None
+              for p in PLACEHOLDER:
+                  if p in name:
+                      return None
+              return name
+
+          # ── Ratchet: load existing FINISHED results so they can't vanish ──────
+
+          try:
+              with open('matches.json') as f:
+                  existing = json.load(f)
+              # Key by sorted team pair so home/away order doesn't matter for lookup
+              finished_cache = {}
+              for m in existing:
+                  if m.get('status') == 'FINISHED':
+                      h = (m['homeTeam'] or {}).get('name')
+                      a = (m['awayTeam'] or {}).get('name')
+                      if h and a:
+                          finished_cache[(h, a)] = m
+              print(f'Ratchet: loaded {len(finished_cache)} previously-finished matches')
+          except Exception as e:
+              finished_cache = {}
+              print(f'Ratchet: starting fresh ({e})')
+
+          # ── Fetch from ESPN ───────────────────────────────────────────────────
+
+          url = ('https://site.api.espn.com/apis/site/v2/sports/soccer'
+                 '/fifa.world/scoreboard?dates=20260610-20260720&limit=300')
+          data = fetch(url)
+          if not data:
+              print('ERROR: Could not fetch ESPN data', file=sys.stderr)
+              sys.exit(1)
+
+          events = data.get('events', [])
+          print(f'ESPN returned {len(events)} events')
+
+          # ── Compute matchday per group-stage event ────────────────────────────
+          # Each group has 6 matches; sorted by date: [0,1]→MD1  [2,3]→MD2  [4,5]→MD3
+
+          group_buckets = {}   # "GROUP_A" -> [(date, event_id), ...]
+          for e in events:
+              if e['season']['slug'] != 'group-stage':
+                  continue
+              comp = e['competitions'][0]
+              note = comp.get('altGameNote', '')
+              if ', Group ' not in note:
+                  continue
+              group_key = 'GROUP_' + note.split(', Group ')[1].strip()
+              group_buckets.setdefault(group_key, []).append((e['date'], e['id']))
+
+          matchday_map = {}   # event_id -> int
+          for group, items in group_buckets.items():
+              items.sort(key=lambda x: x[0])
+              for i, (_, eid) in enumerate(items):
+                  matchday_map[eid] = (i // 2) + 1   # 2 matches per matchday
+
+          # ── Convert events ────────────────────────────────────────────────────
+
+          result = []
+          for e in events:
+              slug  = e['season']['slug']
+              stage = STAGE_MAP.get(slug)
+              if not stage:
+                  print(f'  WARNING: unknown slug {slug!r} — skipping')
+                  continue
+
+              status_name = e['status']['type']['name']
+              status = STATUS_MAP.get(status_name, 'TIMED')
+
+              comp        = e['competitions'][0]
+              competitors = comp['competitors']
+              home_c = next((c for c in competitors if c['homeAway'] == 'home'), None)
+              away_c = next((c for c in competitors if c['homeAway'] == 'away'), None)
+
+              home_name = real_name(home_c['team']['displayName'] if home_c else None)
+              away_name = real_name(away_c['team']['displayName'] if away_c else None)
+              home_logo = home_c['team'].get('logo', '') if home_c else ''
+              away_logo = away_c['team'].get('logo', '') if away_c else ''
+
+              finished = status == 'FINISHED'
+              home_score = int(home_c['score']) if finished and home_c and home_c.get('score') else None
+              away_score = int(away_c['score']) if finished and away_c and away_c.get('score') else None
+
+              # Determine winner from ESPN's own winner flag (handles ET/pens correctly)
+              winner = None
+              if finished and home_c and away_c:
+                  if home_c.get('winner'):
+                      winner = 'HOME_TEAM'
+                  elif away_c.get('winner'):
+                      winner = 'AWAY_TEAM'
+                  elif home_score is not None and home_score == away_score:
+                      winner = 'DRAW'
+
+              # Duration / penalty shootout details for the matches tab display
+              fmt = comp.get('format', {})
+              st  = e['status']
+              if not finished:
+                  duration = None
+                  pen_home = pen_away = None
+              elif st['type']['name'] == 'STATUS_FINAL_PEN':
+                  duration = 'PENALTY_SHOOTOUT'
+                  # ESPN encodes shootout score in the status detail, e.g. "5-4 pen"
+                  # Fall back to None if not parseable
+                  try:
+                      detail = st['type'].get('detail', '')
+                      parts  = detail.split(' ')[0].split('-')
+                      pen_home, pen_away = int(parts[0]), int(parts[1])
+                  except:
+                      pen_home = pen_away = None
+              elif st['type']['name'] == 'STATUS_FINAL_OVERTIME':
+                  duration = 'EXTRA_TIME'
+                  pen_home = pen_away = None
+              else:
+                  duration = 'REGULAR'
+                  pen_home = pen_away = None
+
+              # Extract group label
+              note  = comp.get('altGameNote', '')
+              group = ('GROUP_' + note.split(', Group ')[1].strip()) if ', Group ' in note else None
+
+              matchday = matchday_map.get(e['id']) if stage == 'GROUP_STAGE' else None
+
+              # ── Ratchet: if we had this match as FINISHED, trust that over a
+              #    temporary API downgrade (IN_PLAY / TIMED / missing data).
+              if not finished and home_name and away_name:
+                  cached = finished_cache.get((home_name, away_name))
+                  if cached:
+                      print(f'  Ratchet applied: keeping FINISHED for {home_name} vs {away_name}')
+                      status     = 'FINISHED'
+                      cs         = cached['score']
+                      winner     = cs['winner']
+                      home_score = cs['fullTime']['home']
+                      away_score = cs['fullTime']['away']
+                      duration   = cs.get('duration')
+                      pen_home   = (cs.get('penalties') or {}).get('home')
+                      pen_away   = (cs.get('penalties') or {}).get('away')
+
+              result.append({
+                  'id':      e['id'],
+                  'utcDate': e['date'],
+                  'status':  status,
+                  'matchday': matchday,
+                  'stage':   stage,
+                  'group':   group,
+                  'homeTeam': {'name': home_name, 'crest': home_logo},
+                  'awayTeam': {'name': away_name, 'crest': away_logo},
+                  'score': {
+                      'winner':    winner,
+                      'duration':  duration,
+                      'fullTime':  {'home': home_score, 'away': away_score},
+                      'penalties': {'home': pen_home,   'away': pen_away},
+                  },
+              })
+
+          result.sort(key=lambda x: x['utcDate'])
+
+          finished_count = sum(1 for m in result if m['status'] == 'FINISHED')
+          timed_count    = sum(1 for m in result if m['status'] in ('TIMED', 'SCHEDULED'))
+          print(f'Output: {len(result)} matches ({finished_count} finished, {timed_count} upcoming)')
+
+          with open('matches.json', 'w') as f:
+              json.dump(result, f, indent=2)
+          print('Saved matches.json')
+          EOF
 
       - name: Commit if changed
         run: |
