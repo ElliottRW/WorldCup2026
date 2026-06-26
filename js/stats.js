@@ -177,6 +177,7 @@ function teamRemainingPts(team, matches) {
   const unearnedKnockout = knockoutStagesWithWin.filter(st => !s.prog[st]).length * SCORING.WIN;
   const timedKnockoutWins = matches.filter(m =>
     m.stage !== 'GROUP_STAGE' &&
+    m.stage !== 'FINAL' &&   // Final win = STAGE bonus ('winner'), not WIN bonus — handled in progRemain
     ['TIMED', 'SCHEDULED'].includes(m.status) &&
     (getDisplayName(m.homeTeam?.name) === team || getDisplayName(m.awayTeam?.name) === team)
   ).length * SCORING.WIN;
