@@ -1682,7 +1682,7 @@
   {
     "id": "760475",
     "utcDate": "2026-06-26T19:00Z",
-    "status": "PAUSED",
+    "status": "TIMED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_I",
