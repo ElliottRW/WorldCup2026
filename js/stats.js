@@ -191,9 +191,9 @@ function teamRemainingPts(team, matches) {
 }
 
 /**
- * Brute-force search for the best possible 4-team entry within 100 credits,
+ * Brute-force search for all tied best 4-team entries within 100 credits,
  * based on points scored so far. C(48,4) = 194,580 combinations — fast enough.
- * Returns { teams, score, cost }.
+ * Returns { entries: [{teams, cost}], score }.
  */
 function bestHindsightEntry(matches) {
   const names  = Object.keys(TEAM_DATA);
@@ -201,7 +201,7 @@ function bestHindsightEntry(matches) {
   const scores = names.map(t => teamStats(t, matches).total);
   const costs  = names.map(t => TEAM_DATA[t].cost);
 
-  let bestScore = -1, bestTeams = [], bestCost = 0;
+  let bestScore = -1, entries = [];
 
   for (let i = 0; i < n - 3; i++) {
     for (let j = i + 1; j < n - 2; j++) {
@@ -218,15 +218,16 @@ function bestHindsightEntry(matches) {
           const s4 = sijk + scores[l];
           if (s4 > bestScore) {
             bestScore = s4;
-            bestTeams = [names[i], names[j], names[k], names[l]];
-            bestCost  = c4;
+            entries   = [{ teams: [names[i], names[j], names[k], names[l]], cost: c4 }];
+          } else if (s4 === bestScore) {
+            entries.push({ teams: [names[i], names[j], names[k], names[l]], cost: c4 });
           }
         }
       }
     }
   }
 
-  return { teams: bestTeams, score: bestScore, cost: bestCost };
+  return { entries, score: bestScore };
 }
 
 /**

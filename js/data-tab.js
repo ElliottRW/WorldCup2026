@@ -339,9 +339,9 @@ function renderHindsightBest() {
   const el = document.getElementById('data-hindsight');
   if (!el) return;
 
-  const { teams, score, cost } = bestHindsightEntry(_matches);
+  const { entries, score } = bestHindsightEntry(_matches);
 
-  if (!teams.length) {
+  if (!entries.length) {
     el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet.</p>';
     return;
   }
@@ -351,7 +351,12 @@ function renderHindsightBest() {
     .map(p => p.teams.reduce((s, t) => s + teamStats(t, _matches).total, 0))
     .reduce((max, s) => Math.max(max, s), 0);
 
-  const rows = teams
+  const diff      = score - leaderScore;
+  const vsLeader  = leaderScore > 0
+    ? `vs actual leader's <strong>${leaderScore} pts</strong> — ${diff > 0 ? `<span style="color:var(--green)">+${diff} ahead</span>` : diff === 0 ? 'exactly matched' : `<span style="color:var(--muted)">${diff} behind</span>`}`
+    : '';
+
+  const buildTeamRows = teams => teams
     .slice()
     .sort((a, b) => teamStats(b, _matches).total - teamStats(a, _matches).total)
     .map(t => {
@@ -368,17 +373,25 @@ function renderHindsightBest() {
       </div>`;
     }).join('');
 
-  const diff = score - leaderScore;
-  const vsLeader = leaderScore > 0
-    ? `vs actual leader's <strong>${leaderScore} pts</strong> — ${diff > 0 ? `<span style="color:var(--green)">+${diff} ahead</span>` : diff === 0 ? 'exactly matched' : `<span style="color:var(--muted)">${diff} behind</span>`}`
+  const entriesHtml = entries.map(({ teams, cost }, idx) => {
+    const label = entries.length > 1
+      ? `<div class="hindsight-entry-label">Option ${idx + 1}</div>`
+      : '';
+    return `${label}
+      <div class="hindsight-teams">${buildTeamRows(teams)}</div>
+      <div class="hindsight-footer">
+        <span>Budget: <strong>${cost} / 100 credits</strong></span>
+        <span class="hindsight-total">${score} pts</span>
+      </div>`;
+  }).join('<hr class="hindsight-divider">');
+
+  const tiedNote = entries.length > 1
+    ? `<p class="rules-note" style="margin-bottom:0.6rem"><strong>${entries.length} combinations</strong> all scored ${score} pts.</p>`
     : '';
 
   el.innerHTML = `
-    <div class="hindsight-teams">${rows}</div>
-    <div class="hindsight-footer">
-      <span>Budget: <strong>${cost} / 100 credits</strong></span>
-      <span class="hindsight-total">${score} pts</span>
-    </div>
+    ${tiedNote}
+    ${entriesHtml}
     ${vsLeader ? `<p class="rules-note" style="margin-top:0.6rem">${vsLeader}</p>` : ''}`;
 }
 

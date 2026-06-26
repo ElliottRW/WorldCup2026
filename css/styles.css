@@ -667,6 +667,8 @@ tbody tr:hover td { background: #f8f9ff; }
   color: var(--muted);
 }
 .hindsight-total { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+.hindsight-entry-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+.hindsight-divider { border: none; border-top: 1px solid var(--border); margin: 0.85rem 0; }
 
 /* ── RULES TAB ───────────────────────────────────────────────────────────────── */
 .rules-section { margin-bottom: 1.75rem; }
