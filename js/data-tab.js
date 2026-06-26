@@ -23,6 +23,7 @@ function renderDataTab() {
   renderRemainingPotential();
   renderPtsPerCreditParticipants();
   renderBestValueTeams();
+  renderHindsightBest();
   renderMostPickedTeams();
   renderMatchDayHistory();
   renderRoundByRound();
@@ -330,6 +331,55 @@ function renderBestValueTeams() {
       </tr></thead>
       <tbody>${tableRows}</tbody>
     </table>`;
+}
+
+// ── HINDSIGHT BEST ENTRY ──────────────────────────────────────────────────────
+
+function renderHindsightBest() {
+  const el = document.getElementById('data-hindsight');
+  if (!el) return;
+
+  const { teams, score, cost } = bestHindsightEntry(_matches);
+
+  if (!teams.length) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No data yet.</p>';
+    return;
+  }
+
+  const active      = activeTeams(_matches);
+  const leaderScore = (_participants || [])
+    .map(p => p.teams.reduce((s, t) => s + teamStats(t, _matches).total, 0))
+    .reduce((max, s) => Math.max(max, s), 0);
+
+  const rows = teams
+    .slice()
+    .sort((a, b) => teamStats(b, _matches).total - teamStats(a, _matches).total)
+    .map(t => {
+      const pts  = teamStats(t, _matches).total;
+      const cost = TEAM_DATA[t].cost;
+      const pill = active.has(t)
+        ? `<span class="still-active">Active</span>`
+        : `<span class="eliminated">Out</span>`;
+      return `<div class="hindsight-row">
+        <span class="hindsight-team">${esc(t)}</span>
+        <span class="cost-chip">${cost}</span>
+        <span class="hindsight-pts">${pts} pts</span>
+        ${pill}
+      </div>`;
+    }).join('');
+
+  const diff = score - leaderScore;
+  const vsLeader = leaderScore > 0
+    ? `vs actual leader's <strong>${leaderScore} pts</strong> — ${diff > 0 ? `<span style="color:var(--green)">+${diff} ahead</span>` : diff === 0 ? 'exactly matched' : `<span style="color:var(--muted)">${diff} behind</span>`}`
+    : '';
+
+  el.innerHTML = `
+    <div class="hindsight-teams">${rows}</div>
+    <div class="hindsight-footer">
+      <span>Budget: <strong>${cost} / 100 credits</strong></span>
+      <span class="hindsight-total">${score} pts</span>
+    </div>
+    ${vsLeader ? `<p class="rules-note" style="margin-top:0.6rem">${vsLeader}</p>` : ''}`;
 }
 
 // ── MOST PICKED TEAMS ─────────────────────────────────────────────────────────

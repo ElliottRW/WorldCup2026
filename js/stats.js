@@ -191,6 +191,45 @@ function teamRemainingPts(team, matches) {
 }
 
 /**
+ * Brute-force search for the best possible 4-team entry within 100 credits,
+ * based on points scored so far. C(48,4) = 194,580 combinations — fast enough.
+ * Returns { teams, score, cost }.
+ */
+function bestHindsightEntry(matches) {
+  const names  = Object.keys(TEAM_DATA);
+  const n      = names.length;
+  const scores = names.map(t => teamStats(t, matches).total);
+  const costs  = names.map(t => TEAM_DATA[t].cost);
+
+  let bestScore = -1, bestTeams = [], bestCost = 0;
+
+  for (let i = 0; i < n - 3; i++) {
+    for (let j = i + 1; j < n - 2; j++) {
+      const cij = costs[i] + costs[j];
+      if (cij > 100) continue;
+      const sij = scores[i] + scores[j];
+      for (let k = j + 1; k < n - 1; k++) {
+        const cijk = cij + costs[k];
+        if (cijk > 100) continue;
+        const sijk = sij + scores[k];
+        for (let l = k + 1; l < n; l++) {
+          const c4 = cijk + costs[l];
+          if (c4 > 100) continue;
+          const s4 = sijk + scores[l];
+          if (s4 > bestScore) {
+            bestScore = s4;
+            bestTeams = [names[i], names[j], names[k], names[l]];
+            bestCost  = c4;
+          }
+        }
+      }
+    }
+  }
+
+  return { teams: bestTeams, score: bestScore, cost: bestCost };
+}
+
+/**
  * For a participant, returns { current, remaining, max } where:
  *  - current   = points already on the board
  *  - remaining = best-case additional points assuming active teams finish 1st/2nd/3rd/4th

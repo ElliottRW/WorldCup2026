@@ -643,6 +643,31 @@ tbody tr:hover td { background: #f8f9ff; }
 .filter-option:hover { background: var(--bg); }
 .filter-option input { accent-color: var(--primary); flex-shrink: 0; }
 
+/* ── HINDSIGHT BEST ENTRY ────────────────────────────────────────────────────── */
+.hindsight-teams { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.85rem; }
+.hindsight-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  background: var(--bg);
+  border-radius: 6px;
+  font-size: 0.88rem;
+}
+.hindsight-team { font-weight: 600; }
+.hindsight-pts  { white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--primary); }
+.hindsight-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.hindsight-total { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+
 /* ── RULES TAB ───────────────────────────────────────────────────────────────── */
 .rules-section { margin-bottom: 1.75rem; }
 .rules-heading {
