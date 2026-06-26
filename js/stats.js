@@ -192,11 +192,18 @@ function teamRemainingPts(team, matches) {
 /**
  * For a participant, returns { current, remaining, max } where:
  *  - current   = points already on the board
- *  - remaining = theoretical maximum additional points (every remaining match a win)
+ *  - remaining = best-case additional points assuming active teams finish 1st/2nd/3rd/4th
  *  - max       = current + remaining
+ *
+ * Penalties come from the max-scores table (champion 95, runner-up 85, 3rd 75, 4th 70):
+ *   1st: −0  |  2nd: −10  |  3rd: −20  |  4th: −25
  */
 function participantMaxPossible(p, matches) {
   const current   = p.teams.reduce((sum, t) => sum + teamStats(t, matches).total, 0);
-  const remaining = p.teams.reduce((sum, t) => sum + teamRemainingPts(t, matches), 0);
+  const PENALTIES = [0, 10, 20, 25];
+  const remaining = p.teams
+    .map(t => teamRemainingPts(t, matches))
+    .sort((a, b) => b - a)
+    .reduce((sum, r, i) => sum + Math.max(0, r - (PENALTIES[i] ?? 25)), 0);
   return { current, remaining, max: current + remaining };
 }

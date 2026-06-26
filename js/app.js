@@ -14,6 +14,7 @@ function renderAll() {
   renderMatches();
   renderDataTab();
   renderPlClubs();
+  renderRules();
 }
 
 // ── TAB NAVIGATION ────────────────────────────────────────────────────────────

@@ -643,6 +643,57 @@ tbody tr:hover td { background: #f8f9ff; }
 .filter-option:hover { background: var(--bg); }
 .filter-option input { accent-color: var(--primary); flex-shrink: 0; }
 
+/* ── RULES TAB ───────────────────────────────────────────────────────────────── */
+.rules-section { margin-bottom: 1.75rem; }
+.rules-heading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+.rules-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+.rules-table th {
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.rules-table td {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.rules-table tbody tr:last-child td { border-bottom: none; }
+.rules-table tbody tr:hover { background: var(--bg); }
+.rules-table th:last-child,
+.rules-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+}
+.rules-table .pts {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--primary-mid);
+}
+.rules-table .pts.muted { color: var(--muted); font-weight: 400; }
+.rules-table tr.rules-row-sep td { border-top: 2px solid var(--border); }
+.rules-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   header { padding: 1rem; }

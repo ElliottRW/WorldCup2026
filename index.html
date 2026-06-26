@@ -27,6 +27,7 @@
   <button class="nav-btn"        data-tab="matches">⚽ Matches</button>
   <button class="nav-btn"        data-tab="data">📈 Stats</button>
   <button class="nav-btn"        data-tab="pl-clubs">PL Clubs</button>
+  <button class="nav-btn"        data-tab="rules">📋 Rules</button>
 </nav>
 
 <main>
@@ -74,6 +75,9 @@
     </div>
   </div>
 
+  <!-- Rules tab -->
+  <div id="tab-rules" class="tab"></div>
+
   <!-- PL Clubs tab -->
   <div id="tab-pl-clubs" class="tab">
     <div id="pl-clubs-body"></div>
@@ -92,7 +96,7 @@
 
     <div class="card">
       <div class="card-title">🚀 Remaining Potential</div>
-      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Max total points each person can still reach — assumes every remaining match is a win. Dark = earned, light = potential.</p>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Max total points each person can still reach — assumes active teams finish 1st, 2nd, 3rd and 4th respectively. Dark = earned, light = potential.</p>
       <div id="data-potential"></div>
     </div>
 
@@ -138,6 +142,7 @@
 <script src="js/matches.js"></script>
 <script src="js/data-tab.js"></script>
 <script src="js/pl-clubs.js"></script>
+<script src="js/rules.js"></script>
 <script src="js/app.js"></script>
 
 </body>
