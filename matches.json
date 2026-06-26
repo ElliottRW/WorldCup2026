@@ -1570,7 +1570,7 @@
   {
     "id": "760471",
     "utcDate": "2026-06-25T23:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_F",
@@ -1583,11 +1583,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "DRAW",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -1598,7 +1598,7 @@
   {
     "id": "760472",
     "utcDate": "2026-06-25T23:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_F",
@@ -1611,11 +1611,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 3
       },
       "penalties": {
         "home": null,
@@ -2055,8 +2055,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Japan",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     },
     "score": {
       "winner": null,
@@ -2107,8 +2107,8 @@
     "stage": "LAST_32",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Netherlands",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     },
     "awayTeam": {
       "name": "Morocco",
@@ -2279,8 +2279,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Bosnia-Herzegovina",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png"
     },
     "score": {
       "winner": null,
