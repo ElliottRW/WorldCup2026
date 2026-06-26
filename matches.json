@@ -1626,7 +1626,7 @@
   {
     "id": "760469",
     "utcDate": "2026-06-26T02:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_D",
@@ -1639,11 +1639,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "DRAW",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "penalties": {
         "home": null,
@@ -1654,7 +1654,7 @@
   {
     "id": "760470",
     "utcDate": "2026-06-26T02:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_D",
@@ -1667,11 +1667,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       },
       "penalties": {
         "home": null,
@@ -2387,8 +2387,8 @@
     "stage": "LAST_32",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Australia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
     },
     "awayTeam": {
       "name": null,
