@@ -351,48 +351,66 @@ function renderHindsightBest() {
     .map(p => p.teams.reduce((s, t) => s + teamStats(t, _matches).total, 0))
     .reduce((max, s) => Math.max(max, s), 0);
 
-  const diff      = score - leaderScore;
-  const vsLeader  = leaderScore > 0
+  const diff     = score - leaderScore;
+  const vsLeader = leaderScore > 0
     ? `vs actual leader's <strong>${leaderScore} pts</strong> — ${diff > 0 ? `<span style="color:var(--green)">+${diff} ahead</span>` : diff === 0 ? 'exactly matched' : `<span style="color:var(--muted)">${diff} behind</span>`}`
     : '';
 
-  const buildTeamRows = teams => teams
+  // Sort all entries cheapest first
+  const sorted = entries.slice().sort((a, b) => a.cost - b.cost);
+
+  const buildTeamRows = ({ teams, cost }) => teams
     .slice()
     .sort((a, b) => teamStats(b, _matches).total - teamStats(a, _matches).total)
     .map(t => {
       const pts  = teamStats(t, _matches).total;
-      const cost = TEAM_DATA[t].cost;
       const pill = active.has(t)
         ? `<span class="still-active">Active</span>`
         : `<span class="eliminated">Out</span>`;
       return `<div class="hindsight-row">
         <span class="hindsight-team">${esc(t)}</span>
-        <span class="cost-chip">${cost}</span>
+        <span class="cost-chip">${TEAM_DATA[t].cost}</span>
         <span class="hindsight-pts">${pts} pts</span>
         ${pill}
       </div>`;
-    }).join('');
+    }).join('') + `<div class="hindsight-footer">
+      <span>Budget: <strong>${cost} / 100 credits</strong></span>
+      <span class="hindsight-total">${score} pts</span>
+    </div>`;
 
-  const entriesHtml = entries.map(({ teams, cost }, idx) => {
-    const label = entries.length > 1
-      ? `<div class="hindsight-entry-label">Option ${idx + 1}</div>`
-      : '';
-    return `${label}
-      <div class="hindsight-teams">${buildTeamRows(teams)}</div>
-      <div class="hindsight-footer">
-        <span>Budget: <strong>${cost} / 100 credits</strong></span>
-        <span class="hindsight-total">${score} pts</span>
+  let html;
+  if (sorted.length === 1) {
+    // Single best — show directly, no dropdown needed
+    html = `<div class="hindsight-teams">${buildTeamRows(sorted[0])}</div>`;
+  } else {
+    // Multiple ties — collapsible list sorted cheapest first
+    const optionsHtml = sorted.map((entry, idx) =>
+      `<div class="hindsight-option">
+        <div class="hindsight-option-label">Option ${idx + 1} · ${entry.cost} credits</div>
+        <div class="hindsight-teams">${buildTeamRows(entry)}</div>
+      </div>`
+    ).join('<hr class="hindsight-divider">');
+
+    html = `
+      <button class="hindsight-toggle" id="hindsight-toggle">
+        <span><strong>${sorted.length} combinations</strong> all score ${score} pts — cheapest uses ${sorted[0].cost} credits</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="hindsight-dropdown" id="hindsight-dropdown">
+        ${optionsHtml}
       </div>`;
-  }).join('<hr class="hindsight-divider">');
+  }
 
-  const tiedNote = entries.length > 1
-    ? `<p class="rules-note" style="margin-bottom:0.6rem"><strong>${entries.length} combinations</strong> all scored ${score} pts.</p>`
-    : '';
+  el.innerHTML = `${html}${vsLeader ? `<p class="rules-note" style="margin-top:0.75rem">${vsLeader}</p>` : ''}`;
 
-  el.innerHTML = `
-    ${tiedNote}
-    ${entriesHtml}
-    ${vsLeader ? `<p class="rules-note" style="margin-top:0.6rem">${vsLeader}</p>` : ''}`;
+  const toggle = el.querySelector('#hindsight-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const drop     = el.querySelector('#hindsight-dropdown');
+      const isOpen   = drop.classList.toggle('open');
+      toggle.querySelector('.chevron').textContent = isOpen ? '▴' : '▾';
+    });
+  }
 }
 
 // ── MOST PICKED TEAMS ─────────────────────────────────────────────────────────

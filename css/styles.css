@@ -667,8 +667,18 @@ tbody tr:hover td { background: #f8f9ff; }
   color: var(--muted);
 }
 .hindsight-total { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
-.hindsight-entry-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
 .hindsight-divider { border: none; border-top: 1px solid var(--border); margin: 0.85rem 0; }
+.hindsight-toggle {
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; padding: 0.65rem 0.75rem; margin-bottom: 0.75rem;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  font-size: 0.85rem; color: var(--text); cursor: pointer; text-align: left;
+}
+.hindsight-toggle .chevron { font-size: 0.75rem; color: var(--muted); flex-shrink: 0; margin-left: 0.5rem; }
+.hindsight-dropdown { display: none; }
+.hindsight-dropdown.open { display: block; }
+.hindsight-option { padding: 0.1rem 0; }
+.hindsight-option-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
 
 /* ── RULES TAB ───────────────────────────────────────────────────────────────── */
 .rules-section { margin-bottom: 1.75rem; }
