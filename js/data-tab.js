@@ -378,27 +378,26 @@ function renderHindsightBest() {
       <span class="hindsight-total">${score} pts</span>
     </div>`;
 
+  const buildOption = (entry, idx) =>
+    `<div class="hindsight-option">
+      ${idx > 0 ? '<hr class="hindsight-divider">' : ''}
+      ${sorted.length > 1 ? `<div class="hindsight-option-label">Option ${idx + 1} · ${entry.cost} credits</div>` : ''}
+      <div class="hindsight-teams">${buildTeamRows(entry)}</div>
+    </div>`;
+
   let html;
   if (sorted.length === 1) {
-    // Single best — show directly, no dropdown needed
-    html = `<div class="hindsight-teams">${buildTeamRows(sorted[0])}</div>`;
+    html = buildOption(sorted[0], 0);
   } else {
-    // Multiple ties — collapsible list sorted cheapest first
-    const optionsHtml = sorted.map((entry, idx) =>
-      `<div class="hindsight-option">
-        <div class="hindsight-option-label">Option ${idx + 1} · ${entry.cost} credits</div>
-        <div class="hindsight-teams">${buildTeamRows(entry)}</div>
-      </div>`
-    ).join('<hr class="hindsight-divider">');
-
+    // Show cheapest option always; rest hidden in a dropdown
+    const rest = sorted.slice(1).map((entry, i) => buildOption(entry, i + 1)).join('');
     html = `
+      ${buildOption(sorted[0], 0)}
       <button class="hindsight-toggle" id="hindsight-toggle">
-        <span><strong>${sorted.length} combinations</strong> all score ${score} pts — cheapest uses ${sorted[0].cost} credits</span>
+        <span>Show ${sorted.length - 1} more tied option${sorted.length - 1 > 1 ? 's' : ''}</span>
         <span class="chevron">▾</span>
       </button>
-      <div class="hindsight-dropdown" id="hindsight-dropdown">
-        ${optionsHtml}
-      </div>`;
+      <div class="hindsight-dropdown" id="hindsight-dropdown">${rest}</div>`;
   }
 
   el.innerHTML = `${html}${vsLeader ? `<p class="rules-note" style="margin-top:0.75rem">${vsLeader}</p>` : ''}`;
