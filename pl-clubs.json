@@ -213,6 +213,95 @@
       }
     ]
   },
+  "Brighton & Hove Albion": {
+    "id": "331",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+    "players": [
+      {
+        "name": "Maxim De Cuyper",
+        "country": "Belgium",
+        "fd_country": "Belgium",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
+        "position": "D"
+      },
+      {
+        "name": "Pascal Gross",
+        "country": "Germany",
+        "fd_country": "Germany",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+        "position": "M"
+      },
+      {
+        "name": "Bart Verbruggen",
+        "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+        "position": "G"
+      },
+      {
+        "name": "Mats Wieffer",
+        "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+        "position": "M"
+      },
+      {
+        "name": "Diego G\u00f3mez",
+        "country": "Paraguay",
+        "fd_country": "Paraguay",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
+        "position": "M"
+      },
+      {
+        "name": "Yasin Ayari",
+        "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+        "position": "M"
+      },
+      {
+        "name": "Ferdi Kadioglu",
+        "country": "T\u00fcrkiye",
+        "fd_country": "Turkey",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
+        "position": "D"
+      }
+    ]
+  },
+  "Leeds United": {
+    "id": "357",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
+    "players": [
+      {
+        "name": "Ao Tanaka",
+        "country": "Japan",
+        "fd_country": "Japan",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
+        "position": "M"
+      },
+      {
+        "name": "Gabriel Gudmundsson",
+        "country": "Sweden",
+        "fd_country": "Sweden",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+        "position": "D"
+      },
+      {
+        "name": "Noah Okafor",
+        "country": "Switzerland",
+        "fd_country": "Switzerland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
+        "position": "F"
+      },
+      {
+        "name": "Brenden Aaronson",
+        "country": "United States",
+        "fd_country": "United States",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+        "position": "M"
+      }
+    ]
+  },
   "Liverpool": {
     "id": "364",
     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
@@ -361,6 +450,75 @@
         "country": "Uruguay",
         "fd_country": "Uruguay",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
+        "position": "M"
+      }
+    ]
+  },
+  "Sunderland": {
+    "id": "366",
+    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
+    "players": [
+      {
+        "name": "Noah Sadiki",
+        "country": "Congo DR",
+        "fd_country": "Congo DR",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
+        "position": "M"
+      },
+      {
+        "name": "Nilson Angulo",
+        "country": "Ecuador",
+        "fd_country": "Ecuador",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
+        "position": "M"
+      },
+      {
+        "name": "Wilson Isidor",
+        "country": "Haiti",
+        "fd_country": "Haiti",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+        "position": "F"
+      },
+      {
+        "name": "Chemsdine Talbi",
+        "country": "Morocco",
+        "fd_country": "Morocco",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
+        "position": "F"
+      },
+      {
+        "name": "Robin Roefs",
+        "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+        "position": "G"
+      },
+      {
+        "name": "Brian Brobbey",
+        "country": "Netherlands",
+        "fd_country": "Netherlands",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+        "position": "F"
+      },
+      {
+        "name": "Omar Alderete",
+        "country": "Paraguay",
+        "fd_country": "Paraguay",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
+        "position": "D"
+      },
+      {
+        "name": "Habib Diarra",
+        "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
+        "position": "M"
+      },
+      {
+        "name": "Granit Xhaka",
+        "country": "Switzerland",
+        "fd_country": "Switzerland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "position": "M"
       }
     ]
