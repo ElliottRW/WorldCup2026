@@ -1850,7 +1850,7 @@
   {
     "id": "760480",
     "utcDate": "2026-06-27T21:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_L",
