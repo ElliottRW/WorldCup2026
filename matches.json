@@ -1738,7 +1738,7 @@
   {
     "id": "760478",
     "utcDate": "2026-06-27T00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -1751,11 +1751,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "DRAW",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "penalties": {
         "home": null,
@@ -1766,7 +1766,7 @@
   {
     "id": "760479",
     "utcDate": "2026-06-27T00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -1779,11 +1779,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -2083,8 +2083,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Paraguay",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/par.png"
     },
     "score": {
       "winner": null,
@@ -2167,8 +2167,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Sweden",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     "score": {
       "winner": null,
@@ -2303,8 +2303,8 @@
     "stage": "LAST_32",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Spain",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     "awayTeam": {
       "name": null,
@@ -2419,8 +2419,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Cape Verde",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cpv.png"
     },
     "score": {
       "winner": null,
