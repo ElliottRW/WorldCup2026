@@ -1794,7 +1794,7 @@
   {
     "id": "760476",
     "utcDate": "2026-06-27T03:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_G",
@@ -1807,11 +1807,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "DRAW",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -1822,7 +1822,7 @@
   {
     "id": "760477",
     "utcDate": "2026-06-27T03:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_G",
@@ -1835,11 +1835,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 5
       },
       "penalties": {
         "home": null,
@@ -2247,8 +2247,8 @@
     "stage": "LAST_32",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Belgium",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     },
     "awayTeam": {
       "name": null,
@@ -2391,8 +2391,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Egypt",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png"
     },
     "score": {
       "winner": null,
