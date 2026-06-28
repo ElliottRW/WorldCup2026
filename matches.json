@@ -1850,7 +1850,7 @@
   {
     "id": "760480",
     "utcDate": "2026-06-27T21:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_L",
@@ -1863,11 +1863,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -1878,7 +1878,7 @@
   {
     "id": "760485",
     "utcDate": "2026-06-27T21:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_L",
@@ -1891,11 +1891,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       },
       "penalties": {
         "home": null,
@@ -1934,7 +1934,7 @@
   {
     "id": "760482",
     "utcDate": "2026-06-27T23:30Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_K",
@@ -2195,8 +2195,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Ecuador",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png"
     },
     "score": {
       "winner": null,
@@ -2219,8 +2219,8 @@
     "stage": "LAST_32",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "England",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     "awayTeam": {
       "name": null,
@@ -2335,8 +2335,8 @@
       "crest": ""
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Croatia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png"
     },
     "score": {
       "winner": null,
@@ -2447,8 +2447,8 @@
       "crest": ""
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Ghana",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png"
     },
     "score": {
       "winner": null,
