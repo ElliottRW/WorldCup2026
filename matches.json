@@ -2018,7 +2018,7 @@
   {
     "id": "760486",
     "utcDate": "2026-06-28T19:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2031,11 +2031,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -2471,8 +2471,8 @@
     "stage": "LAST_16",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Canada",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
     },
     "awayTeam": {
       "name": null,
