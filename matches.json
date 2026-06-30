@@ -2130,7 +2130,7 @@
   {
     "id": "760490",
     "utcDate": "2026-06-30T17:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2143,11 +2143,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 2
       },
       "penalties": {
         "home": null,
@@ -2531,8 +2531,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Norway",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     "score": {
       "winner": null,
