@@ -123,9 +123,11 @@ function buildMatchRows(matches) {
     let scoreNote = '';
     if (m.status === 'FINISHED') {
       if (m.score?.duration === 'PENALTY_SHOOTOUT') {
-        const ph = m.score?.penalties?.home ?? '?';
-        const pa = m.score?.penalties?.away ?? '?';
-        scoreNote = `<small class="score-note">${ph}–${pa} pens</small>`;
+        const ph = m.score?.penalties?.home;
+        const pa = m.score?.penalties?.away;
+        scoreNote = (ph != null && pa != null)
+          ? `<small class="score-note">${ph}–${pa} pens</small>`
+          : `<small class="score-note">pens</small>`;
       } else if (m.score?.duration === 'EXTRA_TIME') {
         scoreNote = `<small class="score-note">aet</small>`;
       }
