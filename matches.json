@@ -2074,7 +2074,7 @@
   {
     "id": "760489",
     "utcDate": "2026-06-29T20:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2087,11 +2087,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/par.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "PENALTY_SHOOTOUT",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -2499,8 +2499,8 @@
     "stage": "LAST_16",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Paraguay",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/par.png"
     },
     "awayTeam": {
       "name": null,
