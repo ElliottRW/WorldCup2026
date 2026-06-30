@@ -151,19 +151,16 @@ jobs:
                       winner = 'DRAW'
 
               # Duration / penalty shootout details for the matches tab display
-              fmt = comp.get('format', {})
               st  = e['status']
               if not finished:
                   duration = None
                   pen_home = pen_away = None
               elif st['type']['name'] == 'STATUS_FINAL_PEN':
                   duration = 'PENALTY_SHOOTOUT'
-                  # ESPN encodes shootout score in the status detail, e.g. "5-4 pen"
-                  # Fall back to None if not parseable
+                  # ESPN provides shootout score in competitor.shootoutScore
                   try:
-                      detail = st['type'].get('detail', '')
-                      parts  = detail.split(' ')[0].split('-')
-                      pen_home, pen_away = int(parts[0]), int(parts[1])
+                      pen_home = int(home_c['shootoutScore']) if home_c and home_c.get('shootoutScore') is not None else None
+                      pen_away = int(away_c['shootoutScore']) if away_c and away_c.get('shootoutScore') is not None else None
                   except:
                       pen_home = pen_away = None
               elif st['type']['name'] == 'STATUS_FINAL_OVERTIME':

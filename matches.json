@@ -2094,8 +2094,8 @@
         "away": 1
       },
       "penalties": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 4
       }
     }
   },
@@ -2122,8 +2122,8 @@
         "away": 1
       },
       "penalties": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 3
       }
     }
   },
