@@ -24,6 +24,8 @@ function renderDataTab() {
   renderPtsPerCreditParticipants();
   renderBestValueTeams();
   renderHindsightBest();
+  renderCivilWar();
+  renderEliminated();
   renderMostPickedTeams();
   renderMatchDayHistory();
   renderRoundByRound();
@@ -586,4 +588,159 @@ function renderRoundByRound() {
       btn.nextElementSibling.classList.toggle('open', open);
     });
   });
+}
+
+// ── CIVIL WAR ─────────────────────────────────────────────────────────────────
+
+function renderCivilWar() {
+  const el = document.getElementById('data-civil-war');
+  if (!el) return;
+
+  const ps = viewParticipants();
+  const rows = [];
+
+  for (const m of _matches) {
+    const home = getDisplayName(m.homeTeam?.name);
+    const away = getDisplayName(m.awayTeam?.name);
+    if (!home || !away) continue;
+
+    for (const p of ps) {
+      if (!p.teams.includes(home) || !p.teams.includes(away)) continue;
+
+      const stageLabel = MATCH_STAGE_LABELS[m.stage] || m.stage;
+      const date = new Date(m.utcDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+
+      let result = '';
+      if (m.status === 'FINISHED' && m.score?.winner) {
+        const hg = m.score.fullTime?.home ?? '?';
+        const ag = m.score.fullTime?.away ?? '?';
+        const winner = m.score.winner === 'HOME_TEAM' ? home
+                     : m.score.winner === 'AWAY_TEAM' ? away : null;
+        const note = m.score.duration === 'PENALTY_SHOOTOUT'
+          ? (m.score.penalties?.home != null ? ` (${m.score.penalties.home}–${m.score.penalties.away} pens)` : ' (pens)')
+          : m.score.duration === 'EXTRA_TIME' ? ' (aet)' : '';
+        result = winner
+          ? `${hg}–${ag}${note} · <strong>${esc(winner)}</strong> won`
+          : `${hg}–${ag} · Draw`;
+      } else if (m.status === 'IN_PLAY' || m.status === 'PAUSED') {
+        result = '🔴 LIVE';
+      } else {
+        result = `upcoming · ${date}`;
+      }
+
+      rows.push({ p, home, away, stageLabel, result, utcDate: m.utcDate });
+    }
+  }
+
+  if (!rows.length) {
+    el.innerHTML = `<p style="color:var(--muted);font-size:0.85rem">No civil war fixtures — nobody holds both sides of the same match.</p>`;
+    return;
+  }
+
+  rows.sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
+
+  el.innerHTML = rows.map(r => `
+    <div class="civil-war-row">
+      <div class="civil-war-participant">${nameWithTip(r.p)}</div>
+      <div class="civil-war-fixture">
+        <span class="civil-war-teams">${esc(r.home)} <span class="vs">vs</span> ${esc(r.away)}</span>
+        <span class="civil-war-stage">${esc(r.stageLabel)} · ${r.result}</span>
+      </div>
+    </div>`).join('');
+}
+
+// ── ELIMINATED ────────────────────────────────────────────────────────────────
+
+function renderEliminated() {
+  const el = document.getElementById('data-eliminated');
+  if (!el) return;
+
+  function teamEliminatedInfo(team) {
+    const mine = _matches.filter(m =>
+      getDisplayName(m.homeTeam?.name) === team ||
+      getDisplayName(m.awayTeam?.name) === team
+    );
+
+    // Upcoming knockout fixture → still alive
+    if (mine.some(m => m.stage !== 'GROUP_STAGE' && ['TIMED', 'SCHEDULED'].includes(m.status)))
+      return null;
+
+    // Check finished knockout matches — most recent first
+    const finishedKO = mine
+      .filter(m => m.stage !== 'GROUP_STAGE' && m.status === 'FINISHED')
+      .sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
+
+    if (finishedKO.length) {
+      const last = finishedKO[0];
+      const w = last.score?.winner;
+      if (w && w !== 'DRAW') {
+        const isHome = getDisplayName(last.homeTeam?.name) === team;
+        const won = (w === 'HOME_TEAM') === isHome;
+        if (!won) return { date: last.utcDate, round: MATCH_STAGE_LABELS[last.stage] || last.stage };
+        return null; // won last KO match — still in
+      }
+    }
+
+    // Never reached a knockout — out at group stage
+    const groupDone = mine.filter(m => m.stage === 'GROUP_STAGE' && m.status === 'FINISHED');
+    if (groupDone.length >= 3) {
+      const lastGroup = groupDone.sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate))[0];
+      return { date: lastGroup.utcDate, round: 'Group Stage' };
+    }
+
+    return null;
+  }
+
+  const ps = viewParticipants();
+  const entries = ps.map(p => {
+    const teamInfos = p.teams.map(t => ({ team: t, info: teamEliminatedInfo(t) }));
+    const allOut = teamInfos.every(td => td.info !== null);
+    const lastOut = allOut
+      ? teamInfos.reduce((l, td) => new Date(td.info.date) > new Date(l.info.date) ? td : l)
+      : null;
+    return { p, teamInfos, allOut, lastOut };
+  });
+
+  const currScore = p => p.teams.reduce((s, t) => s + teamStats(t, _matches).total, 0);
+  entries.sort((a, b) => {
+    if (a.allOut && b.allOut) return new Date(a.lastOut.info.date) - new Date(b.lastOut.info.date);
+    if (a.allOut) return -1;
+    if (b.allOut) return 1;
+    return currScore(b.p) - currScore(a.p);
+  });
+
+  const fmt = iso => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+
+  const renderRow = (e, idx) => {
+    const pills = e.teamInfos.map(td =>
+      `<span class="elim-team-pill ${td.info ? 'out' : 'alive'}">${esc(td.team)}</span>`
+    ).join('');
+
+    const status = e.allOut
+      ? `<span class="elim-out">Out — last team (${esc(e.lastOut.team)}) knocked out in <strong>${esc(e.lastOut.info.round)}</strong> on ${fmt(e.lastOut.info.date)}</span>`
+      : (() => {
+          const n = e.teamInfos.filter(td => !td.info).length;
+          return `<span class="elim-alive">${n} team${n > 1 ? 's' : ''} still in</span>`;
+        })();
+
+    return `<div class="elim-row">
+      <span class="elim-rank">${idx + 1}</span>
+      <div class="elim-body">
+        <div class="elim-name">${nameWithTip(e.p)}</div>
+        <div class="elim-teams">${pills}</div>
+        <div class="elim-status">${status}</div>
+      </div>
+    </div>`;
+  };
+
+  const eliminated = entries.filter(e => e.allOut);
+  const stillIn    = entries.filter(e => !e.allOut);
+
+  let html = eliminated.map((e, i) => renderRow(e, i)).join('');
+  if (stillIn.length) {
+    if (eliminated.length) html += `<div class="elim-divider">Still in the tournament</div>`;
+    html += stillIn.map((e, i) => renderRow(e, eliminated.length + i)).join('');
+  }
+
+  el.innerHTML = html || `<p style="color:var(--muted);font-size:0.85rem">No eliminations yet.</p>`;
 }

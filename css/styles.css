@@ -680,6 +680,42 @@ tbody tr:hover td { background: #f8f9ff; }
 .hindsight-option { padding: 0.1rem 0; }
 .hindsight-option-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
 
+/* ── CIVIL WAR ───────────────────────────────────────────────────────────────── */
+.civil-war-row {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+}
+.civil-war-row:last-child { border-bottom: none; }
+.civil-war-participant { font-weight: 700; font-size: 0.88rem; min-width: 7rem; flex-shrink: 0; padding-top: 0.1rem; }
+.civil-war-fixture { display: flex; flex-direction: column; gap: 0.2rem; }
+.civil-war-teams { font-size: 0.9rem; font-weight: 600; }
+.civil-war-teams .vs { color: var(--muted); font-weight: 400; font-size: 0.78rem; margin: 0 0.2rem; }
+.civil-war-stage { font-size: 0.78rem; color: var(--muted); }
+
+/* ── ELIMINATED ──────────────────────────────────────────────────────────────── */
+.elim-row {
+  display: flex; align-items: flex-start; gap: 0.55rem;
+  padding: 0.55rem 0; border-bottom: 1px solid var(--border);
+}
+.elim-row:last-child { border-bottom: none; }
+.elim-rank { font-size: 0.75rem; color: var(--muted); min-width: 1.4rem; text-align: right; flex-shrink: 0; padding-top: 0.2rem; }
+.elim-body { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; min-width: 0; }
+.elim-name { font-weight: 700; font-size: 0.88rem; }
+.elim-teams { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.elim-team-pill {
+  font-size: 0.72rem; font-weight: 600; padding: 0.15rem 0.45rem;
+  border-radius: 10px; white-space: nowrap;
+}
+.elim-team-pill.out   { background: var(--bg); color: var(--muted); text-decoration: line-through; }
+.elim-team-pill.alive { background: #d4edda; color: #1a5c2a; }
+.elim-status { font-size: 0.78rem; }
+.elim-out   { color: var(--muted); }
+.elim-alive { color: var(--green); font-weight: 600; }
+.elim-divider {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--muted); padding: 0.75rem 0 0.4rem; border-top: 1px solid var(--border); margin-top: 0.25rem;
+}
+
 /* ── RULES TAB ───────────────────────────────────────────────────────────────── */
 .rules-section { margin-bottom: 1.75rem; }
 .rules-heading {
