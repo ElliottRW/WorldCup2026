@@ -727,12 +727,15 @@ function renderEliminated() {
     return { p, teamInfos, allOut, lastOut };
   });
 
-  const currScore = p => p.teams.reduce((s, t) => s + teamStats(t, _matches).total, 0);
+  const teamsAlive  = e => e.teamInfos.filter(td => !td.info).length;
+  const currScore   = e => e.p.teams.reduce((s, t) => s + teamStats(t, _matches).total, 0);
+
+  // Sort: most teams still in first; ties broken by current score; fully out last (by date of last elimination)
   entries.sort((a, b) => {
-    if (a.allOut && b.allOut) return new Date(a.lastOut.info.date) - new Date(b.lastOut.info.date);
-    if (a.allOut) return -1;
-    if (b.allOut) return 1;
-    return currScore(b.p) - currScore(a.p);
+    const aAlive = teamsAlive(a), bAlive = teamsAlive(b);
+    if (aAlive !== bAlive) return bAlive - aAlive;
+    if (aAlive === 0) return new Date(a.lastOut.info.date) - new Date(b.lastOut.info.date);
+    return currScore(b) - currScore(a);
   });
 
   const fmt = iso => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
@@ -742,12 +745,10 @@ function renderEliminated() {
       `<span class="elim-team-pill ${td.info ? 'out' : 'alive'}">${esc(td.team)}</span>`
     ).join('');
 
-    const status = e.allOut
-      ? `<span class="elim-out">Out — last team (${esc(e.lastOut.team)}) knocked out in <strong>${esc(e.lastOut.info.round)}</strong> on ${fmt(e.lastOut.info.date)}</span>`
-      : (() => {
-          const n = e.teamInfos.filter(td => !td.info).length;
-          return `<span class="elim-alive">${n} team${n > 1 ? 's' : ''} still in</span>`;
-        })();
+    const n = teamsAlive(e);
+    const status = n > 0
+      ? `<span class="elim-alive">${n} team${n > 1 ? 's' : ''} still in</span>`
+      : `<span class="elim-out">Out — last team (${esc(e.lastOut.team)}) knocked out in <strong>${esc(e.lastOut.info.round)}</strong> on ${fmt(e.lastOut.info.date)}</span>`;
 
     return `<div class="elim-row">
       <span class="elim-rank">${idx + 1}</span>
@@ -759,14 +760,7 @@ function renderEliminated() {
     </div>`;
   };
 
-  const eliminated = entries.filter(e => e.allOut);
-  const stillIn    = entries.filter(e => !e.allOut);
-
-  let html = eliminated.map((e, i) => renderRow(e, i)).join('');
-  if (stillIn.length) {
-    if (eliminated.length) html += `<div class="elim-divider">Still in the tournament</div>`;
-    html += stillIn.map((e, i) => renderRow(e, eliminated.length + i)).join('');
-  }
-
-  el.innerHTML = html || `<p style="color:var(--muted);font-size:0.85rem">No eliminations yet.</p>`;
+  el.innerHTML = entries.length
+    ? entries.map((e, i) => renderRow(e, i)).join('')
+    : `<p style="color:var(--muted);font-size:0.85rem">No eliminations yet.</p>`;
 }
