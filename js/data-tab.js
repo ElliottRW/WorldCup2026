@@ -597,19 +597,16 @@ function renderCivilWar() {
   if (!el) return;
 
   const ps = viewParticipants();
-  const rows = [];
 
+  // Collect all civil war fixtures grouped by stage
+  const byStage = {}; // stage key → [{p, home, away, result, utcDate, status}]
   for (const m of _matches) {
     const home = getDisplayName(m.homeTeam?.name);
     const away = getDisplayName(m.awayTeam?.name);
     if (!home || !away) continue;
-
     for (const p of ps) {
       if (!p.teams.includes(home) || !p.teams.includes(away)) continue;
-
-      const stageLabel = MATCH_STAGE_LABELS[m.stage] || m.stage;
       const date = new Date(m.utcDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-
       let result = '';
       if (m.status === 'FINISHED' && m.score?.winner) {
         const hg = m.score.fullTime?.home ?? '?';
@@ -627,26 +624,55 @@ function renderCivilWar() {
       } else {
         result = `upcoming · ${date}`;
       }
-
-      rows.push({ p, home, away, stageLabel, result, utcDate: m.utcDate });
+      (byStage[m.stage] = byStage[m.stage] || []).push({ p, home, away, result, utcDate: m.utcDate, status: m.status });
     }
   }
 
-  if (!rows.length) {
+  // Stage render order: most prestigious first (same as matches tab)
+  const stageOrder = ['FINAL','THIRD_PLACE','SEMI_FINALS','QUARTER_FINALS','LAST_16','LAST_32','GROUP_STAGE'];
+  const presentStages = stageOrder.filter(s => byStage[s]);
+
+  if (!presentStages.length) {
     el.innerHTML = `<p style="color:var(--muted);font-size:0.85rem">No civil war fixtures — nobody holds both sides of the same match.</p>`;
     return;
   }
 
-  rows.sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
+  // Determine the "active" stage: prefer live/upcoming over finished
+  const isActive = s => byStage[s]?.some(r => r.status !== 'FINISHED');
+  const activeStage = presentStages.find(isActive) || presentStages[0];
 
-  el.innerHTML = rows.map(r => `
-    <div class="civil-war-row">
-      <div class="civil-war-participant">${nameWithTip(r.p)}</div>
-      <div class="civil-war-fixture">
-        <span class="civil-war-teams">${esc(r.home)} <span class="vs">vs</span> ${esc(r.away)}</span>
-        <span class="civil-war-stage">${esc(r.stageLabel)} · ${r.result}</span>
-      </div>
-    </div>`).join('');
+  const sections = presentStages.map(stage => {
+    const rows = byStage[stage].slice().sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
+    const isOpen = stage === activeStage;
+    const label = MATCH_STAGE_LABELS[stage] || stage;
+    const count = rows.length;
+
+    const rowsHtml = rows.map(r => `
+      <div class="civil-war-row">
+        <div class="civil-war-participant">${nameWithTip(r.p)}</div>
+        <div class="civil-war-fixture">
+          <span class="civil-war-teams">${esc(r.home)} <span class="vs">vs</span> ${esc(r.away)}</span>
+          <span class="civil-war-stage">${r.result}</span>
+        </div>
+      </div>`).join('');
+
+    return `<div class="match-section">
+      <button class="match-section-toggle${isOpen ? ' open' : ''}">
+        <span>${esc(label)} <span style="font-weight:400;color:var(--muted)">(${count})</span></span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="match-section-body${isOpen ? ' open' : ''}">${rowsHtml}</div>
+    </div>`;
+  }).join('');
+
+  el.innerHTML = sections;
+
+  el.querySelectorAll('.match-section-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const open = btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open', open);
+    });
+  });
 }
 
 // ── ELIMINATED ────────────────────────────────────────────────────────────────
