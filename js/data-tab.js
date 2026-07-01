@@ -732,7 +732,7 @@ function renderWhatsAtStake() {
         let cls, label;
         if (remaining <= 0) {
           cls   = 'stakes-last-team';
-          label = '⚠ last team';
+          label = '→ eliminated';
         } else if (remaining === 1) {
           cls   = 'stakes-one-left';
           label = '→ 1 team left';
