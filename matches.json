@@ -2158,7 +2158,7 @@
   {
     "id": "760492",
     "utcDate": "2026-06-30T21:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2171,11 +2171,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 0
       },
       "penalties": {
         "home": null,
@@ -2503,8 +2503,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/par.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "France",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     "score": {
       "winner": null,
