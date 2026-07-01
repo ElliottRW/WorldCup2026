@@ -223,10 +223,37 @@ function renderRemainingPotential() {
 
   const globalMax = rows[0].max || 1;
   const active    = activeTeams(_matches);
+  const PENALTIES = [0, 10, 20, 25];
+  const POSITIONS = ['1st', '2nd', '3rd', '4th'];
 
   el.innerHTML = rows.map(p => {
     const curPct  = ((p.current   / globalMax) * 100).toFixed(2);
     const remPct  = ((p.remaining / globalMax) * 100).toFixed(2);
+
+    // Per-team breakdown for tooltip
+    const teamBreakdown = p.teams.map(t => ({
+      team: t,
+      pts:  teamStats(t, _matches).total,
+      rem:  teamRemainingPts(t, _matches),
+      alive: active.has(t),
+    }));
+    const sortedByRem = teamBreakdown.slice().sort((a, b) => b.rem - a.rem);
+
+    const currentLines = teamBreakdown
+      .slice().sort((a, b) => b.pts - a.pts)
+      .map(td => `  ${td.team.padEnd(18)} ${td.pts} pts${td.alive ? '' : ' (out)'}`)
+      .join('\n');
+
+    const potentialLines = sortedByRem.map((td, i) => {
+      const penalty = PENALTIES[i] ?? 25;
+      const net     = Math.max(0, td.rem - penalty);
+      const pos     = POSITIONS[i] ?? '4th';
+      if (!td.alive) return `  ${td.team.padEnd(18)} 0 (eliminated)`;
+      const penNote = penalty > 0 ? ` −${penalty} (${pos})` : ` (${pos})`;
+      return `  ${td.team.padEnd(18)} +${net}${penNote}`;
+    }).join('\n');
+
+    const tipText = `Current: ${p.current} pts\n${currentLines}\n\nMax additional: +${p.remaining} pts\n${potentialLines}\n\nCeiling: ${p.max} pts`;
 
     const teamChips = [...p.teams].sort((a, b) => a.localeCompare(b)).map(t =>
       active.has(t)
@@ -236,7 +263,7 @@ function renderRemainingPotential() {
 
     return `<div class="potential-row">
       <div class="potential-header">
-        <span class="potential-name">${nameWithTip(p)}</span>
+        <span class="potential-name has-tip tip-pre" data-tip="${esc(tipText)}">${nameWithTip(p)}</span>
         <span class="potential-nums">
           <span class="potential-now">${p.current}</span>
           <span class="potential-sep">＋</span>
