@@ -2214,7 +2214,7 @@
   {
     "id": "760495",
     "utcDate": "2026-07-01T16:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2227,11 +2227,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -2559,8 +2559,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "England",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     "score": {
       "winner": null,
