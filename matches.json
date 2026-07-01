@@ -2185,8 +2185,8 @@
   },
   {
     "id": "760491",
-    "utcDate": "2026-07-01T01:00Z",
-    "status": "TIMED",
+    "utcDate": "2026-07-01T02:00Z",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2199,11 +2199,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       },
       "penalties": {
         "home": null,
@@ -2555,8 +2555,8 @@
     "stage": "LAST_16",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Mexico",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
     },
     "awayTeam": {
       "name": null,
