@@ -29,6 +29,56 @@ function renderDataTab() {
   renderMostPickedTeams();
   renderMatchDayHistory();
   renderRoundByRound();
+  setupCollapsibleCards();
+}
+
+// ── COLLAPSIBLE CARDS ─────────────────────────────────────────────────────────
+
+function setupCollapsibleCards() {
+  const tab = document.getElementById('tab-data');
+  if (!tab) return;
+
+  tab.querySelectorAll('.card').forEach(card => {
+    const titleEl = card.querySelector('.card-title');
+    if (!titleEl || card.dataset.collapsible) return; // already wired
+
+    // Derive a stable key from the title text
+    const key = 'stat-card:' + titleEl.textContent.trim().replace(/\s+/g, ' ');
+
+    // Wrap everything after the title in a collapsible body
+    const body = document.createElement('div');
+    body.className = 'card-collapsible-body';
+    while (titleEl.nextSibling) body.appendChild(titleEl.nextSibling);
+    card.appendChild(body);
+
+    // Chevron
+    const chevron = document.createElement('span');
+    chevron.className = 'card-chevron';
+    chevron.textContent = '▾';
+    titleEl.appendChild(chevron);
+    titleEl.style.cursor = 'pointer';
+    titleEl.style.userSelect = 'none';
+    titleEl.style.display = 'flex';
+    titleEl.style.justifyContent = 'space-between';
+    titleEl.style.alignItems = 'center';
+
+    // Restore saved state — default closed
+    const savedOpen = sessionStorage.getItem(key);
+    const isOpen = savedOpen === 'true';
+    if (!isOpen) {
+      body.style.display = 'none';
+      chevron.textContent = '▸';
+    }
+
+    titleEl.addEventListener('click', () => {
+      const opening = body.style.display === 'none';
+      body.style.display = opening ? '' : 'none';
+      chevron.textContent = opening ? '▾' : '▸';
+      sessionStorage.setItem(key, opening ? 'true' : 'false');
+    });
+
+    card.dataset.collapsible = '1';
+  });
 }
 
 // ── PARTICIPANT FILTER ────────────────────────────────────────────────────────
