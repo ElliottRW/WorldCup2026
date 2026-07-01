@@ -2242,7 +2242,7 @@
   {
     "id": "760493",
     "utcDate": "2026-07-01T20:00Z",
-    "status": "PAUSED",
+    "status": "TIMED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
