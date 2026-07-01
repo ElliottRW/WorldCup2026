@@ -54,7 +54,7 @@ function setupCollapsibleCards() {
     // Chevron
     const chevron = document.createElement('span');
     chevron.className = 'card-chevron';
-    chevron.textContent = '▾';
+    chevron.textContent = '▶';
     titleEl.appendChild(chevron);
     titleEl.style.cursor = 'pointer';
     titleEl.style.userSelect = 'none';
@@ -67,13 +67,14 @@ function setupCollapsibleCards() {
     const isOpen = savedOpen === 'true';
     if (!isOpen) {
       body.style.display = 'none';
-      chevron.textContent = '▸';
+    } else {
+      titleEl.dataset.open = 'true';
     }
 
     titleEl.addEventListener('click', () => {
       const opening = body.style.display === 'none';
       body.style.display = opening ? '' : 'none';
-      chevron.textContent = opening ? '▾' : '▸';
+      titleEl.dataset.open = opening ? 'true' : '';
       sessionStorage.setItem(key, opening ? 'true' : 'false');
     });
 
