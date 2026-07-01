@@ -939,14 +939,37 @@ function renderEliminated() {
     return { p, teamInfos, allOut, lastOut };
   });
 
-  const teamsAlive  = e => e.teamInfos.filter(td => !td.info).length;
-  const currScore   = e => e.p.teams.reduce((s, t) => s + teamStats(t, _matches).total, 0);
+  const teamsAlive = e => e.teamInfos.filter(td => !td.info).length;
+  const currScore  = e => e.p.teams.reduce((s, t) => s + teamStats(t, _matches).total, 0);
 
-  // Sort: most teams still in first; ties broken by current score; fully out last (by date of last elimination)
+  // Active knockout stage = earliest stage still with TIMED/SCHEDULED/live matches
+  const koStageOrder = ['LAST_32', 'LAST_16', 'QUARTER_FINALS', 'SEMI_FINALS', 'THIRD_PLACE', 'FINAL'];
+  const activeStage  = koStageOrder.find(s =>
+    _matches.some(m => m.stage === s && ['TIMED', 'SCHEDULED', 'IN_PLAY', 'PAUSED'].includes(m.status))
+  );
+
+  // How many of a participant's alive teams still have a match to play in the active stage
+  const pendingCount = e => {
+    if (!activeStage) return 0;
+    return e.teamInfos.filter(td =>
+      !td.info &&
+      _matches.some(m =>
+        m.stage === activeStage &&
+        ['TIMED', 'SCHEDULED'].includes(m.status) &&
+        (getDisplayName(m.homeTeam?.name) === td.team || getDisplayName(m.awayTeam?.name) === td.team)
+      )
+    ).length;
+  };
+
+  // Sort: most alive first; within same alive count sort by fewest pending this round
+  // (already played = 0 pending → top, then 1 to play, then 2, etc.);
+  // fully out → by date of last elimination ascending
   entries.sort((a, b) => {
     const aAlive = teamsAlive(a), bAlive = teamsAlive(b);
     if (aAlive !== bAlive) return bAlive - aAlive;
     if (aAlive === 0) return new Date(a.lastOut.info.date) - new Date(b.lastOut.info.date);
+    const aPending = pendingCount(a), bPending = pendingCount(b);
+    if (aPending !== bPending) return aPending - bPending;
     return currScore(b) - currScore(a);
   });
 
