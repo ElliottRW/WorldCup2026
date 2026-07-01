@@ -24,6 +24,7 @@ function renderDataTab() {
   renderPtsPerCreditParticipants();
   renderBestValueTeams();
   renderHindsightBest();
+  renderWhatsAtStake();
   renderCivilWar();
   renderEliminated();
   renderMostPickedTeams();
@@ -660,6 +661,139 @@ function renderRoundByRound() {
   el.innerHTML = sections;
 
   // Wire accordions
+  el.querySelectorAll('.match-section-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const open = btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open', open);
+    });
+  });
+}
+
+// ── WHAT'S AT STAKE ───────────────────────────────────────────────────────────
+
+function renderWhatsAtStake() {
+  const el = document.getElementById('data-stakes');
+  if (!el) return;
+
+  const ps     = _participants || [];
+  const active = activeTeams(_matches);
+
+  // Current alive-team count per participant (all participants, not filtered)
+  const aliveCount = {};
+  for (const p of ps) {
+    aliveCount[p.name] = p.teams.filter(t => active.has(t)).length;
+  }
+
+  // Teams nobody picked that are still alive
+  const allPicked   = new Set(ps.flatMap(p => p.teams));
+  const unpicked    = [...active].filter(t => !allPicked.has(t)).sort();
+
+  // Upcoming knockout fixtures where at least one team name is resolved
+  const upcoming = _matches
+    .filter(m =>
+      m.stage !== 'GROUP_STAGE' &&
+      ['TIMED', 'SCHEDULED'].includes(m.status)
+    )
+    .map(m => ({
+      m,
+      home: getDisplayName(m.homeTeam?.name),
+      away: getDisplayName(m.awayTeam?.name),
+    }))
+    .filter(({ home, away }) => home || away);
+
+  // Group by stage
+  const byStage = {};
+  for (const row of upcoming) {
+    const s = row.m.stage;
+    (byStage[s] = byStage[s] || []).push(row);
+  }
+
+  const stageOrder    = ['LAST_32', 'LAST_16', 'QUARTER_FINALS', 'SEMI_FINALS', 'THIRD_PLACE', 'FINAL'];
+  const presentStages = stageOrder.filter(s => byStage[s]);
+
+  if (!presentStages.length && !unpicked.length) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem">No upcoming knockout fixtures.</p>';
+    return;
+  }
+
+  const renderTeamImpact = (team) => {
+    const pickers = ps.filter(p => p.teams.includes(team));
+    const header  = `<div class="stakes-team-header">If ${esc(team)} lose:</div>`;
+    if (!pickers.length) {
+      return `<div class="stakes-team-impact">
+        ${header}
+        <div class="stakes-nobody">👻 Nobody has this team</div>
+      </div>`;
+    }
+    const rows = pickers
+      .map(p => ({ p, remaining: aliveCount[p.name] - 1 }))
+      .sort((a, b) => a.remaining - b.remaining)
+      .map(({ p, remaining }) => {
+        let cls, label;
+        if (remaining <= 0) {
+          cls   = 'stakes-last-team';
+          label = '⚠ last team';
+        } else if (remaining === 1) {
+          cls   = 'stakes-one-left';
+          label = '→ 1 team left';
+        } else {
+          cls   = 'stakes-ok';
+          label = `→ ${remaining} teams`;
+        }
+        return `<div class="stakes-picker-row">
+          <span class="stakes-picker-name">${nameWithTip(p)}</span>
+          <span class="stakes-remaining ${cls}">${label}</span>
+        </div>`;
+      }).join('');
+    return `<div class="stakes-team-impact">
+      ${header}
+      <div class="stakes-pickers">${rows}</div>
+    </div>`;
+  };
+
+  const sections = presentStages.map((stage, si) => {
+    const fixtures = byStage[stage].slice().sort((a, b) => new Date(a.m.utcDate) - new Date(b.m.utcDate));
+    const isOpen   = si === 0;
+    const label    = MATCH_STAGE_LABELS[stage] || stage;
+
+    const fixtureHtml = fixtures.map(({ m, home, away }) => {
+      const dt      = new Date(m.utcDate);
+      const dateStr = dt.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+      const timeStr = dt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+      const homeHtml = home ? renderTeamImpact(home) : `<div class="stakes-nobody">TBD</div>`;
+      const awayHtml = away ? renderTeamImpact(away) : `<div class="stakes-nobody">TBD</div>`;
+
+      return `<div class="stakes-fixture">
+        <div class="stakes-fixture-header">
+          <span class="stakes-fixture-teams">${home ? esc(home) : '?'} <span class="vs">vs</span> ${away ? esc(away) : '?'}</span>
+          <span class="stakes-fixture-time">${dateStr} · ${timeStr}</span>
+        </div>
+        <div class="stakes-fixture-impacts">
+          ${homeHtml}
+          ${awayHtml}
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="match-section">
+      <button class="match-section-toggle${isOpen ? ' open' : ''}">
+        <span>${esc(label)} <span style="font-weight:400;color:var(--muted)">(${fixtures.length} fixture${fixtures.length !== 1 ? 's' : ''})</span></span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="match-section-body${isOpen ? ' open' : ''}">${fixtureHtml}</div>
+    </div>`;
+  }).join('');
+
+  const unpickedHtml = unpicked.length
+    ? `<div class="stakes-unpicked">
+        <span class="stakes-unpicked-label">👻 Alive but unpicked:</span>
+        ${unpicked.map(t => `<span class="stakes-unpicked-team">${esc(t)}</span>`).join('')}
+      </div>`
+    : '';
+
+  el.innerHTML = sections + unpickedHtml;
+
   el.querySelectorAll('.match-section-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       const open = btn.classList.toggle('open');

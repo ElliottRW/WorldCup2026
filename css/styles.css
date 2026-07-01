@@ -698,6 +698,45 @@ tbody tr:hover td { background: #f8f9ff; }
 .hindsight-option { padding: 0.1rem 0; }
 .hindsight-option-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
 
+/* ── WHAT'S AT STAKE ─────────────────────────────────────────────────────────── */
+.stakes-fixture {
+  padding: 0.7rem 0; border-bottom: 1px solid var(--border);
+}
+.stakes-fixture:last-child { border-bottom: none; }
+.stakes-fixture-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;
+}
+.stakes-fixture-teams { font-weight: 700; font-size: 0.92rem; }
+.stakes-fixture-teams .vs { color: var(--muted); font-weight: 400; font-size: 0.78rem; margin: 0 0.2rem; }
+.stakes-fixture-time { font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
+.stakes-fixture-impacts {
+  display: flex; gap: 0.5rem;
+}
+.stakes-team-impact { flex: 0 0 calc(50% - 0.25rem); min-width: 0; }
+.stakes-team-header {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--muted); margin-bottom: 0.3rem;
+}
+.stakes-picker-row {
+  padding: 0.2rem 0; font-size: 0.82rem; line-height: 1.25;
+}
+.stakes-picker-name { font-weight: 600; display: block; }
+.stakes-remaining { font-size: 0.72rem; font-weight: 700; display: block; }
+.stakes-last-team { color: var(--red); }
+.stakes-one-left  { color: #c07000; }
+.stakes-ok        { color: var(--muted); }
+.stakes-nobody    { font-size: 0.8rem; color: var(--muted); font-style: italic; padding: 0.3rem 0; }
+.stakes-unpicked  {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+  padding: 0.65rem 0 0.1rem; border-top: 1px solid var(--border); margin-top: 0.15rem;
+}
+.stakes-unpicked-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+.stakes-unpicked-team {
+  background: var(--bg); color: var(--muted); font-size: 0.75rem;
+  padding: 0.12rem 0.45rem; border-radius: 10px; border: 1px solid var(--border);
+}
+
 /* ── CIVIL WAR ───────────────────────────────────────────────────────────────── */
 .civil-war-row {
   display: flex; align-items: flex-start; gap: 0.6rem;
