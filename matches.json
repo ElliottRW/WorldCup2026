@@ -2615,8 +2615,8 @@
       "crest": ""
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Belgium",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     },
     "score": {
       "winner": null,
