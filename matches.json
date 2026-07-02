@@ -2242,7 +2242,7 @@
   {
     "id": "760493",
     "utcDate": "2026-07-01T20:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2255,11 +2255,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "EXTRA_TIME",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       },
       "penalties": {
         "home": null,

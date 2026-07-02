@@ -43,6 +43,7 @@ jobs:
           STATUS_MAP = {
               'STATUS_FULL_TIME':      'FINISHED',
               'STATUS_FINAL_OVERTIME': 'FINISHED',
+              'STATUS_FINAL_AET':      'FINISHED',
               'STATUS_FINAL_PEN':      'FINISHED',
               'STATUS_IN_PROGRESS':    'IN_PLAY',
               'STATUS_HALFTIME':       'PAUSED',
@@ -163,7 +164,7 @@ jobs:
                       pen_away = int(away_c['shootoutScore']) if away_c and away_c.get('shootoutScore') is not None else None
                   except:
                       pen_home = pen_away = None
-              elif st['type']['name'] == 'STATUS_FINAL_OVERTIME':
+              elif st['type']['name'] in ('STATUS_FINAL_OVERTIME', 'STATUS_FINAL_AET'):
                   duration = 'EXTRA_TIME'
                   pen_home = pen_away = None
               else:
