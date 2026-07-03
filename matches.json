@@ -2326,7 +2326,7 @@
   {
     "id": "760496",
     "utcDate": "2026-07-02T23:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2339,11 +2339,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -2583,8 +2583,8 @@
     "stage": "LAST_16",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Portugal",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/por.png"
     },
     "awayTeam": {
       "name": "Spain",
