@@ -2494,7 +2494,7 @@
   {
     "id": "760503",
     "utcDate": "2026-07-04T21:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_16",
     "group": null,
@@ -2507,11 +2507,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -2695,8 +2695,8 @@
     "stage": "QUARTER_FINALS",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "France",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     "awayTeam": {
       "name": "Morocco",
