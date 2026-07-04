@@ -2410,7 +2410,7 @@
   {
     "id": "760500",
     "utcDate": "2026-07-03T22:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2423,11 +2423,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cpv.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "EXTRA_TIME",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       },
       "penalties": {
         "home": null,
@@ -2438,7 +2438,7 @@
   {
     "id": "760501",
     "utcDate": "2026-07-04T01:30Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": null,
@@ -2451,11 +2451,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "penalties": {
         "home": null,
@@ -2639,8 +2639,8 @@
     "stage": "LAST_16",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Argentina",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     "awayTeam": {
       "name": "Egypt",
@@ -2671,8 +2671,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Colombia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
     },
     "score": {
       "winner": null,
