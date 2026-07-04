@@ -2466,7 +2466,7 @@
   {
     "id": "760502",
     "utcDate": "2026-07-04T17:00Z",
-    "status": "PAUSED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_16",
     "group": null,
@@ -2479,11 +2479,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 3
       },
       "penalties": {
         "home": null,
@@ -2699,8 +2699,8 @@
       "crest": ""
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Morocco",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
     },
     "score": {
       "winner": null,
