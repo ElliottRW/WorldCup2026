@@ -2522,7 +2522,7 @@
   {
     "id": "760504",
     "utcDate": "2026-07-05T20:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_16",
     "group": null,
@@ -2535,11 +2535,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 2
       },
       "penalties": {
         "home": null,
@@ -2751,8 +2751,8 @@
     "stage": "QUARTER_FINALS",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Norway",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     "awayTeam": {
       "name": null,
