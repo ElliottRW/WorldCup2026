@@ -2723,8 +2723,8 @@
     "stage": "QUARTER_FINALS",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Spain",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     "awayTeam": {
       "name": null,
