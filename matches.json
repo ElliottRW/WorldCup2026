@@ -2606,7 +2606,7 @@
   {
     "id": "760507",
     "utcDate": "2026-07-07T00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_16",
     "group": null,
@@ -2619,11 +2619,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 4
       },
       "penalties": {
         "home": null,
@@ -2727,8 +2727,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Belgium",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     },
     "score": {
       "winner": null,
