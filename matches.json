@@ -2779,8 +2779,8 @@
     "stage": "QUARTER_FINALS",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Argentina",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     "awayTeam": {
       "name": null,
