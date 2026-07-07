@@ -2662,7 +2662,7 @@
   {
     "id": "760508",
     "utcDate": "2026-07-07T20:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_16",
     "group": null,
@@ -2675,15 +2675,15 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "PENALTY_SHOOTOUT",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "penalties": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 3
       }
     }
   },
@@ -2783,8 +2783,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Switzerland",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     "score": {
       "winner": null,
