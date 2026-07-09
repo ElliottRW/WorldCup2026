@@ -2690,7 +2690,7 @@
   {
     "id": "760510",
     "utcDate": "2026-07-09T20:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "QUARTER_FINALS",
     "group": null,
@@ -2703,11 +2703,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       },
       "penalties": {
         "home": null,
@@ -2807,8 +2807,8 @@
     "stage": "SEMI_FINALS",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "France",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     "awayTeam": {
       "name": null,
