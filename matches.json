@@ -2746,7 +2746,7 @@
   {
     "id": "760512",
     "utcDate": "2026-07-11T21:00Z",
-    "status": "PAUSED",
+    "status": "TIMED",
     "matchday": null,
     "stage": "QUARTER_FINALS",
     "group": null,
