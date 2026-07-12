@@ -2774,7 +2774,7 @@
   {
     "id": "760513",
     "utcDate": "2026-07-12T01:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "QUARTER_FINALS",
     "group": null,
@@ -2787,11 +2787,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "HOME_TEAM",
+      "duration": "EXTRA_TIME",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 1
       },
       "penalties": {
         "home": null,
@@ -2839,8 +2839,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Argentina",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     "score": {
       "winner": null,
