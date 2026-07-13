@@ -376,8 +376,6 @@ tbody tr:hover td { background: #f8f9ff; }
 
 /* Podium Scenarios table */
 .scenario-name   { display: inline-block; font-size: 0.78rem; margin: 0 0.35rem 0.2rem 0; white-space: nowrap; }
-.spotlight-name  { font-weight: 800; color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
-.scenario-row-hit{ background: var(--green-bg); }
 
 /* ── NAME TOOLTIP ────────────────────────────────────────────────────────────── */
 /* Shows the email username on hover — helps distinguish abbreviated/duplicate names */

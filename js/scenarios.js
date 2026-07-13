@@ -129,29 +129,15 @@ function renderScenarios() {
     return;
   }
 
-  // Filtering to exactly one participant (via the filter dropdown above)
-  // spotlights them with their own rank/points column.
-  const spotlight = _statsFilter && _statsFilter.size === 1 ? [..._statsFilter][0] : null;
-
   const nameChips = (names) => names.length
-    ? names.map(n => `<span class="scenario-name${n === spotlight ? ' spotlight-name' : ''}">${esc(n)}</span>`).join('')
+    ? names.map(n => `<span class="scenario-name">${esc(n)}</span>`).join('')
     : '<span style="color:var(--muted)">—</span>';
 
   const rows = scenarios.map(s => {
     const ranked = rankScenario(_participants, s.matches);
     const at     = r => ranked.filter(x => x.rank === r).map(x => x.name);
 
-    let meCell = '';
-    let rowCls = '';
-    if (spotlight) {
-      const me = ranked.find(x => x.name === spotlight);
-      const cls = me && me.rank <= 3 ? ` r${me.rank}` : '';
-      meCell = `<td><span class="rank-num${cls}">${me ? me.rank : '—'}</span>
-        <span style="color:var(--muted);font-size:0.78rem">(${me ? me.total : '—'} pts)</span></td>`;
-      rowCls = me && me.rank <= 3 ? ' class="scenario-row-hit"' : '';
-    }
-
-    return `<tr${rowCls}>
+    return `<tr>
       <td>${esc(s.sf1Winner)}</td>
       <td>${esc(s.sf2Winner)}</td>
       <td>${esc(s.thirdPlaceWinner)}</td>
@@ -159,7 +145,6 @@ function renderScenarios() {
       <td>${nameChips(at(1))}</td>
       <td>${nameChips(at(2))}</td>
       <td>${nameChips(at(3))}</td>
-      ${spotlight ? meCell : ''}
     </tr>`;
   }).join('');
 
@@ -175,13 +160,12 @@ function renderScenarios() {
             <th>🥇 1st</th>
             <th>🥈 2nd</th>
             <th>🥉 3rd</th>
-            ${spotlight ? `<th>${esc(spotlight)}</th>` : ''}
           </tr>
         </thead>
         <tbody>${rows}</tbody>
       </table>
     </div>
     <p style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem">
-      ${scenarios.length} possible outcomes from here${spotlight ? '' : ' — filter to one person above to see their rank in every scenario'}.
+      ${scenarios.length} possible outcomes from here.
     </p>`;
 }
