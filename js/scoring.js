@@ -125,8 +125,9 @@ function teamStats(displayName, matches) {
   const finalMatch = matches.find(m => m.stage === 'FINAL' && m.status === 'FINISHED');
   if (finalMatch?.score?.winner) {
     const isHome = getDisplayName(finalMatch.homeTeam?.name) === displayName;
+    const isAway = getDisplayName(finalMatch.awayTeam?.name) === displayName;
     winner = (finalMatch.score.winner === 'HOME_TEAM' && isHome) ||
-             (finalMatch.score.winner === 'AWAY_TEAM' && !isHome);
+             (finalMatch.score.winner === 'AWAY_TEAM' && isAway);
   }
 
   const prog     = { last32, last16, quarterfinal, semifinal, final, winner };

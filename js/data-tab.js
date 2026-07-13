@@ -21,6 +21,7 @@ function renderDataTab() {
   renderParticipantFilter();
   renderPointsGap();
   renderRemainingPotential();
+  renderScenarios();
   renderPtsPerCreditParticipants();
   renderBestValueTeams();
   renderHindsightBest();
