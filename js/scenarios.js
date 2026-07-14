@@ -42,13 +42,27 @@ function resolveBracket(matches) {
   // though the 3rd-place play-off and Final don't have their teams filled in
   // until the semis are played, so their slots can't be assumed to line up with
   // our sf1/sf2 convention.
+  const nameOf     = raw => raw ? getDisplayName(raw) : null;
   const winnerName = m => decided(m)
-    ? getDisplayName(m.score.winner === 'HOME_TEAM' ? m.homeTeam?.name : m.awayTeam?.name)
+    ? nameOf(m.score.winner === 'HOME_TEAM' ? m.homeTeam?.name : m.awayTeam?.name)
     : null;
   const sf1Actual = winnerName(semis[0]);
   const sf2Actual = winnerName(semis[1]);
   const tpActual  = winnerName(thirdPlace);
   const fActual   = winnerName(final);
+
+  // The real fixture line-ups, straight from the API. ESPN leaves the Final and
+  // 3rd-place team slots empty until the semis are played, then fills in the two
+  // actual finalists / 3rd-place teams. While they're empty we derive the pairing
+  // from the semis; the moment the API provides them we treat them as the source
+  // of truth and cancel any scenario whose pairing disagrees — no guessing.
+  const finalPair = (final.homeTeam?.name && final.awayTeam?.name)
+    ? [nameOf(final.homeTeam.name), nameOf(final.awayTeam.name)]
+    : null;
+  const thirdPair = (thirdPlace.homeTeam?.name && thirdPlace.awayTeam?.name)
+    ? [nameOf(thirdPlace.homeTeam.name), nameOf(thirdPlace.awayTeam.name)]
+    : null;
+  const samePair = (a, b) => (a[0] === b[0] && a[1] === b[1]) || (a[0] === b[1] && a[1] === b[0]);
 
   // Always enumerate all 16 combinations. Rather than prune the ones a result
   // has ruled out, we keep them and flag each with `alive`: true while still
@@ -69,12 +83,15 @@ function resolveBracket(matches) {
           const champion         = f  === 'home' ? sf1Winner : sf2Winner;
           const runnerUp         = f  === 'home' ? sf2Winner : sf1Winner;
 
-          // Still possible only if it agrees with every result already in.
+          // Still possible only if it agrees with every result already in AND
+          // with the real Final / 3rd-place line-ups once the API has seeded them.
           const alive =
             (sf1Actual === null || sf1Winner        === sf1Actual) &&
             (sf2Actual === null || sf2Winner        === sf2Actual) &&
             (tpActual  === null || thirdPlaceWinner === tpActual)  &&
-            (fActual   === null || champion         === fActual);
+            (fActual   === null || champion         === fActual)   &&
+            (finalPair === null || samePair([sf1Winner, sf2Winner], finalPair)) &&
+            (thirdPair === null || samePair([sf1Loser,  sf2Loser],  thirdPair));
 
           const resolved = matches.map(m => {
             if (m.id === semis[0].id) {
