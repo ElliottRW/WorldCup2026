@@ -377,6 +377,10 @@ tbody tr:hover td { background: #f8f9ff; }
 /* Podium Scenarios table */
 .scenario-name   { display: inline-block; font-size: 0.78rem; margin: 0 0.35rem 0.2rem 0; white-space: nowrap; }
 
+/* Cancelled scenarios — ruled out by a result already played */
+.scenario-dead td            { color: var(--red); opacity: 0.55; text-decoration: line-through; text-decoration-color: var(--red); }
+.scenario-dead .scenario-name{ color: inherit; }
+
 /* ── NAME TOOLTIP ────────────────────────────────────────────────────────────── */
 /* Shows the email username on hover — helps distinguish abbreviated/duplicate names */
 .has-tip {

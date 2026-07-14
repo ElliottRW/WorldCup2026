@@ -32,34 +32,49 @@ function resolveBracket(matches) {
   if (semis.length !== 2 || !thirdPlace || !final) return null;
   if (semis.some(m => !m.homeTeam?.name || !m.awayTeam?.name)) return null;
 
-  // Which sides of a match are still "live" possibilities — one if it's
-  // already been played, both if it hasn't.
-  const sideOptions = m => (m.status === 'FINISHED' && m.score?.winner)
-    ? [m.score.winner === 'HOME_TEAM' ? 'home' : 'away']
-    : ['home', 'away'];
+  // A match counts as decided only when finished with a real winner. A lingering
+  // DRAW on a knockout fixture means the result isn't resolved yet (ET/pens still
+  // to come), so treat that as still live.
+  const decided = m => m.status === 'FINISHED' && m.score?.winner && m.score.winner !== 'DRAW';
 
-  const tpFixed = thirdPlace.status === 'FINISHED' && thirdPlace.score?.winner;
-  const fFixed  = final.status === 'FINISHED' && final.score?.winner;
+  // The actual winning team NAME of a decided fixture (null if not played yet).
+  // Matching on name — rather than a home/away flag — keeps results correct even
+  // though the 3rd-place play-off and Final don't have their teams filled in
+  // until the semis are played, so their slots can't be assumed to line up with
+  // our sf1/sf2 convention.
+  const winnerName = m => decided(m)
+    ? getDisplayName(m.score.winner === 'HOME_TEAM' ? m.homeTeam?.name : m.awayTeam?.name)
+    : null;
+  const sf1Actual = winnerName(semis[0]);
+  const sf2Actual = winnerName(semis[1]);
+  const tpActual  = winnerName(thirdPlace);
+  const fActual   = winnerName(final);
 
+  // Always enumerate all 16 combinations. Rather than prune the ones a result
+  // has ruled out, we keep them and flag each with `alive`: true while still
+  // possible, false once contradicted by a played match. The renderer shows the
+  // dead ones struck through so you can see what's been cancelled.
   const scenarios = [];
 
-  for (const s1 of sideOptions(semis[0])) {
-    for (const s2 of sideOptions(semis[1])) {
+  for (const s1 of ['home', 'away']) {
+    for (const s2 of ['home', 'away']) {
       const sf1Winner = getDisplayName(s1 === 'home' ? semis[0].homeTeam.name : semis[0].awayTeam.name);
       const sf1Loser  = getDisplayName(s1 === 'home' ? semis[0].awayTeam.name : semis[0].homeTeam.name);
       const sf2Winner = getDisplayName(s2 === 'home' ? semis[1].homeTeam.name : semis[1].awayTeam.name);
       const sf2Loser  = getDisplayName(s2 === 'home' ? semis[1].awayTeam.name : semis[1].homeTeam.name);
 
-      // Home = semi 1's side, away = semi 2's side, by convention — only
-      // matters internally for picking a winner, never shown to the user.
-      const tpOptions = tpFixed ? [thirdPlace.score.winner === 'HOME_TEAM' ? 'home' : 'away'] : ['home', 'away'];
-      const fOptions  = fFixed  ? [final.score.winner === 'HOME_TEAM' ? 'home' : 'away']       : ['home', 'away'];
-
-      for (const tp of tpOptions) {
-        for (const f of fOptions) {
+      for (const tp of ['home', 'away']) {
+        for (const f of ['home', 'away']) {
           const thirdPlaceWinner = tp === 'home' ? sf1Loser  : sf2Loser;
           const champion         = f  === 'home' ? sf1Winner : sf2Winner;
           const runnerUp         = f  === 'home' ? sf2Winner : sf1Winner;
+
+          // Still possible only if it agrees with every result already in.
+          const alive =
+            (sf1Actual === null || sf1Winner        === sf1Actual) &&
+            (sf2Actual === null || sf2Winner        === sf2Actual) &&
+            (tpActual  === null || thirdPlaceWinner === tpActual)  &&
+            (fActual   === null || champion         === fActual);
 
           const resolved = matches.map(m => {
             if (m.id === semis[0].id) {
@@ -87,7 +102,7 @@ function resolveBracket(matches) {
             return m;
           });
 
-          scenarios.push({ sf1Winner, sf2Winner, thirdPlaceWinner, champion, runnerUp, matches: resolved });
+          scenarios.push({ sf1Winner, sf2Winner, thirdPlaceWinner, champion, runnerUp, alive, matches: resolved });
         }
       }
     }
@@ -137,7 +152,7 @@ function renderScenarios() {
     const ranked = rankScenario(_participants, s.matches);
     const at     = r => ranked.filter(x => x.rank === r).map(x => x.name);
 
-    return `<tr>
+    return `<tr class="${s.alive ? 'scenario-live' : 'scenario-dead'}">
       <td>${esc(s.sf1Winner)}</td>
       <td>${esc(s.sf2Winner)}</td>
       <td>${esc(s.thirdPlaceWinner)}</td>
@@ -147,6 +162,8 @@ function renderScenarios() {
       <td>${nameChips(at(3))}</td>
     </tr>`;
   }).join('');
+
+  const aliveCount = scenarios.filter(s => s.alive).length;
 
   el.innerHTML = `
     <div class="scrollable">
@@ -166,6 +183,6 @@ function renderScenarios() {
       </table>
     </div>
     <p style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem">
-      ${scenarios.length} possible outcomes from here.
+      ${aliveCount} of ${scenarios.length} outcomes still possible — cancelled scenarios are struck through.
     </p>`;
 }
