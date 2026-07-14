@@ -229,9 +229,15 @@ function wireScenarioPopover(container) {
     document.body.appendChild(pop);
   }
 
-  const hide = () => { pop.style.display = 'none'; };
+  // A short hide delay lets the cursor travel from the button into the popover
+  // (which cancels the hide) without it vanishing on the way.
+  let hideTimer = null;
+  const cancelHide   = () => { if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; } };
+  const hide         = () => { cancelHide(); pop.style.display = 'none'; pop.dataset.idx = ''; };
+  const scheduleHide = () => { cancelHide(); hideTimer = setTimeout(hide, 200); };
 
   const showFor = (btn) => {
+    cancelHide();
     const ranked = _scenarioRankings[+btn.dataset.idx] || [];
     const rest   = ranked.filter(x => x.rank >= 4);
     if (!rest.length) { hide(); return; }
@@ -242,24 +248,45 @@ function wireScenarioPopover(container) {
         <span class="sp-name">${esc(x.name)}</span>
         <span class="sp-pts">${x.total}</span>
       </div>`).join('');
+    pop.dataset.idx = btn.dataset.idx;
     pop.style.display = 'block';
-    // Position under the button, clamped to the viewport (fixed positioning).
+
+    // Measure, then place next to the button. Prefer below; flip above when the
+    // button sits low enough that the popover would run off the bottom — this
+    // keeps it anchored to the button instead of jumping to the screen edge.
     const r = btn.getBoundingClientRect();
-    const top  = Math.min(r.bottom + 6, window.innerHeight - pop.offsetHeight - 8);
-    const left = Math.max(8, Math.min(r.right - pop.offsetWidth, window.innerWidth - pop.offsetWidth - 8));
-    pop.style.top  = Math.max(8, top) + 'px';
+    const h = pop.offsetHeight, w = pop.offsetWidth;
+    let top = r.bottom + 6;
+    if (top + h > window.innerHeight - 8) {
+      const above = r.top - h - 6;
+      top = above >= 8 ? above : Math.max(8, window.innerHeight - h - 8);
+    }
+    const left = Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8));
+    pop.style.top  = top + 'px';
     pop.style.left = left + 'px';
   };
 
+  // Keep it open while the cursor is over the popover (e.g. to scroll it).
+  pop.onmouseenter = cancelHide;
+  pop.onmouseleave = scheduleHide;
+
   container.querySelectorAll('.scenario-more').forEach(btn => {
     btn.addEventListener('mouseenter', () => showFor(btn));
-    btn.addEventListener('mouseleave', hide);
+    btn.addEventListener('mouseleave', scheduleHide);
     // Tap support on touch devices where hover isn't available.
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (pop.style.display === 'block' && pop.dataset.idx === btn.dataset.idx) { hide(); pop.dataset.idx = ''; }
-      else { showFor(btn); pop.dataset.idx = btn.dataset.idx; }
+      if (pop.style.display === 'block' && pop.dataset.idx === btn.dataset.idx) hide();
+      else showFor(btn);
     });
   });
-  document.addEventListener('click', hide, { once: false });
+
+  // Register the outside-click dismiss once, not on every re-render.
+  if (!pop.dataset.wired) {
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('#scenario-popover') || e.target.closest('.scenario-more')) return;
+      hide();
+    });
+    pop.dataset.wired = '1';
+  }
 }
