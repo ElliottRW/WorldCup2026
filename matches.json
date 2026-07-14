@@ -2802,7 +2802,7 @@
   {
     "id": "760514",
     "utcDate": "2026-07-14T19:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "SEMI_FINALS",
     "group": null,
@@ -2815,11 +2815,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       },
       "penalties": {
         "home": null,
