@@ -376,10 +376,41 @@ tbody tr:hover td { background: #f8f9ff; }
 
 /* Podium Scenarios table */
 .scenario-name   { display: inline-block; font-size: 0.78rem; margin: 0 0.35rem 0.2rem 0; white-space: nowrap; }
+.scenario-pts    { font-size: 0.72rem; font-weight: 700; color: var(--muted); }
 
 /* Cancelled scenarios — ruled out by a result already played */
 .scenario-dead td            { color: var(--red); opacity: 0.55; text-decoration: line-through; text-decoration-color: var(--red); }
 .scenario-dead .scenario-name{ color: inherit; }
+.scenario-dead .scenario-pts { color: inherit; }
+
+/* "Rest of the field" trigger + popover */
+.scenario-more {
+  border: 1px solid var(--border); background: var(--card); color: var(--muted);
+  border-radius: 6px; cursor: pointer; font-size: 0.85rem; line-height: 1;
+  padding: 0.15rem 0.45rem; font-weight: 700;
+}
+.scenario-more:hover { background: var(--bg); color: var(--text); }
+.scenario-dead .scenario-more { text-decoration: none; opacity: 1; color: var(--muted); }
+.scenario-more-inline { border: 1px solid var(--border); border-radius: 4px; padding: 0 0.25rem; font-weight: 700; }
+
+.scenario-popover {
+  display: none; position: fixed; z-index: 1000;
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  padding: 0.5rem; min-width: 190px; max-height: 60vh; overflow-y: auto;
+}
+.scenario-popover-title {
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--muted); padding: 0.1rem 0.3rem 0.35rem;
+}
+.scenario-popover-row {
+  display: grid; grid-template-columns: 1.6rem 1fr auto; gap: 0.5rem; align-items: baseline;
+  padding: 0.16rem 0.3rem; font-size: 0.8rem;
+}
+.scenario-popover-row:nth-child(even) { background: var(--bg); border-radius: 5px; }
+.scenario-popover-row .sp-rank { color: var(--muted); font-size: 0.72rem; text-align: right; }
+.scenario-popover-row .sp-name { font-weight: 600; }
+.scenario-popover-row .sp-pts  { color: var(--muted); font-weight: 700; font-size: 0.74rem; }
 
 /* ── NAME TOOLTIP ────────────────────────────────────────────────────────────── */
 /* Shows the email username on hover — helps distinguish abbreviated/duplicate names */

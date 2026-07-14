@@ -13,6 +13,10 @@
 // to play, resolveBracket() returns null and renderScenarios() shows a
 // "not yet" message instead of guessing at a bigger bracket.
 
+// Full ranked standings per rendered scenario, indexed to match the table rows.
+// Populated by renderScenarios(), read by the hover popover for the rest of the field.
+let _scenarioRankings = [];
+
 /**
  * Enumerate every possible resolution of the semis → 3rd place → Final
  * bracket. Each scenario is a full copy of `matches` with those fixtures
@@ -161,13 +165,18 @@ function renderScenarios() {
     return;
   }
 
-  const nameChips = (names) => names.length
-    ? names.map(n => `<span class="scenario-name">${esc(n)}</span>`).join('')
+  // Rank everyone once per scenario and stash it so the hover popover can show
+  // the rest of the field (4th onwards) without recomputing.
+  _scenarioRankings = scenarios.map(s => rankScenario(_participants, s.matches));
+
+  // Podium cell: each name with the points they'd finish on.
+  const nameChips = (entries) => entries.length
+    ? entries.map(e => `<span class="scenario-name">${esc(e.name)} <span class="scenario-pts">${e.total}</span></span>`).join('')
     : '<span style="color:var(--muted)">—</span>';
 
-  const rows = scenarios.map(s => {
-    const ranked = rankScenario(_participants, s.matches);
-    const at     = r => ranked.filter(x => x.rank === r).map(x => x.name);
+  const rows = scenarios.map((s, i) => {
+    const ranked = _scenarioRankings[i];
+    const at     = r => ranked.filter(x => x.rank === r).map(x => ({ name: x.name, total: x.total }));
 
     return `<tr class="${s.alive ? 'scenario-live' : 'scenario-dead'}">
       <td>${esc(s.sf1Winner)}</td>
@@ -177,6 +186,7 @@ function renderScenarios() {
       <td>${nameChips(at(1))}</td>
       <td>${nameChips(at(2))}</td>
       <td>${nameChips(at(3))}</td>
+      <td><button class="scenario-more" data-idx="${i}" aria-label="Show the rest of the field">⋯</button></td>
     </tr>`;
   }).join('');
 
@@ -194,6 +204,7 @@ function renderScenarios() {
             <th>🥇 1st</th>
             <th>🥈 2nd</th>
             <th>🥉 3rd</th>
+            <th title="Hover for the rest of the field">⋯</th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -201,5 +212,54 @@ function renderScenarios() {
     </div>
     <p style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem">
       ${aliveCount} of ${scenarios.length} outcomes still possible — cancelled scenarios are struck through.
+      Hover <span class="scenario-more-inline">⋯</span> to see where everyone else lands.
     </p>`;
+
+  wireScenarioPopover(el);
+}
+
+// Shared body-level popover listing the rest of the field (4th onwards) for a
+// scenario. Kept out of the scrollable table so overflow can't clip it.
+function wireScenarioPopover(container) {
+  let pop = document.getElementById('scenario-popover');
+  if (!pop) {
+    pop = document.createElement('div');
+    pop.id = 'scenario-popover';
+    pop.className = 'scenario-popover';
+    document.body.appendChild(pop);
+  }
+
+  const hide = () => { pop.style.display = 'none'; };
+
+  const showFor = (btn) => {
+    const ranked = _scenarioRankings[+btn.dataset.idx] || [];
+    const rest   = ranked.filter(x => x.rank >= 4);
+    if (!rest.length) { hide(); return; }
+    pop.innerHTML =
+      `<div class="scenario-popover-title">The rest of the field</div>` +
+      rest.map(x => `<div class="scenario-popover-row">
+        <span class="sp-rank">${x.rank}</span>
+        <span class="sp-name">${esc(x.name)}</span>
+        <span class="sp-pts">${x.total}</span>
+      </div>`).join('');
+    pop.style.display = 'block';
+    // Position under the button, clamped to the viewport (fixed positioning).
+    const r = btn.getBoundingClientRect();
+    const top  = Math.min(r.bottom + 6, window.innerHeight - pop.offsetHeight - 8);
+    const left = Math.max(8, Math.min(r.right - pop.offsetWidth, window.innerWidth - pop.offsetWidth - 8));
+    pop.style.top  = Math.max(8, top) + 'px';
+    pop.style.left = left + 'px';
+  };
+
+  container.querySelectorAll('.scenario-more').forEach(btn => {
+    btn.addEventListener('mouseenter', () => showFor(btn));
+    btn.addEventListener('mouseleave', hide);
+    // Tap support on touch devices where hover isn't available.
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (pop.style.display === 'block' && pop.dataset.idx === btn.dataset.idx) { hide(); pop.dataset.idx = ''; }
+      else { showFor(btn); pop.dataset.idx = btn.dataset.idx; }
+    });
+  });
+  document.addEventListener('click', hide, { once: false });
 }
