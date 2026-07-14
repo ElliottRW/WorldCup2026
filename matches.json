@@ -2863,8 +2863,8 @@
     "stage": "THIRD_PLACE",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "France",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     "awayTeam": {
       "name": null,
@@ -2891,8 +2891,8 @@
     "stage": "FINAL",
     "group": null,
     "homeTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Spain",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     "awayTeam": {
       "name": null,
