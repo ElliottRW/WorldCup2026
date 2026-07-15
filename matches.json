@@ -2867,8 +2867,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "England",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     "score": {
       "winner": null,
@@ -2895,8 +2895,8 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     "awayTeam": {
-      "name": null,
-      "crest": ""
+      "name": "Argentina",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     "score": {
       "winner": null,
