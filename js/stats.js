@@ -163,6 +163,19 @@ function teamRemainingPts(team, matches) {
 
   const s = teamStats(team, matches);
 
+  // Being named in the 3rd-place play-off means the team lost its semi: the
+  // Final and Winner bonuses are out of reach, and the play-off itself carries
+  // no stage bonus. Winning it (+5) is the only thing left to earn.
+  const thirdPlaceFixture = matches.find(m =>
+    m.stage === 'THIRD_PLACE' &&
+    (getDisplayName(m.homeTeam?.name) === team || getDisplayName(m.awayTeam?.name) === team)
+  );
+  if (thirdPlaceFixture) {
+    return ['TIMED', 'SCHEDULED', 'IN_PLAY', 'PAUSED'].includes(thirdPlaceFixture.status)
+      ? SCORING.WIN
+      : 0;
+  }
+
   // Remaining group stage match wins (includes IN_PLAY/PAUSED — result still unknown)
   const groupRemain = matches.filter(m =>
     m.stage === 'GROUP_STAGE' &&
