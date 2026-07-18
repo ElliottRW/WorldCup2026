@@ -2858,7 +2858,7 @@
   {
     "id": "760516",
     "utcDate": "2026-07-18T21:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "THIRD_PLACE",
     "group": null,
@@ -2871,11 +2871,11 @@
       "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     "score": {
-      "winner": null,
-      "duration": null,
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 6
       },
       "penalties": {
         "home": null,
