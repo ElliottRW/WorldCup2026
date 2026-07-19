@@ -2886,7 +2886,7 @@
   {
     "id": "760517",
     "utcDate": "2026-07-19T19:00Z",
-    "status": "IN_PLAY",
+    "status": "TIMED",
     "matchday": null,
     "stage": "FINAL",
     "group": null,
