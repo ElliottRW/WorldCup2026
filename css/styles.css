@@ -862,6 +862,80 @@ tbody tr:hover td { background: #f8f9ff; }
   line-height: 1.5;
 }
 
+/* ── LEADERBOARD RACE ─────────────────────────────────────────────────────────── */
+.race-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+.race-play {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 90px;
+}
+.race-play:hover { background: var(--primary-mid); }
+.race-slider { flex: 1; min-width: 140px; accent-color: var(--primary); cursor: pointer; }
+.race-speed {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.78rem;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+.race-date {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.race-chart { width: 100%; overflow: auto; }
+.race-svg { display: block; }
+
+/* Lines */
+.race-line {
+  fill: none;
+  stroke-width: 1.6;
+  opacity: 0.55;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: opacity 0.2s ease, stroke-width 0.2s ease;
+  cursor: pointer;
+}
+.race-line.top { stroke-width: 3.2; opacity: 1; }
+.race-svg.focusing .race-line:not(.active) { opacity: 0.07; }
+.race-svg.focusing .race-line.active        { opacity: 1; stroke-width: 3.4; }
+
+/* Right-edge name labels (glide to current rank lane as the race plays) */
+.race-lbl {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+.race-lbl.top { font-weight: 800; opacity: 1; }
+.race-svg.focusing .race-lbl:not(.active) { opacity: 0.12; }
+.race-svg.focusing .race-lbl.active        { opacity: 1; font-weight: 800; }
+
+/* Axes, grid, cursor */
+.race-grid     { stroke: var(--border); stroke-width: 1; }
+.race-baseline { stroke: var(--border); stroke-width: 1.5; }
+.race-yn, .race-xn { fill: var(--muted); font-size: 9px; font-variant-numeric: tabular-nums; }
+.race-cursor { stroke: var(--primary-mid); stroke-width: 1.5; stroke-dasharray: 3 3; opacity: 0.45; transition: x 0.12s linear; }
+
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   header { padding: 1rem; }

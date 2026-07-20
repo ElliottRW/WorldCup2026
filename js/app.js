@@ -13,6 +13,7 @@ function renderAll() {
   renderTeams();
   renderMatches();
   renderDataTab();
+  renderRace();
   renderPlClubs();
   renderRules();
 }

@@ -26,6 +26,7 @@
   <button class="nav-btn"        data-tab="teams">📊 Teams</button>
   <button class="nav-btn"        data-tab="matches">⚽ Matches</button>
   <button class="nav-btn"        data-tab="data">📈 Stats</button>
+  <button class="nav-btn"        data-tab="race">📈 Race</button>
   <button class="nav-btn"        data-tab="pl-clubs">PL Clubs</button>
   <button class="nav-btn"        data-tab="rules">📋 Rules</button>
 </nav>
@@ -72,6 +73,25 @@
     <div class="card">
       <div class="card-title">⚽ Matches</div>
       <div id="matches-body"></div>
+    </div>
+  </div>
+
+  <!-- Race tab -->
+  <div id="tab-race" class="tab">
+    <div class="card">
+      <div class="card-title">📈 Position Race</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.9rem">Each line is one participant's league position (1 = top) on every match day — watch the lines cross to see how the leader climbed to first. Press play to draw it in day by day; hover or tap a line to trace one person.</p>
+      <div class="race-controls">
+        <button id="race-play" class="race-play">▶ Play</button>
+        <input type="range" id="race-slider" class="race-slider" min="0" max="0" value="0">
+        <select id="race-speed" class="race-speed" title="Playback speed">
+          <option value="1200">Slow</option>
+          <option value="700" selected>Normal</option>
+          <option value="350">Fast</option>
+        </select>
+      </div>
+      <div id="race-date" class="race-date"></div>
+      <div id="race-chart" class="race-chart scrollable"></div>
     </div>
   </div>
 
@@ -172,6 +192,7 @@
 <script src="js/teams.js"></script>
 <script src="js/matches.js"></script>
 <script src="js/data-tab.js"></script>
+<script src="js/race.js"></script>
 <script src="js/pl-clubs.js"></script>
 <script src="js/rules.js"></script>
 <script src="js/app.js"></script>
