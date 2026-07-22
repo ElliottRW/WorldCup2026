@@ -170,13 +170,6 @@
         "position": "G"
       },
       {
-        "name": "Youri Tielemans",
-        "country": "Belgium",
-        "fd_country": "Belgium",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
-        "position": "M"
-      },
-      {
         "name": "Amadou Onana",
         "country": "Belgium",
         "fd_country": "Belgium",
@@ -198,18 +191,18 @@
         "position": "F"
       },
       {
-        "name": "Morgan Rogers",
-        "country": "England",
-        "fd_country": "England",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
-        "position": "F"
-      },
-      {
         "name": "Lucas Digne",
         "country": "France",
         "fd_country": "France",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "position": "D"
+      },
+      {
+        "name": "Evann Guessand",
+        "country": "Ivory Coast",
+        "fd_country": "Ivory Coast",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
+        "position": "F"
       },
       {
         "name": "John McGinn",
@@ -224,6 +217,13 @@
         "fd_country": "Sweden",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "position": "D"
+      },
+      {
+        "name": "Johan Manzambi",
+        "country": "Switzerland",
+        "fd_country": "Switzerland",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
+        "position": "M"
       }
     ]
   },
@@ -363,6 +363,13 @@
         "position": "D"
       },
       {
+        "name": "Morgan Rogers",
+        "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+        "position": "F"
+      },
+      {
         "name": "Malo Gusto",
         "country": "France",
         "fd_country": "France",
@@ -384,18 +391,18 @@
         "position": "F"
       },
       {
-        "name": "Nicolas Jackson",
-        "country": "Senegal",
-        "fd_country": "Senegal",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
-        "position": "F"
-      },
-      {
         "name": "Mamadou Sarr",
         "country": "Senegal",
         "fd_country": "Senegal",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
         "position": "D"
+      },
+      {
+        "name": "Nicolas Jackson",
+        "country": "Senegal",
+        "fd_country": "Senegal",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
+        "position": "F"
       }
     ]
   },
@@ -594,6 +601,13 @@
     "id": "373",
     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png",
     "players": [
+      {
+        "name": "Fatawu Issahaku",
+        "country": "Ghana",
+        "fd_country": "Ghana",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png",
+        "position": "F"
+      },
       {
         "name": "Ali Al-Hamadi",
         "country": "Iraq",
