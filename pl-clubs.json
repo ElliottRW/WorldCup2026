@@ -555,13 +555,6 @@
         "position": "D"
       },
       {
-        "name": "Issa Diop",
-        "country": "Morocco",
-        "fd_country": "Morocco",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
-        "position": "D"
-      },
-      {
         "name": "Sander Berge",
         "country": "Norway",
         "fd_country": "Norway",
@@ -616,6 +609,13 @@
         "position": "F"
       },
       {
+        "name": "Issa Diop",
+        "country": "Morocco",
+        "fd_country": "Morocco",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
+        "position": "D"
+      },
+      {
         "name": "George Hirst",
         "country": "Scotland",
         "fd_country": "Scotland",
@@ -628,6 +628,13 @@
     "id": "357",
     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
     "players": [
+      {
+        "name": "Tarik Muharemovic",
+        "country": "Bosnia-Herzegovina",
+        "fd_country": "Bosnia-Herzegovina",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
+        "position": "D"
+      },
       {
         "name": "Ao Tanaka",
         "country": "Japan",
@@ -1137,13 +1144,6 @@
         "country": "Austria",
         "fd_country": "Austria",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
-        "position": "D"
-      },
-      {
-        "name": "Luka Vuskovic",
-        "country": "Croatia",
-        "fd_country": "Croatia",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
         "position": "D"
       },
       {
