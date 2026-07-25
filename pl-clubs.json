@@ -996,6 +996,13 @@
         "position": "F"
       },
       {
+        "name": "Bazoumana Tour\u00e9",
+        "country": "Ivory Coast",
+        "fd_country": "Ivory Coast",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
+        "position": "F"
+      },
+      {
         "name": "Anthony Elanga",
         "country": "Sweden",
         "fd_country": "Sweden",
@@ -1042,96 +1049,6 @@
         "fd_country": "Switzerland",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "position": "F"
-      }
-    ]
-  },
-  "Sunderland": {
-    "id": "366",
-    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
-    "players": [
-      {
-        "name": "Thomas Meunier",
-        "country": "Belgium",
-        "fd_country": "Belgium",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
-        "position": "D"
-      },
-      {
-        "name": "Arthur Masuaku",
-        "country": "Congo DR",
-        "fd_country": "Congo DR",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
-        "position": "D"
-      },
-      {
-        "name": "Noah Sadiki",
-        "country": "Congo DR",
-        "fd_country": "Congo DR",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
-        "position": "M"
-      },
-      {
-        "name": "Nilson Angulo",
-        "country": "Ecuador",
-        "fd_country": "Ecuador",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
-        "position": "F"
-      },
-      {
-        "name": "Wilson Isidor",
-        "country": "Haiti",
-        "fd_country": "Haiti",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
-        "position": "F"
-      },
-      {
-        "name": "Simon Adingra",
-        "country": "Ivory Coast",
-        "fd_country": "Ivory Coast",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
-        "position": "F"
-      },
-      {
-        "name": "Chemsdine Talbi",
-        "country": "Morocco",
-        "fd_country": "Morocco",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
-        "position": "F"
-      },
-      {
-        "name": "Robin Roefs",
-        "country": "Netherlands",
-        "fd_country": "Netherlands",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
-        "position": "G"
-      },
-      {
-        "name": "Brian Brobbey",
-        "country": "Netherlands",
-        "fd_country": "Netherlands",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
-        "position": "F"
-      },
-      {
-        "name": "Omar Alderete",
-        "country": "Paraguay",
-        "fd_country": "Paraguay",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
-        "position": "D"
-      },
-      {
-        "name": "Habib Diarra",
-        "country": "Senegal",
-        "fd_country": "Senegal",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
-        "position": "M"
-      },
-      {
-        "name": "Granit Xhaka",
-        "country": "Switzerland",
-        "fd_country": "Switzerland",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
-        "position": "M"
       }
     ]
   },
