@@ -225,13 +225,6 @@
         "position": "F"
       },
       {
-        "name": "Jordan Henderson",
-        "country": "England",
-        "fd_country": "England",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
-        "position": "M"
-      },
-      {
         "name": "Kristoffer Ajer",
         "country": "Norway",
         "fd_country": "Norway",
@@ -388,7 +381,7 @@
         "country": "Senegal",
         "fd_country": "Senegal",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
-        "position": "D"
+        "position": "F"
       },
       {
         "name": "Nicolas Jackson",
