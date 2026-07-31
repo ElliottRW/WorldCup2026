@@ -356,6 +356,13 @@
         "position": "M"
       },
       {
+        "name": "Maxence Lacroix",
+        "country": "France",
+        "fd_country": "France",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+        "position": "D"
+      },
+      {
         "name": "Malo Gusto",
         "country": "France",
         "fd_country": "France",
@@ -381,7 +388,7 @@
         "country": "Senegal",
         "fd_country": "Senegal",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
-        "position": "F"
+        "position": "D"
       },
       {
         "name": "Nicolas Jackson",
@@ -443,13 +450,6 @@
         "fd_country": "England",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "position": "G"
-      },
-      {
-        "name": "Maxence Lacroix",
-        "country": "France",
-        "fd_country": "France",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-        "position": "D"
       },
       {
         "name": "Jean-Philippe Mateta",
