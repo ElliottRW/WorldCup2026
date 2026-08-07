@@ -1,8 +1,11 @@
 name: Update Match Data
 
 on:
-  schedule:
-    - cron: '*/30 * * * *'
+  # Scheduled auto-updates disabled — the World Cup 2026 tournament has finished,
+  # so match data no longer changes. Re-enable by uncommenting the schedule block,
+  # or run on demand from the Actions tab (workflow_dispatch).
+  # schedule:
+  #   - cron: '*/30 * * * *'
   workflow_dispatch:
 
 permissions:

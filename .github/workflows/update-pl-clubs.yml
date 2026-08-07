@@ -1,8 +1,11 @@
 name: Update PL Clubs Data
 
 on:
-  schedule:
-    - cron: '0 6 * * *'   # Once daily at 06:00 UTC
+  # Scheduled auto-updates disabled — the World Cup 2026 tournament has finished.
+  # Re-enable by uncommenting the schedule block, or run on demand from the
+  # Actions tab (workflow_dispatch).
+  # schedule:
+  #   - cron: '0 6 * * *'   # Once daily at 06:00 UTC
   workflow_dispatch:
 
 permissions:
