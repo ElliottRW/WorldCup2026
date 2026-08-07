@@ -650,6 +650,13 @@
         "position": "D"
       },
       {
+        "name": "James Trafford",
+        "country": "England",
+        "fd_country": "England",
+        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+        "position": "G"
+      },
+      {
         "name": "Ao Tanaka",
         "country": "Japan",
         "fd_country": "Japan",
@@ -786,13 +793,6 @@
         "fd_country": "Egypt",
         "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
         "position": "F"
-      },
-      {
-        "name": "James Trafford",
-        "country": "England",
-        "fd_country": "England",
-        "country_logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
-        "position": "G"
       },
       {
         "name": "Marc Gu\u00e9hi",
